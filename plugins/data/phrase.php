@@ -1,0 +1,20 @@
+<?php
+return array(
+  "allez demain je me rase",
+  "dans 2 heures j'suis en week end ;p",
+  "darla dirla dada",
+  "je vais commit",
+  "j'ai pushé",
+  "j'ai updaté",
+  "elle etait rudement bonne cette raclette",
+  "hier j'ai acheté 500grammes de viandes et j'ai tout congelé",
+  "j'en ai marre j'ai une reunion dans 5 minutes :(",
+  "j'ai ouvert un blog !!!",
+  "j'aime bien manger a la cantine",
+  "pfou je viens de me dechirer",
+  "pfou je pue",
+  "putain encore 2heures de taf...",
+  "putain de sa race il est fou afflelou",
+  "putain je viens de chier, ct terrible",
+  "papy papy ... papy choulo",
+);

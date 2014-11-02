@@ -1,0 +1,20 @@
+<?php
+return array(
+  "l'agence tout risque",
+  "fan de",
+  "france 3",
+  "france 2",
+  "loftstory",
+  "secretstory",
+  "SOS Pascal",
+  "popstar",
+  "staracademy",
+  "texas ranger",
+  "tout le monde en parle",
+  "vivement dimanche",
+  "warning",
+  "tf1",
+  "M6",
+  "D8",
+  "NRJ12",
+);
