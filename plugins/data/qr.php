@@ -13,6 +13,9 @@ return array(
     "a demain",
     "et ne reviens pas !",
   ),
+  "bender asv,bender asv ?,bender version"=>array(
+      '1.0 robot lamorlaye'
+  ),
   "con,conne,connasse"=>array(
     "hey c'est toi le con",
     "%user_name tu te calme",
@@ -23,11 +26,11 @@ return array(
     "allé hop dans le cahier du bar",
     "tu me remet la même stp",
   ),
-  "sodomie"=>array(
-      "merci %user_name je ne cicatrise toujours pas :(",
-      "ça me rappel des soirées au fucking blue boy avec %user_name",
-      "j'ai faim d'un coup je sais pas pourquoi",
-      "faut prévoir la bonne dose de créme",
+  "sodomie,sodo,anal,anus,cul,l'anal"=>array(
+    "merci %user_name je ne cicatrise toujours pas :(",
+    "ça me rappel des soirées au fucking blue boy avec %user_name",
+    "j'ai faim d'un coup je sais pas pourquoi",
+    "faut prévoir la bonne dose de créme",
   ),
   "salope,suce,chatte,pute"=>array(
     "ok j'appelle ta mére",
@@ -83,5 +86,12 @@ return array(
     "on parle de moi ?",
     "qu'est ce que je faire pour t'aider %user_name ?",
   ),
-  "salut,yo,lo,luss,elo,olà,lu,bonjour,hi,kikoolol,allo,alo,hello"=>"%text %user_name",
+  "salut,yo,lo,luss,elo,olà,lu,bonjour,hi,kikoolol,allo,alo,hello"=>array(
+    "%text %user_name",
+    "hey mon ami !",
+    "bien le bonjour %user_name",
+    "alors depuis le temps !",
+    "ça fait un baille dis donc",
+    "tu vas passer ta journée à dire bonjour ?",
+  ),
 );

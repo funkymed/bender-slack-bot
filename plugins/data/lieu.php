@@ -31,4 +31,7 @@ return array(
   "devant le franprix de luzarche",
   "au congo",
   "devant chez moi, vers le continent",
+  "sinon",
+  "enfin",
+  "je vous ais pas dis",
 );

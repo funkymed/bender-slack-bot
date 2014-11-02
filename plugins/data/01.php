@@ -1,6 +1,10 @@
 <?php
 return array(
+  'au fait,',
+  "je vous ais pas dis,",
   "au kebab en bas",
+  "sinon",
+  "enfin",
   'ce matin',
   'hier',
   'avant hier',
