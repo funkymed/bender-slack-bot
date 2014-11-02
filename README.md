@@ -33,7 +33,11 @@ class plugin_test extends Plugin
     {
         return '!tigger';
     }
-    public function getMessage($text) {
+
+    public function getMessage($text)
+    {
+        $message = 'Hello world!";
+        return $message;
     }
 }
 
