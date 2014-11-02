@@ -1,12 +1,6 @@
 <?php
 return array(
   "a clichy",
-  "chez es",
-  "chez lucas",
-  "chez nico",
-  "chez cyril",
-  "chez anto",
-  "chez julien",
   "dans l'avenue victor hugo",
   "au theatre de bondy",
   "à l'olympia",

@@ -49,11 +49,4 @@ return array(
   'au portugal',
   'en roumanie',
   'a clichy',
-  'chez lucas',
-  'chez cyril',
-  'chez julien',
-  'chez olivier',
-  'chez antony',
-  'chez nicolas',
-  'chez jonathan',
 );

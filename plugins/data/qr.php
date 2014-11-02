@@ -12,7 +12,6 @@ return array(
   "celibataire,maqué,maque,dispo,celib,disponible"=>"moi par contre je suis libre",
   "dans mon ventre"=>"pense à faire caca",
   "Bender,bender,grille pain,grille-pain"=>"on parle de moi ?",
-  "c'est olivier,c'est antony,c'est julien, c'est cyril, c'est nicolas"=>"C'est toujours de sa faute !!",
   "ça va ?,ca va ?,sa va ?"=>"Bien et toi ?",
   "salut,yo,lo,luss,elo,olà,lu,bonjour,hi,kikoolol,allo,alo,hello"=>"%text %user_name",
 );

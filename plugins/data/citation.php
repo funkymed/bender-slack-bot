@@ -29,6 +29,6 @@ return array(
   "Héléne Ségara : Ma passion c'était de chanter, pas devenir bonne ménagére, ni poule de luxe.",
   "Francis Huster : Faire l'amour, c'est comme déboucher un évier.",
   "George Clooney : Aprés avoir fait One fine day et joué un pédiatre dans Urgences, je néaurais jamais déenfant. Je vais plutét me faire faire une vasectomie.",
-  "Lm : Je me suis battue. Aujourd'hui, mon producteur dit que je fais du Zidane au féminin.",
+  "Laam : Je me suis battue. Aujourd'hui, mon producteur dit que je fais du Zidane au féminin.",
   "Zac Hanson : Il y a la constipation, et l'amour. Ce sont les deux seuls sentiments partagés par tous. Que ce soit un homme et une femme, un homme et un homme, ou un chien et un chien.\" Ah oui?\"",
 );
