@@ -1,8 +1,11 @@
 <?php
 return array(
-  "hier"=>"moi aussi hier j'ai pris du pain",
-  "envis,envie"=>"moi j'aime bien le pain",
-  "mangé du"=>"j'en mangerais tous les jours",
+  "hier"=>array(
+    "tu commences à raconter ta vie là",
+    "blah blah blah",
+    "moi aussi hier j'ai pris du pain",
+    "moi aussi hier j'ai fais des trucs",
+  ),
   "a+,tcho,ciao,bye,dodo"=>array(
     "bye",
     "asta la vista",
@@ -10,7 +13,10 @@ return array(
     "a demain",
     "et ne reviens pas !",
   ),
-  "le con,un con"=>"hey c'est toi le con",
+  "le con,un con"=>array(
+    "hey c'est toi le con",
+    "%user_name tu te calme",
+  ),
   "biére,biere,beer,binouze"=>array(
     "moi j'aime bien la biere !!!!!!!",
     "une bonne binch",
@@ -42,7 +48,7 @@ return array(
     "niquel et toi %user_name ?",
     "c'est gentil de demander, et toi %user_name ?",
   ),
-  "bender connard"=>array(
+  "connard,bender connard"=>array(
     "%user_name c'est toi le connard",
     "ho !! dis donc tu te calme %user_name !",
     "%user_name je vais venir te botter le cul",
@@ -54,12 +60,12 @@ return array(
     "mince, je suis démasqué :/",
     "hoho, alerte aux gogoles",
   ),
-  "bender grosse pute"=>array(
+  "pute,grosse pute,bender grosse pute"=>array(
     "%user_name c'est ta mére la pute",
     "ho !! dis donc tu te calme %user_name !",
     "%user_name je vais venir te botter le cul",
   ),
-  "bender grosse merde"=>"%user_name c'est toi la grosse merde",
+  "grosse merde,bender grosse merde"=>"%user_name c'est toi la grosse merde",
   "bender batard"=>array(
     "je connais albator moi",
     "n'importe quoi",

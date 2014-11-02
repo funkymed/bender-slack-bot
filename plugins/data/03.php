@@ -1,5 +1,7 @@
 <?php
 return array(
+  'un gros rat',
+  'un doigt',
   'un poney mort',
   'un bug',
   'la base de donnée',

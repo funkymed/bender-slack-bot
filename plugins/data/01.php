@@ -1,5 +1,6 @@
 <?php
 return array(
+  "au kebab en bas",
   'ce matin',
   'hier',
   'avant hier',

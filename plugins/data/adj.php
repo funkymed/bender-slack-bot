@@ -28,8 +28,7 @@ return array(
   "vert",
   "déjeulasse",
   "classe",
-  "clean",
-  "update",
+  "canon",
   "trop old",
   "zarbi",
 );

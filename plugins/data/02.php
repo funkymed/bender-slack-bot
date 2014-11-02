@@ -7,9 +7,6 @@ return array(
   "j'ai changé",
   "j'ai modifié",
   "j'ai commit",
-  "j'ai pushé",
-  "j'ai fetché",
-  "j'ai rebase",
   "j'ai acheté",
   "j'ai passé",
   "j'ai vendus",
@@ -33,4 +30,5 @@ return array(
   "j'ai mis",
   "j'ai matté",
   "j'ai baisé",
+  "j'ai trouvé",
 );
