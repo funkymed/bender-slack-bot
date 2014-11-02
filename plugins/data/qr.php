@@ -13,7 +13,7 @@ return array(
     "a demain",
     "et ne reviens pas !",
   ),
-  "le con,un con"=>array(
+  "con,conne,connasse"=>array(
     "hey c'est toi le con",
     "%user_name tu te calme",
   ),
@@ -23,7 +23,13 @@ return array(
     "allé hop dans le cahier du bar",
     "tu me remet la même stp",
   ),
-  "salope,suce,chatte,sodomie"=>array(
+  "sodomie"=>array(
+      "merci %user_name je ne cicatrise toujours pas :(",
+      "ça me rappel des soirées au fucking blue boy avec %user_name",
+      "j'ai faim d'un coup je sais pas pourquoi",
+      "faut prévoir la bonne dose de créme",
+  ),
+  "salope,suce,chatte,pute"=>array(
     "ok j'appelle ta mére",
     "aucune éducation",
     "t'es sérieux là ?",
@@ -60,7 +66,7 @@ return array(
     "mince, je suis démasqué :/",
     "hoho, alerte aux gogoles",
   ),
-  "pute,grosse pute,bender grosse pute"=>array(
+  "grosse pute,bender grosse pute"=>array(
     "%user_name c'est ta mére la pute",
     "ho !! dis donc tu te calme %user_name !",
     "%user_name je vais venir te botter le cul",
