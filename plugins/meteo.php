@@ -1,9 +1,18 @@
 <?php
 
+/**
+ * Class plugin_meteo
+ */
 class plugin_meteo extends Plugin
 {
+    /**
+     * @var string
+     */
     protected $hook = '!meteo';
 
+    /**
+     * @var array
+     */
     private $badAnswer = array(
       "Tu sais pas ou t'habite ?",
       "T'es sérieux ?",
@@ -11,11 +20,18 @@ class plugin_meteo extends Plugin
       "Ok, je vois le genre...",
     );
 
+    /**
+     * @return string
+     */
     public function getHelp()
     {
         return '!meteo pays ville';
     }
 
+    /**
+     * @param $text
+     * @return string
+     */
     public function getMessage($text) {
 
         $commands = $this->getCommands($text);

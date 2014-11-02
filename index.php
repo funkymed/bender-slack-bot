@@ -1,12 +1,14 @@
 <?php
 
+/*
+ * By Cyril Pereira 2014
+ */
+
 //Plugins
 include "plugin.php";
 $classes = array();
-$help = array(
-  "HELP :",
-  "======",
-);
+$help    = array("HELP :", "======");
+
 foreach (glob("plugins/*.php") as $filename)
 {
     $class = include $filename;

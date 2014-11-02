@@ -1,9 +1,18 @@
 <?php
 
+/**
+ * Class plugin_movie
+ */
 class plugin_movie extends Plugin
 {
+    /**
+     * @var string
+     */
     protected $hook = '!movie';
 
+    /**
+     * @var array
+     */
     private $badAnswer = array(
       'Tu recherche quoi ?',
       "T'es relou là !",
@@ -12,11 +21,18 @@ class plugin_movie extends Plugin
       "Patate !",
     );
 
+    /**
+     * @return string
+     */
     public function getHelp()
     {
         return '!movie search nom du film';
     }
 
+    /**
+     * @param $text
+     * @return array|string
+     */
     public function getMessage($text) {
 
         $commands = $this->getCommands($text);

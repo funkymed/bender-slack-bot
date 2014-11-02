@@ -1,9 +1,19 @@
 <?php
 
+/**
+ * Class plugin_qr
+ */
 class plugin_qr extends Plugin
 {
+    /**
+     * @var string
+     */
     protected $hook = '!qr';
 
+    /**
+     * @param $text
+     * @return bool|mixed
+     */
     public function getMessage($text) {
 
         global $user_name;
@@ -25,6 +35,9 @@ class plugin_qr extends Plugin
         return false;
     }
 
+    /**
+     * @return bool|string
+     */
     public function getHelp()
     {
         return false;

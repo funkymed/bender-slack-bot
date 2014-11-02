@@ -1,9 +1,19 @@
 <?php
 
+/**
+ * Class plugin_lol
+ */
 class plugin_lol extends Plugin
 {
+    /**
+     * @var string
+     */
     protected $hook = '!lol';
 
+    /**
+     * @param $text
+     * @return array|string
+     */
     public function getMessage($text) {
 
         $rand = rand(1,10);

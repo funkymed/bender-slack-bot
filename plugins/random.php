@@ -1,9 +1,19 @@
 <?php
 
+/**
+ * Class plugin_random
+ */
 class plugin_random extends Plugin
 {
+    /**
+     * @var string
+     */
     protected $hook = '!random';
 
+    /**
+     * @param $text
+     * @return string
+     */
     public function getMessage($text) {
         $list1  = include "data/01.php";
         $list2  = include "data/02.php";
