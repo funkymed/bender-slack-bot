@@ -31,27 +31,29 @@ class plugin_quote extends Plugin
      */
     public function getQuotes()
     {
-        $quotes = file_get_contents(__DIR__.'/data/quotes.txt');
+        $path = dirname(__FILE__);
+        $quotes = file_get_contents($path.'/data/quotes.txt');
         if(!$quotes){
 
-            @file_put_contents(__DIR__.'/data/quotes.txt', json_encode(array()), FILE_APPEND);
+            @file_put_contents($path.'/data/quotes.txt', serialize(array()), FILE_APPEND);
             return $this->getQuotes();
         }
-        return json_decode($quotes);
+        return unserialize($quotes);
     }
 
     /**
      * @param $user_name
      * @param $quote
      */
-    public function addQuotes($user_name,$quote)
+    public function addQuotes($user,$quote)
     {
         global $user_name;
+        $path = dirname(__FILE__);
         $quotes  = $this->getQuotes();
         $message = "Ajouté par ".$user_name." le ".date('d/m/Y')."\n";
-        $message.= $user_name." : ".$quote;
+        $message.= $user." : ".stripslashes($quote);
         $quotes[]=$message;
-        $res = @file_put_contents(__DIR__.'/data/quotes.txt', json_encode($quotes));
+        $res = @file_put_contents($path.'/data/quotes.txt', serialize($quotes));
         return $res ? true : false;
     }
 
@@ -66,7 +68,7 @@ class plugin_quote extends Plugin
         {
             $quotes = $this->getQuotes();
             if(count($quotes)>0)
-                return $this->array_random($quotes);
+                return stripslashes($this->array_random($quotes));
             else
                 return "Pas encore de quote";
         }
