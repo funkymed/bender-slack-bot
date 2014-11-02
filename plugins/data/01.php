@@ -48,7 +48,7 @@ return array(
   'a la salle polyvalente de creteil',
   'a la mjc de saint denis',
   'a sarcelles',
-  'hier soire',
+  'hier soir',
   'durant mon jogging',
   'le lundi au soleil',
   'au portugal',
