@@ -46,7 +46,7 @@ return array(
     "faut lui dire de me rendre mon slip",
     "je lui ferais bien le petit",
   ),
-  "celibataire,maqué,maque,dispo,celib,disponible"=>array(
+  "célibataire,tinder,meetic,adopteunmec,okcupid,celibataire,maqué,maque,dispo,celib,disponible"=>array(
     "moi par contre je suis libre",
     "viens on s'inscris sur tinder",
     "moi je suis sur meetic",
