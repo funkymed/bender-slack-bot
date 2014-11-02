@@ -57,7 +57,7 @@ class plugin_wikipedia extends Plugin
                     $response = array();
                     $response[]=$api->query->search[0]->title;
                     $response[]=strip_tags($api->query->search[0]->snippet);
-                    $response[]="http://fr.wikipedia.org/wiki/" . urlencode($api->query->search[0]->title) ;
+                    $response[]="http://fr.wikipedia.org/wiki/" . str_replace(" ","_",$api->query->search[0]->title) ;
                     return implode("\n",$response);
                 }else{
                     return $this->array_random($this->badAnswer);
