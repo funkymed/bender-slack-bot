@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class plugin_movie
+ * Class plugin_youtube
  */
 class plugin_youtube extends Plugin
 {
@@ -29,6 +29,10 @@ class plugin_youtube extends Plugin
         return '!youtube search nom de la vidéo';
     }
 
+    /**
+     * @param $yt
+     * @return stdClass
+     */
     private function getVideoDetail($yt)
     {
         $title = '';
@@ -42,6 +46,10 @@ class plugin_youtube extends Plugin
         return $obj;
     }
 
+    /**
+     * @param $feed
+     * @return string
+     */
     private function feedVideo($feed)
     {
         $result = json_decode($feed);
