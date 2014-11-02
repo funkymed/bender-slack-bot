@@ -31,14 +31,18 @@ class plugin_quote extends Plugin
      */
     public function getQuotes()
     {
+        global $user_name,$team_domain;
         $path = dirname(__FILE__);
-        $quotes = file_get_contents($path.'/data/quotes.txt');
-        if(!$quotes){
+        $filename = $path.'/data/'.$team_domain.'_quotes.txt';
 
-            @file_put_contents($path.'/data/quotes.txt', serialize(array()), FILE_APPEND);
-            return $this->getQuotes();
+        if (file_exists($filename)) {
+
+            $quotes = @file_get_contents($filename);
+            return $quotes && $quotes!='' ? unserialize($quotes) : array();
+        }else{
+            @file_put_contents($filename, serialize(array()));
+            return array();
         }
-        return unserialize($quotes);
     }
 
     /**
@@ -47,13 +51,13 @@ class plugin_quote extends Plugin
      */
     public function addQuotes($user,$quote)
     {
-        global $user_name;
+        global $user_name,$team_domain;
         $path = dirname(__FILE__);
         $quotes  = $this->getQuotes();
         $message = "Ajouté par ".$user_name." le ".date('d/m/Y')."\n";
         $message.= $user." : ".stripslashes($quote);
         $quotes[]=$message;
-        $res = @file_put_contents($path.'/data/quotes.txt', serialize($quotes));
+        $res = @file_put_contents($path.'/data/'.$team_domain.'_quotes.txt', serialize($quotes));
         return $res ? true : false;
     }
 
