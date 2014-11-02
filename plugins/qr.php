@@ -20,12 +20,26 @@ class plugin_qr extends Plugin
 
         $t  = explode (' ',$text);
         $qr = include "data/qr.php";
+
         foreach($qr as $k=>$v)
         {
+            if(in_array(strtolower($text), explode(',',$k)))
+            {
+                if(is_array($v))
+                    $v = $this->array_random($v);
+
+                $msg = str_replace('%user_name', $user_name, $v);
+                $msg = str_replace('%text', $text, $msg);
+                return $msg;
+            }
+
             foreach($t as $word)
             {
                 if(in_array(strtolower($word),explode(',',$k)))
                 {
+                    if(is_array($v))
+                        $v = $this->array_random($v);
+
                     $msg = str_replace('%user_name', $user_name, $v);
                     $msg = str_replace('%text', $text, $msg);
                     return $msg;
