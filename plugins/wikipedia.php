@@ -55,9 +55,16 @@ class plugin_wikipedia extends Plugin
                 {
                     $api = json_decode($api);
                     $response = array();
-                    $response[]=$api->query->search[0]->title;
+                    $response[]=$api->query->search[0]->title." "."http://fr.wikipedia.org/wiki/" . str_replace(" ","_",$api->query->search[0]->title);
                     $response[]=strip_tags($api->query->search[0]->snippet);
-                    $response[]="http://fr.wikipedia.org/wiki/" . str_replace(" ","_",$api->query->search[0]->title) ;
+                    $others = array();
+                    foreach($api->query->search as $k=>$q)
+                    {
+                        if($k>0)
+                            $others[]=$q->title;
+                    }
+                    if(count($others)>0)
+                        $response[]="Autres recherche :\n".implode(", ", $others);
                     return implode("\n",$response);
                 }else{
                     return $this->array_random($this->badAnswer);

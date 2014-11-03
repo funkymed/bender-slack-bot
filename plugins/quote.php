@@ -52,12 +52,16 @@ class plugin_quote extends Plugin
     public function addQuotes($user,$quote)
     {
         global $user_name,$team_domain;
-        $path = dirname(__FILE__);
-        $quotes  = $this->getQuotes();
+
         $message = "Ajouté par ".$user_name." le ".date('d/m/Y')."\n";
         $message.= $user." : ".stripslashes($quote);
+
+        $quotes  = $this->getQuotes();
         $quotes[]=$message;
-        $res = @file_put_contents($path.'/data/'.$team_domain.'_quotes.txt', serialize($quotes));
+
+        $path = dirname(__FILE__);
+        $res  = @file_put_contents($path.'/data/'.$team_domain.'_quotes.txt', serialize($quotes));
+
         return $res ? true : false;
     }
 
@@ -83,7 +87,7 @@ class plugin_quote extends Plugin
                 $user = $commands[1];
                 unset($commands[0]);
                 unset($commands[1]);
-                $res = $this->addQuotes($user,implode(' ', $commands));
+                $res = $this->addQuotes($user, implode(' ', $commands));
                 return $res ? "Quote ajoutée" : "Impossible d'ajouter cette quote";
             case "help":
                 return $this->getHelp();

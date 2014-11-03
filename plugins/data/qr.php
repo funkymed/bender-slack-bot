@@ -14,7 +14,7 @@ return array(
     "et ne reviens pas !",
   ),
   "bender asv,bender asv ?,bender version"=>array(
-      '1.0 robot lamorlaye'
+    '1.0 robot lamorlaye'
   ),
   "con,conne,connasse"=>array(
     "hey c'est toi le con",
@@ -63,7 +63,7 @@ return array(
     "%user_name je vais venir te botter le cul",
     "j'ai ton digicode",
   ),
-  "enculé,bender enculé"=>array(
+  "enculé,bender enculé,enculer"=>array(
     "%user_name c'est toi l'enculé",
     "attends ... ok :(",
     "mince, je suis démasqué :/",
@@ -84,7 +84,12 @@ return array(
   "bender,grille pain,grille-pain"=>array(
     "oui ?",
     "on parle de moi ?",
-    "qu'est ce que je faire pour t'aider %user_name ?",
+    "qu'est ce que peux je faire pour t'aider %user_name ?",
+    "oulala faut arrêter de m'appeler",
+    "je vais me faire goler par la direction avec vos conneries",
+    "au rapport",
+    "yes ?",
+    "c'est comme ça que je m'appel",
   ),
   "salut,yo,lo,luss,elo,olà,lu,bonjour,hi,kikoolol,allo,alo,hello"=>array(
     "%text %user_name",
