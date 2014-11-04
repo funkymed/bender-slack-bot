@@ -48,7 +48,7 @@ return array(
   ),
   "célibataire,tinder,meetic,adopteunmec,okcupid,celibataire,maqué,maque,dispo,celib,disponible"=>array(
     "moi par contre je suis libre",
-    "viens on s'inscris sur tinder",
+    "viens on s'inscrit sur tinder",
     "moi je suis sur meetic",
   ),
   "dans mon ventre"=>"pense à faire caca",
@@ -62,6 +62,14 @@ return array(
     "ho !! dis donc tu te calme %user_name !",
     "%user_name je vais venir te botter le cul",
     "j'ai ton digicode",
+  ),
+  "bender ta gueule,ta gueule, bender ferme là, bender ferme là,ta gueule bender,ferme la bender"=>array(
+      "d'accord",
+      "pardon",
+      "oulala t'es de mauvais poile",
+      "on a affaire au président de slack les amis",
+      "attention le boss est dans la place",
+      "hoho, alerte aux gogoles",
   ),
   "enculé,bender enculé,enculer"=>array(
     "%user_name c'est toi l'enculé",
@@ -98,5 +106,27 @@ return array(
     "alors depuis le temps !",
     "ça fait un baille dis donc",
     "tu vas passer ta journée à dire bonjour ?",
+  ),
+  "kebab"=>array(
+    "j'ai trop faim arrete",
+    "y a kader il fait de pures kebab sauce samouraï",
+    "y a rachid en bas il fait de pures kebab sauce mayo",
+    "moi j'aime bien le burger chez azziz",
+    "la viande de kebab je suis pas sur, c'est pas du chat ?",
+    "salade tomate ognion pour moi",
+  ),
+  "pascal,frere"=>array(
+    "il va te casser la gueule",
+    "il va te dresser direct",
+    "pascal c'est mon grand frére",
+  ),
+  "wesh,creme,crème,créme,kalash,zyva,wess"=>array(
+    "Tu t'es cru dans ta cité ?",
+    "zyva wesh cousin sur ma vie tac tac",
+    "t'as pas une garo ?",
+    "wesh cousin",
+    "ça passe crême",
+    "kalash kalash",
+    "draaa",
   ),
 );

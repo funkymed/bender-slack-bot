@@ -15,6 +15,38 @@ class plugin_lol extends Plugin
      * @return array|string
      */
     public function getMessage($text) {
+        $rand = rand(1,2);
+        if($rand==2)
+        {
+            return $this->makeRandom();
+        }else{
+            return $this->makeLol();
+        }
+    }
+
+    /**
+     * @return string
+     */
+    private function makeRandom()
+    {
+        $list1  = include "data/01.php";
+        $list2  = include "data/02.php";
+        $list3  = include "data/03.php";
+        $list4  = include "data/04.php";
+        $phrase = array(
+          $this->array_random($list1),
+          $this->array_random($list2),
+          $this->array_random($list3),
+          $this->array_random($list4)
+        );
+
+        return implode(' ',$phrase);
+    }
+
+    /**
+     * @return array|string
+     */
+    public function makeLol() {
 
         $rand = rand(1,10);
         $numtxt = rand(1,9);
