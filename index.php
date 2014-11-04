@@ -8,7 +8,6 @@
 include "plugin.php";
 $classes = array();
 $help    = array("HELP :", "======");
-
 foreach (glob("plugins/*.php") as $filename)
 {
     $class = include $filename;
@@ -28,10 +27,14 @@ foreach($keys as $v)
     $$v = isset($_REQUEST[$v]) ? $_REQUEST[$v] : false;
 }
 
-if(strstr($text, "!help"))
+//Display HELP from plugin
+if(strstr(strtolower($text), "!help"))
 {
     $message = implode("\n",$help);
+
+//Execute plugin if triggered
 }else{
+
     //Process Plugin
     foreach($classes as $k=>$class)
     {
@@ -42,7 +45,8 @@ if(strstr($text, "!help"))
     }
 
     //If no message try something else funny
-    if($message===false)
+    //Take a look to the qr plugin
+    if($message===false && isset($classes['!qr']))
     {
         $res = $classes['!qr']->getMessage($text);
         if($res)
