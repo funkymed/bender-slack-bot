@@ -10,6 +10,10 @@ class plugin_qr extends Plugin
      */
     protected $hook = '!qr';
 
+    public function __construct()
+    {
+        $this->qr = include "data/qr.php";
+    }
     /**
      * @param $text
      * @return bool|mixed
@@ -19,9 +23,9 @@ class plugin_qr extends Plugin
         global $user_name;
 
         $t  = explode (' ',$text);
-        $qr = include "data/qr.php";
 
-        foreach($qr as $k=>$v)
+
+        foreach($this->qr as $k=>$v)
         {
             if(in_array(strtolower($text), explode(',',$k)))
             {

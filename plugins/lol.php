@@ -10,6 +10,20 @@ class plugin_lol extends Plugin
      */
     protected $hook = '!lol';
 
+    public function __construct()
+    {
+
+        $this->list1    = include "data/01.php";
+        $this->list2    = include "data/02.php";
+        $this->list3    = include "data/03.php";
+        $this->list4    = include "data/04.php";
+        $this->star     = include "data/star.php";
+        $this->lieu     = include "data/lieu.php";
+        $this->tv       = include "data/tv.php";
+        $this->adj      = include "data/adj.php";
+        $this->phrase   = include "data/phrase.php";
+    }
+
     /**
      * @param $text
      * @return array|string
@@ -29,15 +43,11 @@ class plugin_lol extends Plugin
      */
     private function makeRandom()
     {
-        $list1  = include "data/01.php";
-        $list2  = include "data/02.php";
-        $list3  = include "data/03.php";
-        $list4  = include "data/04.php";
         $phrase = array(
-          $this->array_random($list1),
-          $this->array_random($list2),
-          $this->array_random($list3),
-          $this->array_random($list4)
+          $this->array_random($this->list1),
+          $this->array_random($this->list2),
+          $this->array_random($this->list3),
+          $this->array_random($this->list4)
         );
 
         return implode(' ',$phrase);
@@ -51,20 +61,11 @@ class plugin_lol extends Plugin
         $rand = rand(1,10);
         $numtxt = rand(1,9);
 
-        $star = include "data/star.php";
-        $star = $this->array_random($star);
-
-        $lieu = include "data/lieu.php";
-        $lieu = $this->array_random($lieu);
-
-        $tv = include "data/tv.php";
-        $tv = $this->array_random($tv);
-
-        $adj = include "data/adj.php";
-        $adj = $this->array_random($adj);
-
-        $phrase = include "data/phrase.php";
-        $phrase = $this->array_random($phrase);
+        $star = $this->array_random($this->star);
+        $lieu = $this->array_random($this->lieu);
+        $tv = $this->array_random($this->tv);
+        $adj = $this->array_random($this->adj);
+        $phrase = $this->array_random($this->phrase);
 
         switch($rand)
         {
