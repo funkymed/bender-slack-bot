@@ -45,7 +45,7 @@ if(strstr(strtolower($text), "!help"))
         $message[]=$k." : ".$$k;
     }
     $message[]='================';
-    $message[]='Plugins loaded : '.glob("plugins/*.php");
+    $message[]='Plugins loaded : '.count(glob("plugins/*.php"));
     $message[]='================';
     foreach($classes as $k=>$c)
     {
@@ -55,6 +55,7 @@ if(strstr(strtolower($text), "!help"))
     $message[]='================';
     $message[]='Data files : '.count(glob("plugins/data/*"));
     $message[]='================';
+    $message[]='Done.';
 
 //Execute plugin if triggered
 }else{
