@@ -32,6 +32,30 @@ if(strstr(strtolower($text), "!help"))
 {
     $message = implode("\n",$help);
 
+//Debug
+}elseif(strstr(strtolower($text), "!debug"))
+{
+    $keys = array('user_name','team_domain','channel_name','text','timestamp');
+    $message=array();
+    $message[]='===========';
+    $message[]='Variables :';
+    $message[]='===========';
+    foreach($keys as $k)
+    {
+        $message[]=$k." : ".$$k;
+    }
+    $message[]='================';
+    $message[]='Plugins loaded : '.glob("plugins/*.php");
+    $message[]='================';
+    foreach($classes as $k=>$c)
+    {
+        $message[]=$k." : ".get_class($c);
+    }
+
+    $message[]='================';
+    $message[]='Data files : '.count(glob("plugins/data/*"));
+    $message[]='================';
+
 //Execute plugin if triggered
 }else{
 
@@ -56,9 +80,16 @@ if(strstr(strtolower($text), "!help"))
     }
 }
 
+
+
+
+
 //Response
 if($user_id!='USLACKBOT' && $message!=false)
 {
+    if(is_array($message))
+        $message=implode("\n",$message);
+
     $response = array('text'=>$message);
     echo json_encode($response);
 }
