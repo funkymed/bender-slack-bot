@@ -5,6 +5,19 @@ return array(
     "blah blah blah",
     "moi aussi hier j'ai pris du pain",
     "moi aussi hier j'ai fais des trucs",
+    "--response--"=>array(
+       "bah oué,oué,tg,ta gueule,huhu,haha,hihi,oui,non"=>array(
+            "t'es gogole ou quoi ?",
+            "huhu",
+            "ho ça va %usern_name",
+            "oué c'est ça",
+            "on s'en fout de ta vie",
+        ),
+        "hier"=>array(
+            'on a compris',
+            "tu racontes vraiment ta vie %user_name ...",
+        )
+    ),
   ),
   "a+,tcho,ciao,bye,dodo"=>array(
     "bye",
@@ -12,6 +25,19 @@ return array(
     "adios",
     "a demain",
     "et ne reviens pas !",
+    "--response--"=>array(
+      "bonne nuit,bonne soiree"=>array(
+        "merci toi aussi",
+        "--response--"=>array(
+          "ok"=>array(
+            "ouep",
+          ),
+        ),
+        "bonne nuit,bonne soiree"=>array(
+            "ok d'accord",
+        ),
+      ),
+    ),
   ),
   "bender asv,bender asv ?,bender version"=>array(
     '1.0 robot lamorlaye'
@@ -19,8 +45,13 @@ return array(
   "con,conne,connasse"=>array(
     "hey c'est toi le con",
     "%user_name tu te calme",
+    "--response--"=>array(
+      "c'est toi le con"=>array(
+        "non c'est toi",
+      ),
+    ),
   ),
-  "biére,biere,beer,binouze"=>array(
+  "biere,biere,beer,binouze"=>array(
     "moi j'aime bien la biere !!!!!!!",
     "une bonne binch",
     "allé hop dans le cahier du bar",
@@ -40,13 +71,18 @@ return array(
     "SOS pascal le grand frére tu vas voir !",
     "#SOSpascal direct",
   ),
-  "mére,mére,mere,tante,soeur,cousine"=>array(
+  "mere,tante,soeur,cousine"=>array(
     "ah ouais j'la connais c'est une pute :)",
     "elle traine pas du côté de boulogne ?",
     "faut lui dire de me rendre mon slip",
     "je lui ferais bien le petit",
+    "--response--"=>array(
+      "tg,ta gueule"=>array(
+        "t'as craqué toi",
+      ),
+    ),
   ),
-  "célibataire,tinder,meetic,adopteunmec,okcupid,celibataire,maqué,maque,dispo,celib,disponible"=>array(
+  "tinder,meetic,adopteunmec,okcupid,celibataire,maqué,maque,dispo,celib,disponible"=>array(
     "moi par contre je suis libre",
     "viens on s'inscrit sur tinder",
     "moi je suis sur meetic",
@@ -64,14 +100,14 @@ return array(
     "j'ai ton digicode",
   ),
   "bender ta gueule,ta gueule, bender ferme là, bender ferme là,ta gueule bender,ferme la bender"=>array(
-      "d'accord",
-      "pardon",
-      "oulala t'es de mauvais poile",
-      "on a affaire au président de slack les amis",
-      "attention le boss est dans la place",
-      "hoho, alerte aux gogoles",
+    "d'accord",
+    "pardon",
+    "oulala t'es de mauvais poile",
+    "on a affaire au président de slack les amis",
+    "attention le boss est dans la place",
+    "hoho, alerte aux gogoles",
   ),
-  "enculé,bender enculé,enculer"=>array(
+  "encule,bender encule,enculer"=>array(
     "%user_name c'est toi l'enculé",
     "attends ... ok :(",
     "mince, je suis démasqué :/",
@@ -106,6 +142,11 @@ return array(
     "alors depuis le temps !",
     "ça fait un baille dis donc",
     "tu vas passer ta journée à dire bonjour ?",
+    "--response--"=>array(
+      "comment ca va ?,ca va ?"=>array(
+        "t'as craqué toi",
+      ),
+    ),
   ),
   "kebab"=>array(
     "j'ai trop faim arrete",
@@ -120,7 +161,7 @@ return array(
     "il va te dresser direct",
     "pascal c'est mon grand frére",
   ),
-  "wesh,creme,crème,créme,kalash,zyva,wess"=>array(
+  "wesh,creme,kalash,zyva,wess"=>array(
     "Tu t'es cru dans ta cité ?",
     "zyva wesh cousin sur ma vie tac tac",
     "t'as pas une garo ?",

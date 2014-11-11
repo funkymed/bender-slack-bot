@@ -114,4 +114,5 @@ if($message===false && !empty($token) && !empty($team_domain) && !empty($channel
 
     $response = array('text'=>$message);
 }
-echo json_encode($response);
+if(isset($response) && !(empty($response)))
+    echo json_encode($response);
