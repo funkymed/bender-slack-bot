@@ -30,7 +30,7 @@ class plugin_sondage extends Plugin
 
     public function getHelp()
     {
-        return '!sondage start question/choix1,choix2,...|stop|restore|info';
+        return '!sondage start question/choix1,choix2,...|stop|restore|info|votes';
     }
 
     /**
@@ -174,6 +174,17 @@ class plugin_sondage extends Plugin
                     break;
                 case "info":
                     return $this->getInfo();
+                    break;
+                case "votes":
+                    if(count($this->sondage['votes'])>0)
+                    {
+                        $votes = array();
+                        foreach($this->sondage['votes'] as $user=>$vote)
+                        {
+                            $votes[]=$user." : ".$vote;
+                        }
+                        return implode("\n",$votes);
+                    }
                     break;
                 default:
                     if($this->isSondageStarted())
