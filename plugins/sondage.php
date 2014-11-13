@@ -13,6 +13,7 @@ class plugin_sondage extends Plugin
     protected $sondage = array(
         'question'=>'',
         'date'=>'',
+        "author"=>'',
         'choices'=>array(),
         'votes'=>array(),
         'open'=>false
@@ -88,7 +89,7 @@ class plugin_sondage extends Plugin
         if($this->isSondageStarted())
         {
             $output = array();
-            $output[] = "Sondage commencé le ".$this->sondage['date'];
+            $output[] = "Sondage commencé le ".$this->sondage['date']." par ".$this->sondage['author'];
             $output[] = "==========================";
             $output[] = $this->sondage['question'];
             foreach($this->sondage['choices'] as $choices)
@@ -141,6 +142,7 @@ class plugin_sondage extends Plugin
                     $this->sondage['date'] = date('d/m/Y \à H:i:s');
                     $this->sondage['question'] = $tmp[0];
                     $this->sondage['choices'] = explode(',',$tmp[1]);
+                    $this->sondage['author'] = $user_name;
                     $this->sondage['votes'] = array();
 
                     if(count($this->sondage['choices'])<2) {
