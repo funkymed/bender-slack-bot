@@ -17,7 +17,6 @@ class plugin_lol extends Plugin
         $this->list3    = include "data/03.php";
         $this->list4    = include "data/04.php";
         $this->list5    = include "data/05.php";
-        $this->list6    = include "data/06.php";
         $this->star     = include "data/star.php";
         $this->lieu     = include "data/lieu.php";
         $this->tv       = include "data/tv.php";
@@ -101,7 +100,6 @@ class plugin_lol extends Plugin
           $this->array_random($this->list3),
           $this->array_random($this->list4),
           $this->array_random($this->list5),
-          $this->array_random($this->list6),
         );
 
         return implode(' ',$phrase);
