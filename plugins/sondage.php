@@ -161,7 +161,7 @@ class plugin_sondage extends Plugin
                 case "stop":
                     $this->sondage['open'] = false;
                     $res = $this->save($this->sondage);
-                    return "Sondage terminé :\n".$this->getInfo();
+                    return "Sondage terminé.";
                     break;
                 case "restore":
                     if($this->isSondageStarted())
