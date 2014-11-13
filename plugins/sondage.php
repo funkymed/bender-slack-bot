@@ -68,14 +68,19 @@ class plugin_sondage extends Plugin
     private function getPourcentage($choices)
     {
         $total = count($this->sondage['votes']);
-        $count = 0;
-        foreach($this->sondage['votes'] as $user=>$c)
+        if($total>0)
         {
-            if($c==$choices)
-                $count++;
-        }
+            $count = 0;
+            foreach($this->sondage['votes'] as $user=>$c)
+            {
+                if($c==$choices)
+                    $count++;
+            }
 
-        return $count/$total*100;
+            return $count/$total*100;
+        }else{
+            return 0;
+        }
     }
 
     private function getInfo()
@@ -83,11 +88,12 @@ class plugin_sondage extends Plugin
         if($this->isSondageStarted())
         {
             $output = array();
-            $output[] = "commencé le ".$this->sondage['date'];
+            $output[] = "Sondage commencé le ".$this->sondage['date'];
+            $output[] = "==========================";
             $output[] = $this->sondage['question'];
             foreach($this->sondage['choices'] as $choices)
             {
-                $output[] = "\t- ".$choices.' ('.$this->getPourcentage($choices).'%)';
+                $output[] = "- ".$choices.' ('.$this->getPourcentage($choices).'%)';
             }
 
             return implode("\n",$output);
@@ -135,10 +141,10 @@ class plugin_sondage extends Plugin
                     $this->sondage['date'] = date('d/m/Y \à H:i:s');
                     $this->sondage['question'] = $tmp[0];
                     $this->sondage['choices'] = explode(',',$tmp[1]);
+                    $this->sondage['votes'] = array();
 
-                    if(count($this->sondage['choices'])==0)
-                    {
-                        $this->sondage['choices'] = array('Oui','Non');
+                    if(count($this->sondage['choices'])<2) {
+                        return "Désolé il n'y a pas suffisement de choix";
                     }
 
                     $this->sondage['open'] = true;
@@ -170,13 +176,14 @@ class plugin_sondage extends Plugin
                 default:
                     if($this->isSondageStarted())
                     {
-                        if(in_array($commands[0],$this->sondage['choices']))
+                        $tmp = implode(' ',$commands);
+                        if(in_array($tmp,$this->sondage['choices']))
                         {
                             if(isset($this->sondage['votes'][$user_name]))
                             {
                                 return "Tu as déjà voté";
                             }else{
-                                $this->sondage['votes'][$user_name]=$commands[0];
+                                $this->sondage['votes'][$user_name]=$tmp;
                                 $res = $this->save($this->sondage);
                                 return $res ? "à voté" : "impossible de voter";
                             }
