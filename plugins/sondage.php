@@ -88,10 +88,12 @@ class plugin_sondage extends Plugin
     {
         if($this->isSondageStarted())
         {
-            $output = array();
-            $output[] = "Sondage commencé le ".$this->sondage['date']." par ".$this->sondage['author'];
-            $output[] = "==========================";
-            $output[] = $this->sondage['question'];
+
+            $nbVotes    = count($this->sondage['votes']);
+            $output     = array();
+            $output[]   = "Sondage commencé le ".$this->sondage['date']." par ".$this->sondage['author'];
+            $output[]   = $this->sondage['question']." ".$nbVotes." vote".($nbVotes>1 ? 's' : '');
+
             foreach($this->sondage['choices'] as $choices)
             {
                 $output[] = "- ".$choices.' ('.$this->getPourcentage($choices).'%)';
