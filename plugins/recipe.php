@@ -29,7 +29,7 @@ class plugin_recipe extends Plugin
         $content_page_redirect = explode('</html>',$this->get_page_content("http://www.marmiton.org/recettes/recette-hasard.aspx"));
 
         $doc = new DOMDocument();
-        $doc->loadHTML($content_page_redirect[0].'</html>', LIBXML_NOWARNING);
+        $doc->loadHTML($content_page_redirect[0].'</html>');
 
         $links = $doc->getElementsByTagName('a');
 
@@ -53,8 +53,10 @@ class plugin_recipe extends Plugin
         foreach ($links as $link) {
            $recette = $link->nodeValue;
         }
+        
+        $recette = trim(preg_replace('/\s\s+/', ' ', $recette));
 
-        return $recette." : ".$link_recipe;
+        return $recette.":".$link_recipe;
     }
 
 }
