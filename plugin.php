@@ -57,5 +57,21 @@ abstract class Plugin
     {
         return $this->getHook();
     }
+
+    /**
+     * @param $url
+     * @return mixed
+     */
+    public function get_page_content($url) {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+
+        $content = curl_exec($ch);
+        curl_close($ch);
+
+        return $content;
+    }
 }
 

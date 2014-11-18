@@ -12,18 +12,6 @@ class plugin_recipe extends Plugin
         return '!recette';
     }
 
-    private function get_page_content($url) {
-      $ch = curl_init($url);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-      curl_setopt($ch, CURLOPT_URL, $url);
-
-      $content = curl_exec($ch);
-      curl_close($ch);
-
-      return $content;
-    }
-
     public function getMessage($text)
     {
         $content_page_redirect = explode('</html>',$this->get_page_content("http://www.marmiton.org/recettes/recette-hasard.aspx"));
