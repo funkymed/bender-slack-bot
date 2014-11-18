@@ -23,7 +23,7 @@ class plugin_quote extends Plugin
 
     public function getHelp()
     {
-        return '!quote (help|add username text)';
+        return '!quote (last|all|help|add username text)';
     }
 
     /**
@@ -92,6 +92,15 @@ class plugin_quote extends Plugin
             case "help":
                 return $this->getHelp();
                 break;
+            case "all":
+                $quotes = $this->getQuotes();
+                return $quotes;
+                break;
+            case "last":
+                $quotes = $this->getQuotes();
+                return $quotes[count($quotes)-1];
+                break;
+
             default:
                 return $this->array_random($this->badAnswer)." J'ai rien capté !";
                 break;

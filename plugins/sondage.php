@@ -88,7 +88,6 @@ class plugin_sondage extends Plugin
     {
         if($this->isSondageStarted())
         {
-
             $nbVotes    = count($this->sondage['votes']);
             $output     = array();
             $output[]   = "Sondage commencé le ".$this->sondage['date']." par ".$this->sondage['author'];
@@ -98,7 +97,6 @@ class plugin_sondage extends Plugin
             {
                 $output[] = "- ".$choices.' ('.$this->getPourcentage($choices).'%)';
             }
-
             return implode("\n",$output);
         }else{
             return 'Pas de sondage en cours';
