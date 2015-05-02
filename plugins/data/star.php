@@ -3,7 +3,7 @@ return array(
   "David Ghetta",
   "les Datft punk",
   "Rémi gaillard",
-  "les Sexion d'Assaut",
+      "les Sexion d'Assaut",
   "Les 1D",
   "La fouine",
   "Omar (de Omar et Fred)",

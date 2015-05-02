@@ -27,35 +27,13 @@ foreach($keys as $v)
     $$v = isset($_REQUEST[$v]) ? $_REQUEST[$v] : false;
 }
 
+if($user_name=="slackbot")
+    exit;
+
 //Display HELP from plugin
 if(strstr(strtolower($text), "!help"))
 {
     $message = implode("\n",$help);
-
-//Debug
-}elseif(strstr(strtolower($text), "!debug"))
-{
-    $keys = array('user_name','team_domain','channel_name','text','timestamp');
-    $message=array();
-    $message[]='===========';
-    $message[]='Variables :';
-    $message[]='===========';
-    foreach($keys as $k)
-    {
-        $message[]=$k." : ".$$k;
-    }
-    $message[]='================';
-    $message[]='Plugins loaded : '.count(glob("plugins/*.php"));
-    $message[]='================';
-    foreach($classes as $k=>$c)
-    {
-        $message[]=$k." : ".get_class($c);
-    }
-
-    $message[]='================';
-    $message[]='Data files : '.count(glob("plugins/data/*"));
-    $message[]='================';
-    $message[]='Done.';
 
 //Execute plugin if triggered
 }else{
