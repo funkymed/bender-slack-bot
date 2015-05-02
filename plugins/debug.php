@@ -1,9 +1,9 @@
 <?php
 /**
- * Class debug_gif
+ * Class plugin_debug
  */
 
-class debug_gif extends Plugin
+class plugin_debug extends Plugin
 {
     protected $hook = '!debug';
 
@@ -43,4 +43,4 @@ class debug_gif extends Plugin
 
 }
 
-return new debug_gif();
+return new plugin_debug();
