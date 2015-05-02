@@ -48,7 +48,7 @@ return array(
             "ouep",
           ),
         ),
-        "bonne nuit,bonne soiree"=>array(
+        "bah oué,oué,tg,ta gueule,huhu,haha,hihi,oui,non"=>array(
           "ok d'accord",
         ),
       ),
@@ -107,6 +107,14 @@ return array(
     "Bien et toi ?",
     "niquel et toi %user_name ?",
     "c'est gentil de demander, et toi %user_name ?",
+    "--response--"=>array(
+      "niquel,bien,super,non,oui"=>array(
+        "a bah cool",
+        "d'accord",
+        "ok",
+        "je m'en fou",
+      ),
+    ),
   ),
   "connard,bender connard"=>array(
     "%user_name c'est toi le connard",
