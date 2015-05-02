@@ -1,22 +1,37 @@
 <?php
 return array(
+  "charrette,charete,charrete,charette"=>array(
+    "moi je charrette vers 15h",
+    "en pleine journée c'est mieu",
+    "jamais le soir c'est trop fatiguant",
+  ),
+  "incroyable,mais vrai"=>array(
+    "incroyable mais vrai LE MAG"
+  ),
+  "énorme"=>array(
+    "et sec",
+    "c'est clairement énorme et sec"
+  ),
+  "normal"=>array(
+    "c'est normal en RUSSIE",
+  ),
   "hier"=>array(
     "tu commences à raconter ta vie là",
     "blah blah blah",
     "moi aussi hier j'ai pris du pain",
     "moi aussi hier j'ai fais des trucs",
     "--response--"=>array(
-       "bah oué,oué,tg,ta gueule,huhu,haha,hihi,oui,non"=>array(
-            "t'es gogole ou quoi ?",
-            "huhu",
-            "ho ça va %usern_name",
-            "oué c'est ça",
-            "on s'en fout de ta vie",
-        ),
-        "hier"=>array(
-            'on a compris',
-            "tu racontes vraiment ta vie %user_name ...",
-        )
+      "bah oué,oué,tg,ta gueule,huhu,haha,hihi,oui,non"=>array(
+        "t'es gogole ou quoi ?",
+        "huhu",
+        "ho ça va %usern_name",
+        "oué c'est ça",
+        "on s'en fout de ta vie",
+      ),
+      "hier"=>array(
+        'on a compris',
+        "tu racontes vraiment ta vie %user_name ...",
+      )
     ),
   ),
   "a+,tcho,ciao,bye,dodo"=>array(
@@ -34,7 +49,7 @@ return array(
           ),
         ),
         "bonne nuit,bonne soiree"=>array(
-            "ok d'accord",
+          "ok d'accord",
         ),
       ),
     ),
