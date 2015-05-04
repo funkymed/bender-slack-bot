@@ -125,7 +125,7 @@ return array(
   "bender ta gueule,ta gueule, bender ferme là, bender ferme là,ta gueule bender,ferme la bender"=>array(
     "d'accord",
     "pardon",
-    "oulala t'es de mauvais poile",
+    "oulala t'es de mauvais poil",
     "on a affaire au président de slack les amis",
     "attention le boss est dans la place",
     "hoho, alerte aux gogoles",
