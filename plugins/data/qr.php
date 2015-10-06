@@ -24,7 +24,7 @@ return array(
       "bah oué,oué,tg,ta gueule,huhu,haha,hihi,oui,non"=>array(
         "t'es gogole ou quoi ?",
         "huhu",
-        "ho ça va %usern_name",
+        "ho ça va %user_name",
         "oué c'est ça",
         "on s'en fout de ta vie",
       ),
