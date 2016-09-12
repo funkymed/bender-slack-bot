@@ -1,6 +1,10 @@
 <?php
 return array(
-  'un gros rat',
+  'un pokemon',
+  'un menhir',
+  'des petites cacahuetes',
+  'de la sauce',
+  'une petite',
   'un vieux gars',
   'un geek',
   'un chinois',

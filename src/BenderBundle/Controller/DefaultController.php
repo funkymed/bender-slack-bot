@@ -22,7 +22,8 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $help    = array("HELP :", "======");
+        $help    = ["HELP :", "======"];
+        $classes = [];
         foreach ($this->services as $services)
         {
             $class = $this->get($services);

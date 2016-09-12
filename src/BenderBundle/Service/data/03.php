@@ -1,5 +1,6 @@
 <?php
 return array(
+  "collé",
   "trouvé",
   "mangé",
   "chié",
