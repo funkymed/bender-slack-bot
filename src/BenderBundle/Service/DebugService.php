@@ -1,9 +1,12 @@
 <?php
-/**
- * Class plugin_debug
- */
 
-class plugin_debug extends Plugin
+namespace BenderBundle\Service;
+
+/**
+ * Class DebugService
+ * @package BenderBundle\Service
+ */
+class DebugService extends BaseService
 {
     protected $hook = '!debug';
 
@@ -42,5 +45,3 @@ class plugin_debug extends Plugin
     }
 
 }
-
-return new plugin_debug();

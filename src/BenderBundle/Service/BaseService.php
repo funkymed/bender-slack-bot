@@ -1,20 +1,42 @@
 <?php
 
+namespace BenderBundle\Service;
+
 /**
  * Class Plugin
  */
-abstract class Plugin
+
+abstract class BaseService
 {
     protected $hook = "";
+    private $data;
 
+    public function __construct(){
+
+    }
+
+    /**
+     * Get Message
+     * @param $text
+     * @return mixed
+     */
     abstract protected function getMessage($text);
 
     /**
+     * Get Hook
      * @return string
      */
     public function getHook()
     {
         return $this->hook;
+    }
+
+    public function setData($data){
+        $this->data = $data;
+    }
+
+    public function getData(){
+        return $this->data;
     }
 
     /**
@@ -33,6 +55,7 @@ abstract class Plugin
     }
 
     /**
+     * Get Commands
      * @param $text
      * @return array
      */
@@ -51,6 +74,7 @@ abstract class Plugin
     }
 
     /**
+     * Get Help
      * @return string
      */
     public function getHelp()

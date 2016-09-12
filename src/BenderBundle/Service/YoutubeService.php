@@ -1,9 +1,12 @@
 <?php
 
+namespace BenderBundle\Service;
+
 /**
- * Class plugin_youtube
+ * Class YoutubeService
+ * @package BenderBundle\Service
  */
-class plugin_youtube extends Plugin
+class YoutubeService extends BaseService
 {
     /**
      * @var string
@@ -14,11 +17,11 @@ class plugin_youtube extends Plugin
      * @var array
      */
     private $badAnswer = array(
-      'Tu recherche quoi ?',
-      "T'es relou là !",
-      "Il manque un truc...",
-      "Tu sais pas taper ?",
-      "Patate !",
+        'Tu recherche quoi ?',
+        "T'es relou là !",
+        "Il manque un truc...",
+        "Tu sais pas taper ?",
+        "Patate !",
     );
 
     /**
@@ -109,5 +112,4 @@ class plugin_youtube extends Plugin
     }
 }
 
-return new plugin_youtube();
 

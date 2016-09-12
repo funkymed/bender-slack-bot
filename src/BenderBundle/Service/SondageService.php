@@ -1,9 +1,12 @@
 <?php
 
+namespace BenderBundle\Service;
+
 /**
- * Class plugin_sondage
+ * Class SondageService
+ * @package BenderBundle\Service
  */
-class plugin_sondage extends Plugin
+class SondageService extends BaseService
 {
     /**
      * @var string
@@ -23,9 +26,9 @@ class plugin_sondage extends Plugin
      * @var array
      */
     private $badAnswer = array(
-      'Pas sûr que se soit ça.',
-      "T'es sûr de ça ?",
-      "Patate !",
+        'Pas sûr que se soit ça.',
+        "T'es sûr de ça ?",
+        "Patate !",
     );
 
     public function getHelp()
@@ -214,6 +217,3 @@ class plugin_sondage extends Plugin
         }
     }
 }
-
-return new plugin_sondage();
-

@@ -1,13 +1,14 @@
 <?php
-/**
- * Class plugin_qr
- */
-class plugin_qr extends Plugin
+
+namespace BenderBundle\Service;
+
+class QRService extends BaseService
 {
     /**
      * @var string
      */
     protected $hook = '!qr';
+    private $qr = array();
 
     public function __construct()
     {
@@ -177,5 +178,3 @@ class plugin_qr extends Plugin
         return false;
     }
 }
-
-return new plugin_qr();

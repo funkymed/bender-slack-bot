@@ -1,14 +1,24 @@
 <?php
 
-/**
- * Class plugin_lol
- */
-class plugin_lol extends Plugin
+namespace BenderBundle\Service;
+
+class LolService extends BaseService
 {
     /**
      * @var string
      */
     protected $hook = '!lol';
+
+    private $list1;
+    private $list2;
+    private $list3;
+    private $list4;
+    private $list5;
+    private $star;
+    private $lieu;
+    private $tv;
+    private $adj;
+    private $phrase;
 
     public function __construct()
     {
@@ -159,6 +169,3 @@ class plugin_lol extends Plugin
         return UCFirst($message);
     }
 }
-
-return new plugin_lol();
-

@@ -1,9 +1,12 @@
-<?php 
-/**
- * Class plugin_recipe
- */
+<?php
 
-class plugin_recipe extends Plugin
+namespace BenderBundle\Service;
+
+/**
+ * Class RecetteService
+ * @package BenderBundle\Service
+ */
+class RecetteService extends BaseService
 {
     protected $hook = '!recette';
 
@@ -16,11 +19,11 @@ class plugin_recipe extends Plugin
     {
         $content_page_redirect = explode('</html>',$this->get_page_content("http://www.marmiton.org/recettes/recette-hasard.aspx"));
 
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $doc->loadHTML($content_page_redirect[0].'</html>');
 
         $links = $doc->getElementsByTagName('a');
-
+        $link_recipe = "";
         foreach ($links as $link) {
             $link_recipe = urldecode("http://www.marmiton.org".$link->getAttribute('href'));
         }
@@ -29,7 +32,7 @@ class plugin_recipe extends Plugin
         $context = stream_context_create($opts);
         $content_page = file_get_contents($link_recipe,false,$context);
 
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
 
         $previous_value = libxml_use_internal_errors(TRUE);
         $doc->loadHTML((string)$content_page);
@@ -38,6 +41,7 @@ class plugin_recipe extends Plugin
 
         $links = $doc->getElementsByTagName('h1');
 
+        $recette="";
         foreach ($links as $link) {
            $recette = $link->nodeValue;
         }
@@ -48,5 +52,3 @@ class plugin_recipe extends Plugin
     }
 
 }
-
-return new plugin_recipe();

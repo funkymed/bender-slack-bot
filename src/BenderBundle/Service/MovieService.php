@@ -1,9 +1,8 @@
 <?php
 
-/**
- * Class plugin_movie
- */
-class plugin_movie extends Plugin
+namespace BenderBundle\Service;
+
+class MovieService extends BaseService
 {
     /**
      * @var string
@@ -85,6 +84,3 @@ class plugin_movie extends Plugin
 
     }
 }
-
-return new plugin_movie();
-

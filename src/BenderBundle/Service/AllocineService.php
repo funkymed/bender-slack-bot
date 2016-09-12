@@ -1,40 +1,26 @@
-<?php 
+<?php
+
+namespace BenderBundle\Service;
+
 /**
- * Class plugin_allocine
+ * Class AllocineService
+ * @package BenderBundle\Service
  */
-
-class AllocineMovie
-{
-    public $name;
-    public $poster;
-    public $url;
-    public $numberOfTheatre;
-
-    public function __construct($name, $poster, $url, $numberOfTheatre)
-    {
-        $this->name = $name;
-        $this->poster = $poster;
-        $this->url = $url;
-        $this->numberOfTheatre = $numberOfTheatre;
-    }
-
-    static function sortByPopularity(AllocineMovie $a, AllocineMovie $b)
-    {
-        $diff = $a->numberOfTheatre - $b->numberOfTheatre;
-
-        return ($diff < -1 ? +1 : ($diff > 1 ? -1 : $diff));
-    }
-}
-
-class plugin_allocine extends Plugin
+class AllocineService extends BaseService
 {
     protected $hook = '!allocine';
 
+    /**
+     * @inheritdoc
+     */
     public function getHelp()
     {
         return '!allocine';
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getDatas()
     {
         $url = 'http://rss.allocine.fr/ac/cine/cettesemaine?fmt=xml';
@@ -42,7 +28,7 @@ class plugin_allocine extends Plugin
         $xml = $this->get_page_content($url);
 
         $movies = array();
-        $source = new SimpleXMLElement($xml);
+        $source = new \SimpleXMLElement($xml);
 
         $source->addAttribute('encoding', 'UTF-8');
 
@@ -65,6 +51,9 @@ class plugin_allocine extends Plugin
         return $movies;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getMessage($text)
     {
         $movies = $this->getDatas();
@@ -82,7 +71,4 @@ class plugin_allocine extends Plugin
         return implode("\n",$message);
 
     }
-
 }
-
-return new plugin_allocine();

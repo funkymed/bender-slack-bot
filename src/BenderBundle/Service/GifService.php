@@ -1,9 +1,12 @@
 <?php
-/**
- * Class plugin_gif
- */
 
-class plugin_gif extends Plugin
+namespace BenderBundle\Service;
+
+/**
+ * Class GifService
+ * @package BenderBundle\Service
+ */
+class GifService extends BaseService
 {
     protected $hook = '!gif';
 
@@ -22,10 +25,9 @@ class plugin_gif extends Plugin
             $json = json_decode($res);
             shuffle($json->data);
             return $json->data[0]->images->fixed_height_downsampled->url;
+        }else{
+            return null;
         }
 
     }
-
 }
-
-return new plugin_gif();

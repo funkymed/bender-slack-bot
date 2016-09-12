@@ -1,9 +1,12 @@
 <?php
 
+namespace BenderBundle\Service;
+
 /**
- * Class plugin_meteo
+ * Class MeteoService
+ * @package BenderBundle\Service
  */
-class plugin_meteo extends Plugin
+class MeteoService extends BaseService
 {
     /**
      * @var string
@@ -61,6 +64,3 @@ class plugin_meteo extends Plugin
         }
     }
 }
-
-return new plugin_meteo();
-

@@ -1,9 +1,8 @@
 <?php
 
-/**
- * Class plugin_quote
- */
-class plugin_quote extends Plugin
+namespace BenderBundle\Service;
+
+class QuoteService extends BaseService
 {
     /**
      * @var string
@@ -46,10 +45,11 @@ class plugin_quote extends Plugin
     }
 
     /**
-     * @param $user_name
+     * @param $user
      * @param $quote
+     * @return bool
      */
-    public function addQuotes($user,$quote)
+    public function addQuotes($user, $quote)
     {
         global $user_name,$team_domain;
 
@@ -108,6 +108,3 @@ class plugin_quote extends Plugin
 
     }
 }
-
-return new plugin_quote();
-

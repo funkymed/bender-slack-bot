@@ -1,9 +1,12 @@
 <?php
 
+namespace BenderBundle\Service;
+
 /**
- * Class plugin_wikipedia
+ * Class WikipediaService
+ * @package BenderBundle\Service
  */
-class plugin_wikipedia extends Plugin
+class WikipediaService extends BaseService
 {
     /**
      * @var string
@@ -81,6 +84,4 @@ class plugin_wikipedia extends Plugin
 
     }
 }
-
-return new plugin_wikipedia();
 
