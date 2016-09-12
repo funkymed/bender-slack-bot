@@ -7,14 +7,33 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\VarDumper\VarDumper;
 
 class DefaultController extends Controller
 {
+    private $services = [
+        'bender.debug','bender.allocine','bender.gif',
+        'bender.lol','bender.meteo','bender.movie',
+        'bender.qr','bender.quote','bender.recette',
+        'bender.sondage','bender.wikipedia','bender.youtube',
+    ];
     /**
      * @Route("/")
      */
     public function indexAction(Request $request)
     {
+        $help    = array("HELP :", "======");
+        foreach ($this->services as $services)
+        {
+            $class = $this->get($services);
+            if($class){
+                $h = $class->getHelp();
+                if($h)
+                    $help[]=$h;
+                $classes[$class->getHook()] = $class;
+            }
+        }
+
         $message    = false;
         $keys       = array(
             'incomming','user_name','user_id','team_domain',
@@ -42,25 +61,24 @@ class DefaultController extends Controller
             //Execute plugin if triggered
         }else{
             //Process Plugin
-//            foreach($classes as $k=>$class)
-//            {
-//                if(strstr($text, $k))
-//                {
-//                    $message = $class->getMessage($text);
-//                }
-//            }
-//            //If no message try something else funny
-//            //Take a look to the qr plugin
-//            if($message===false && isset($classes['!qr']))
-//            {
-//                $res = $classes['!qr']->getMessage($text);
-//                if($res)
-//                {
-//                    $message=$res;
-//                }
-//            }
+            foreach($classes as $k=>$class)
+            {
+                if(strstr($text, $k))
+                {
+                    $message = $class->getMessage($text);
+                }
+            }
+            //If no message try something else funny
+            //Take a look to the qr plugin
+            if($message===false && isset($classes['!qr']))
+            {
+                $res = $classes['!qr']->getMessage($text);
+                if($res)
+                {
+                    $message=$res;
+                }
+            }
         }
-
 
         return new JsonResponse($message);
     }

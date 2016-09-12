@@ -1,4 +1,25 @@
 services:
-#    bender.example:
-#        class: BenderBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    bender.debug:
+        class: BenderBundle\Service\DebugService
+    bender.allocine:
+        class: BenderBundle\Service\AllocineService
+    bender.gif:
+        class: BenderBundle\Service\GifService
+    bender.lol:
+        class: BenderBundle\Service\LolService
+    bender.meteo:
+        class: BenderBundle\Service\MeteoService
+    bender.movie:
+        class: BenderBundle\Service\MovieService
+    bender.qr:
+        class: BenderBundle\Service\QRService
+    bender.quote:
+        class: BenderBundle\Service\QuoteService
+    bender.recette:
+        class: BenderBundle\Service\RecetteService
+    bender.sondage:
+        class: BenderBundle\Service\SondageService
+    bender.wikipedia:
+        class: BenderBundle\Service\WikipediaService
+    bender.youtube:
+        class: BenderBundle\Service\YoutubeService

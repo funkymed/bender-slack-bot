@@ -7,7 +7,7 @@
             "": "src/"
         },
         "classmap": [
-            "app/AppKernel.php",
+            "app/MicroKernel.php",
             "app/AppCache.php"
         ]
     },
