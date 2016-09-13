@@ -10,8 +10,9 @@ class QRService extends BaseService
     protected $hook = '!qr';
     private $qr = array();
 
-    public function __construct()
+    public function __construct(FactoryService $factory)
     {
+        parent::__construct($factory);
         $this->qr = include "data/qr.php";
     }
 
@@ -22,7 +23,7 @@ class QRService extends BaseService
      */
     function getResponse($text, $array = array())
     {
-        global $user_name;
+        $user_name = $this->getUserName();
 
         $t  = explode (' ', $this->removeAccents($text));
 
@@ -77,7 +78,7 @@ class QRService extends BaseService
      */
     public function getMessage($text) {
 
-        global $user_name;
+        $user_name = $this->getUserName();
         $response = false;
         $session = $this->loadSession();
 
@@ -107,7 +108,7 @@ class QRService extends BaseService
 
     private function getFilename()
     {
-        global $team_domain;
+        $team_domain = $this->getTeamDomain();
         $path = dirname(__FILE__);
         $filename = $path.'/data/'.$team_domain.'_qr.txt';
         return $filename;
@@ -135,7 +136,7 @@ class QRService extends BaseService
      */
     private function saveSession($response)
     {
-        global $user_name;
+        $user_name = $this->getUserName();
 
         $filename = $this->getFilename();
 

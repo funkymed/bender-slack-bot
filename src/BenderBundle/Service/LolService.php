@@ -20,8 +20,10 @@ class LolService extends BaseService
     private $adj;
     private $phrase;
 
-    public function __construct()
+    public function __construct(FactoryService $factory)
     {
+        parent::__construct($factory);
+
         $this->list1    = include "data/01.php";
         $this->list2    = include "data/02.php";
         $this->list3    = include "data/03.php";

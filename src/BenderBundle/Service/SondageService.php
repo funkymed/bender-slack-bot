@@ -41,7 +41,7 @@ class SondageService extends BaseService
      */
     public function getSondage()
     {
-        global $team_domain;
+        $team_domain = $this->getTeamDomain();
         $path = dirname(__FILE__);
         $filename = $path.'/data/'.$team_domain.'_sondage.txt';
 
@@ -61,7 +61,7 @@ class SondageService extends BaseService
      */
     public function save($sondage)
     {
-        global $team_domain;
+        $team_domain = $this->getTeamDomain();
 
         $path = dirname(__FILE__);
         $res  = @file_put_contents($path.'/data/'.$team_domain.'_sondage.txt', serialize($sondage));
@@ -120,7 +120,7 @@ class SondageService extends BaseService
      */
     public function getMessage($text)
     {
-        global $user_name;
+        $user_name = $this->getUserName();
 
         $current_sondage = $this->getSondage();
         if($current_sondage)

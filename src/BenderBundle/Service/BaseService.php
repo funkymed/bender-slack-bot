@@ -9,10 +9,37 @@ namespace BenderBundle\Service;
 abstract class BaseService
 {
     protected $hook = "";
-    private $data;
+    protected $factory;
 
-    public function __construct(){
+    public function __construct(FactoryService $factory){
+        $this->factory = $factory;
+    }
 
+    /**
+     * @return FactoryService
+     */
+    public function getFactory(){
+        return $this->factory;
+    }
+
+    public function getUserName(){
+        return $this->getFactory()->getUserName();
+    }
+
+    public function getChannelName(){
+        return $this->getFactory()->getChannelName();
+    }
+
+    public function getText(){
+        return $this->getFactory()->getText();
+    }
+
+    public function getToken(){
+        return $this->getFactory()->getToken();
+    }
+
+    public function getTeamDomain(){
+        return $this->getFactory()->getTeamDomain();
     }
 
     /**
@@ -29,14 +56,6 @@ abstract class BaseService
     public function getHook()
     {
         return $this->hook;
-    }
-
-    public function setData($data){
-        $this->data = $data;
-    }
-
-    public function getData(){
-        return $this->data;
     }
 
     /**
@@ -97,5 +116,5 @@ abstract class BaseService
 
         return $content;
     }
-}
 
+}

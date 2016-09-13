@@ -1,25 +1,40 @@
 services:
+    bender.factory:
+        class: BenderBundle\Service\FactoryService
+        arguments: ["@request_stack"]
     bender.debug:
         class: BenderBundle\Service\DebugService
+        arguments: ["@bender.factory"]
     bender.allocine:
         class: BenderBundle\Service\AllocineService
+        arguments: ["@bender.factory"]
     bender.gif:
         class: BenderBundle\Service\GifService
+        arguments: ["@bender.factory"]
     bender.lol:
         class: BenderBundle\Service\LolService
+        arguments: ["@bender.factory"]
     bender.meteo:
         class: BenderBundle\Service\MeteoService
+        arguments: ["@bender.factory"]
     bender.movie:
         class: BenderBundle\Service\MovieService
+        arguments: ["@bender.factory"]
     bender.qr:
         class: BenderBundle\Service\QRService
+        arguments: ["@bender.factory"]
     bender.quote:
         class: BenderBundle\Service\QuoteService
+        arguments: ["@bender.factory"]
     bender.recette:
         class: BenderBundle\Service\RecetteService
+        arguments: ["@bender.factory"]
     bender.sondage:
         class: BenderBundle\Service\SondageService
+        arguments: ["@bender.factory"]
     bender.wikipedia:
         class: BenderBundle\Service\WikipediaService
+        arguments: ["@bender.factory"]
     bender.youtube:
         class: BenderBundle\Service\YoutubeService
+        arguments: ["@bender.factory"]

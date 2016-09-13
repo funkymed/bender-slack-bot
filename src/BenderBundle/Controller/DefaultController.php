@@ -17,11 +17,13 @@ class DefaultController extends Controller
         'bender.qr','bender.quote','bender.recette',
         'bender.sondage','bender.wikipedia','bender.youtube',
     ];
+
     /**
      * @Route("/")
      */
     public function indexAction(Request $request)
     {
+        $factory = $this->get('bender.factory');
         $help    = ["HELP :", "======"];
         $classes = [];
         foreach ($this->services as $services)
@@ -35,18 +37,11 @@ class DefaultController extends Controller
             }
         }
 
+        $factory->setClasses($classes);
         $message    = false;
-        $keys       = array(
-            'incomming','user_name','user_id','team_domain',
-            'channel_name','trigger_word','token','text','timestamp'
-        );
+        $text = $factory->getText();
 
-        foreach($keys as $v)
-        {
-            $$v = $request->get($v,false);
-        }
-
-        if(isset($user_name) && $user_name=="slackbot")
+        if($factory->getUserName() && $factory->getUserName()=="slackbot")
             return new Response("");
 
         if(empty($text))

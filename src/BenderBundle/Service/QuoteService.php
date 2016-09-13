@@ -30,7 +30,7 @@ class QuoteService extends BaseService
      */
     public function getQuotes()
     {
-        global $user_name,$team_domain;
+        $team_domain = $this->getTeamDomain();
         $path = dirname(__FILE__);
         $filename = $path.'/data/'.$team_domain.'_quotes.txt';
 
@@ -51,7 +51,8 @@ class QuoteService extends BaseService
      */
     public function addQuotes($user, $quote)
     {
-        global $user_name,$team_domain;
+        $user_name = $this->getUserName();
+        $team_domain = $this->getTeamDomain();
 
         $message = "Ajouté par ".$user_name." le ".date('d/m/Y')."\n";
         $message.= $user." : ".stripslashes($quote);
@@ -100,7 +101,6 @@ class QuoteService extends BaseService
                 $quotes = $this->getQuotes();
                 return $quotes[count($quotes)-1];
                 break;
-
             default:
                 return $this->array_random($this->badAnswer)." J'ai rien capté !";
                 break;
