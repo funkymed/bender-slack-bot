@@ -76,9 +76,14 @@ class DefaultController extends Controller
             }
         }
 
-        if(is_array($message))
-            $message = implode("\n",$message);
+        if($factory->getUserId()!='USLACKBOT' && $message!=false)
+        {
+            if(is_array($message))
+                $message=implode("\n",$message);
 
-        return new JsonResponse("{".$message."}");
+            return new JsonResponse(["text"=>$message]);
+        }
+
+
     }
 }

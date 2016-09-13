@@ -46,6 +46,10 @@ class FactoryService
         return $this->getData('team_domain');
     }
 
+    public function getUserId(){
+        return $this->getData('user_id');
+    }
+
     /**
      * @param $data
      */
