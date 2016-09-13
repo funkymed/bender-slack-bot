@@ -2,6 +2,8 @@
 
 namespace BenderBundle\Service;
 
+use Symfony\Component\HttpFoundation\Session\Session;
+
 class QRService extends BaseService
 {
     /**
@@ -10,9 +12,9 @@ class QRService extends BaseService
     protected $hook = '!qr';
     private $qr = array();
 
-    public function __construct(FactoryService $factory)
+    public function __construct(FactoryService $factory, Session $session)
     {
-        parent::__construct($factory);
+        parent::__construct($factory,$session);
         $this->qr = include "data/qr.php";
     }
 
@@ -79,7 +81,6 @@ class QRService extends BaseService
     public function getMessage($text) {
 
         $user_name = $this->getUserName();
-        $response = false;
         $session = $this->loadSession();
 
         if(isset($session['qr_user']) && $session['qr_user']!=$user_name)
@@ -106,28 +107,18 @@ class QRService extends BaseService
         return $response;
     }
 
-    private function getFilename()
-    {
-        $team_domain = $this->getTeamDomain();
-        $path = dirname(__FILE__);
-        $filename = $path.'/data/'.$team_domain.'_qr.txt';
-        return $filename;
-    }
-
     /**
      * @return array
      */
     private function loadSession()
     {
-        $filename = $this->getFilename();
+        $qr = $this->session->get('qr');
+        $user_id = $this->getFactory()->getUserId();
 
-        if (file_exists($filename))
-        {
-            $res = @file_get_contents($filename);
-            $data  = unserialize($res);
-            return is_array($data) ? $data : array();
+        if(isset($qr[$user_id])){
+            return $qr[$user_id];
         }else{
-            return array();
+            return false;
         }
     }
 
@@ -137,9 +128,7 @@ class QRService extends BaseService
     private function saveSession($response)
     {
         $user_name = $this->getUserName();
-
-        $filename = $this->getFilename();
-
+        $user_id = $this->getFactory()->getUserId();
         if($response)
         {
             $data = array(
@@ -147,7 +136,9 @@ class QRService extends BaseService
               'qr_user'=>$user_name
             );
 
-            @file_put_contents($filename, serialize($data));
+            $qr = $qr = $this->session->get('qr');
+            $qr[$user_id] = $data;
+            $this->session->set('qr',$qr);
         }
     }
 
@@ -156,9 +147,12 @@ class QRService extends BaseService
      */
     private function clearSession()
     {
-        $filename = $this->getFilename();
-//        unlink($filename);
-        @file_put_contents($filename, '');
+        $user_id = $this->getFactory()->getUserId();
+        if(isset($qr[$user_id])){
+            $qr = $qr = $this->session->get('qr');
+            unset($qr[$user_id]);
+            $this->session->set('qr',$qr);
+        }
     }
 
     /**

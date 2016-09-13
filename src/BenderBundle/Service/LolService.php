@@ -2,6 +2,8 @@
 
 namespace BenderBundle\Service;
 
+use Symfony\Component\HttpFoundation\Session\Session;
+
 class LolService extends BaseService
 {
     /**
@@ -20,9 +22,9 @@ class LolService extends BaseService
     private $adj;
     private $phrase;
 
-    public function __construct(FactoryService $factory)
+    public function __construct(FactoryService $factory, Session $session)
     {
-        parent::__construct($factory);
+        parent::__construct($factory,$session);
 
         $this->list1    = include "data/01.php";
         $this->list2    = include "data/02.php";

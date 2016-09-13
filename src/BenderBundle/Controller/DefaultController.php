@@ -82,6 +82,8 @@ class DefaultController extends Controller
                 $message=implode("\n",$message);
 
             return new JsonResponse(["text"=>$message]);
+        }else{
+            return new JsonResponse(["text"=>""]);
         }
 
 

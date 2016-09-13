@@ -1,6 +1,7 @@
 <?php
 
 namespace BenderBundle\Service;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Class Plugin
@@ -10,9 +11,11 @@ abstract class BaseService
 {
     protected $hook = "";
     protected $factory;
+    public $session;
 
-    public function __construct(FactoryService $factory){
+    public function __construct(FactoryService $factory, Session $session){
         $this->factory = $factory;
+        $this->session = $session;
     }
 
     /**
