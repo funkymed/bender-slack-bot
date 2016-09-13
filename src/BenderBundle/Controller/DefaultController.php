@@ -81,6 +81,9 @@ class DefaultController extends Controller
             }
         }
 
-        return new JsonResponse($message);
+        if(is_array($message))
+            $message = implode("\n",$message);
+
+        return new JsonResponse("{".$message."}");
     }
 }
