@@ -83,7 +83,7 @@ class DefaultController extends Controller
 
             return new JsonResponse(["text"=>$message]);
         }else{
-            return new JsonResponse(["text"=>""]);
+            return new Response("");
         }
 
 
