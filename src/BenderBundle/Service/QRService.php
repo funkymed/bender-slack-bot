@@ -3,6 +3,7 @@
 namespace BenderBundle\Service;
 
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\VarDumper\VarDumper;
 
 class QRService extends BaseService
 {
@@ -15,7 +16,7 @@ class QRService extends BaseService
     public function __construct(FactoryService $factory, Session $session)
     {
         parent::__construct($factory,$session);
-        $this->qr = include "data/qr.php";
+        $this->qr = $this->getContainer()->getParameter("bender.qr");
     }
 
     /**
