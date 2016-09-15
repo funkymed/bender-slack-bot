@@ -55,7 +55,7 @@ class MeteoService extends BaseService
             $url = sprintf("http://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric&lang=fr",$city,$this->getContainer()->getParameter('api_weather_key'));
         }
 
-        $res = $this->get_data($url);
+        $res = $this->get_page_content($url);
         $weather = json_decode($res);
         if($weather->cod=="200"){
             $temp = round($weather->main->temp);

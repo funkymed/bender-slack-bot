@@ -1,6 +1,7 @@
 <?php
 
 namespace BenderBundle\Service;
+use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Class YoutubeService
@@ -43,9 +44,11 @@ class YoutubeService extends BaseService
         {
             $title = $t;
         }
-        $obj = new stdClass();
+        $obj = new \stdClass();
         $obj->title = $title;
         $obj->link = $yt->link[0]->href;
+
+        VarDumper::dump($obj);exit;
         return $obj;
     }
 
@@ -53,22 +56,15 @@ class YoutubeService extends BaseService
      * @param $feed
      * @return string
      */
-    private function feedVideo($feed)
+    private function feedVideo($result)
     {
-        $result = json_decode($feed);
-
-        if(isset($result->feed->entry))
-        {
-            foreach($result->feed->entry as $yt)
-            {
-                $video = $this->getVideoDetail($yt);
-                $res[]= $video->title." ".$video->link;
-            }
-            return implode("\n",$res);
-
-        }else{
-            return "Désolé, j'ai rien trouvé...";
-        }
+//        VarDumper::dump($result->id->videoId);exit;
+        return sprintf("https://www.youtube.com/watch?v=%s",$result->id->videoId);
+//                $video = $this->getVideoDetail($yt);
+//                $res[]= $video->title." ".$video->link;
+//        }else{
+//            return "Désolé, j'ai rien trouvé...";
+//        }
     }
 
     /**
@@ -81,6 +77,7 @@ class YoutubeService extends BaseService
         if(!isset($commands[0]))
             return $this->array_random($this->badAnswer)." Il manque une commande (search, help)";
 
+
         switch($commands[0])
         {
             case "search":
@@ -91,11 +88,14 @@ class YoutubeService extends BaseService
                 unset($search[0]);
                 $search = implode(' ',$search);
 
-                $api = @file_get_contents("https://gdata.youtube.com/feeds/api/videos?q=".urlencode($search)."&orderby=relevance&max-results=1&strict=true&v=2&alt=json&hl=fr");
-
-                if($api)
+//                $api = $this->get_page_content("https://gdata.youtube.com/feeds/api/videos?q=".urlencode($search)."&orderby=relevance&max-results=1&strict=true&v=2&alt=json&hl=fr");
+                $url = sprintf("https://www.googleapis.com/youtube/v3/search?part=snippet&q=%s&key=%s&orderby=relevance&max-results=1&strict=true",urlencode($search),$this->getContainer()->getParameter('api_youtube_key'));
+                $api = $this->get_page_content($url);
+                $api = json_decode($api);
+                if(!isset($api->error))
                 {
-                    return $this->feedVideo($api);
+//                    return $this->feedVideo($api->items[0]);
+                    return sprintf("https://www.youtube.com/watch?v=%s",$api->items[0]->id->videoId);
                 }else{
                     return $this->array_random($this->badAnswer);
                 }
