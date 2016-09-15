@@ -26,16 +26,16 @@ class LolService extends BaseService
     {
         parent::__construct($factory,$session);
 
-        $this->list1    = include "data/01.php";
-        $this->list2    = include "data/02.php";
-        $this->list3    = include "data/03.php";
-        $this->list4    = include "data/04.php";
-        $this->list5    = include "data/05.php";
-        $this->star     = include "data/star.php";
-        $this->lieu     = include "data/lieu.php";
-        $this->tv       = include "data/tv.php";
-        $this->adj      = include "data/adj.php";
-        $this->phrase   = include "data/phrase.php";
+        $this->list1    = $this->getContainer()->getParameter("bender.01");
+        $this->list2    = $this->getContainer()->getParameter("bender.02");
+        $this->list3    = $this->getContainer()->getParameter("bender.03");
+        $this->list4    = $this->getContainer()->getParameter("bender.04");
+        $this->list5    = $this->getContainer()->getParameter("bender.05");
+        $this->star     = $this->getContainer()->getParameter("bender.star");
+        $this->lieu     = $this->getContainer()->getParameter("bender.lieu");
+        $this->tv       = $this->getContainer()->getParameter("bender.tv");
+        $this->adj      = $this->getContainer()->getParameter("bender.adj");
+        $this->phrase   = $this->getContainer()->getParameter("bender.phrase");
     }
 
     /**

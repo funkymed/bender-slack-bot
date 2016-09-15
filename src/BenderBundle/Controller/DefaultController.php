@@ -23,6 +23,8 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        VarDumper::dump($this->getParameter('bender.qr'));
+        exit;
         $factory = $this->get('bender.factory');
         $help    = ["HELP :", "======"];
         $classes = [];

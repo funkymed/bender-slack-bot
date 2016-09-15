@@ -1,7 +1,7 @@
 services:
     bender.factory:
         class: BenderBundle\Service\FactoryService
-        arguments: ["@request_stack"]
+        arguments: ["@service_container"]
     bender.debug:
         class: BenderBundle\Service\DebugService
         arguments: ["@bender.factory","@session"]

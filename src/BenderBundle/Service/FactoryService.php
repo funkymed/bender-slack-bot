@@ -1,6 +1,7 @@
 <?php
 
 namespace BenderBundle\Service;
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -11,10 +12,12 @@ class FactoryService
 {
     private $data = [];
     private $classes = [];
+    private $container;
 
-    public function __construct(RequestStack $requestStack)
+    public function __construct(Container $container)
     {
-        $request = $requestStack->getCurrentRequest();
+        $this->container = $container;
+        $request = $container->get('request_stack')->getCurrentRequest();
         $keys       = array(
             'incomming','user_name','user_id','team_domain',
             'channel_name','trigger_word','token','text','timestamp'
@@ -24,6 +27,13 @@ class FactoryService
         {
             $this->data[$v] = $request->get($v,false);
         }
+    }
+
+    /**
+     * @return Container
+     */
+    public function getContainer(){
+        return $this->container;
     }
 
     public function getUserName(){

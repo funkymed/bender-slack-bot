@@ -12,10 +12,21 @@ abstract class BaseService
     protected $hook = "";
     protected $factory;
     public $session;
+    private $container;
+
+
 
     public function __construct(FactoryService $factory, Session $session){
         $this->factory = $factory;
+        $this->container = $this->factory->getContainer();
         $this->session = $session;
+    }
+
+    /**
+     * @return \Symfony\Component\DependencyInjection\Container
+     */
+    public function getContainer(){
+        return $this->container;
     }
 
     /**
