@@ -1,5 +1,8 @@
 parameters:
     bender.qr:
+        "test,123,allo":
+            - "test, un deux"
+            - "oui allo ?"
         "charrette,charete,charrete,charette":
             - "moi je charrette vers 15h"
             - "en pleine journée c'est mieu"
@@ -42,13 +45,12 @@ parameters:
                             0: "ouep"
                             1: "casse toi"
                             2: "encore là ?"
-        "bender asv,bender asv ?,bender version":
-            - '1.0 robot lamorlaye'
         "con,conne,connasse":
             0: "hey c'est toi le con"
             1: "%user_name tu te calme"
+            2: "le con ici c'est %user_name"
             "--response--":
-                "c'est toi le con":
+                "c'est toi le con,non toi,toi":
                     0: "non c'est toi"
         "biere,biere,beer,binouze":
             - "moi j'aime bien la biere !!!!!!!"
