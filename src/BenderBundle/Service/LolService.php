@@ -51,7 +51,7 @@ class LolService extends BaseService
      * @return array
      */
     public function makeCitation() {
-        $citation = include "data/citation.php";
+        $citation = $this->getContainer()->getParameter("bender.citation");
         return $this->array_random($citation);
     }
 
@@ -59,7 +59,7 @@ class LolService extends BaseService
      * @return array
      */
     public function makeJcvd() {
-        $jcvd = include "data/jcvd.php";
+        $jcvd = $this->getContainer()->getParameter("bender.jcvd");
         return $this->array_random($jcvd);
     }
 

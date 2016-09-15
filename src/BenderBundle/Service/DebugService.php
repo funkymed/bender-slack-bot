@@ -33,7 +33,7 @@ class DebugService extends BaseService
         $classes = $this->getFactory()->getClasses();
         foreach($classes as $k=>$c)
         {
-            $message[]=$k." : ".get_class($c);
+            $message[]=$k;
         }
         $message[]='Done.';
 
