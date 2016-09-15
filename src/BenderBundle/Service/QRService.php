@@ -134,8 +134,6 @@ class QRService extends BaseService
               'qr_user'=>$this->getUserName()
             );
             $this->cache->save($this->getKeyUser(),$data,500);
-//            VarDumper::dump($this->cache);
-//            exit;
         }
     }
 

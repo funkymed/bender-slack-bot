@@ -28,17 +28,13 @@ class DebugService extends BaseService
         }
 
         $message[]='================';
-        $message[]='Plugins loaded : '.count(glob("plugins/*.php"));
+        $message[]='Plugins loaded : '.count($this->getFactory()->getClasses());
         $message[]='================';
         $classes = $this->getFactory()->getClasses();
         foreach($classes as $k=>$c)
         {
             $message[]=$k." : ".get_class($c);
         }
-
-        $message[]='================';
-        $message[]='Data files : '.count(glob("data/*"));
-        $message[]='================';
         $message[]='Done.';
 
         return $message;
