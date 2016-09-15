@@ -34,40 +34,6 @@ class YoutubeService extends BaseService
     }
 
     /**
-     * @param $yt
-     * @return stdClass
-     */
-    private function getVideoDetail($yt)
-    {
-        $title = '';
-        foreach($yt->title as $t)
-        {
-            $title = $t;
-        }
-        $obj = new \stdClass();
-        $obj->title = $title;
-        $obj->link = $yt->link[0]->href;
-
-        VarDumper::dump($obj);exit;
-        return $obj;
-    }
-
-    /**
-     * @param $feed
-     * @return string
-     */
-    private function feedVideo($result)
-    {
-//        VarDumper::dump($result->id->videoId);exit;
-        return sprintf("https://www.youtube.com/watch?v=%s",$result->id->videoId);
-//                $video = $this->getVideoDetail($yt);
-//                $res[]= $video->title." ".$video->link;
-//        }else{
-//            return "Désolé, j'ai rien trouvé...";
-//        }
-    }
-
-    /**
      * @param $text
      * @return array|string
      */
@@ -76,7 +42,6 @@ class YoutubeService extends BaseService
         $commands = $this->getCommands($text);
         if(!isset($commands[0]))
             return $this->array_random($this->badAnswer)." Il manque une commande (search, help)";
-
 
         switch($commands[0])
         {
@@ -91,9 +56,14 @@ class YoutubeService extends BaseService
                 $url = sprintf("https://www.googleapis.com/youtube/v3/search?part=snippet&q=%s&key=%s&orderby=relevance&max-results=1&strict=true",urlencode($search),$this->getContainer()->getParameter('api_youtube_key'));
                 $api = $this->get_page_content($url);
                 $api = json_decode($api);
+                if(!empty($api->items)){
 
-                if(!isset($api->error)){
-                    return sprintf("https://www.youtube.com/watch?v=%s",$api->items[0]->id->videoId);
+                    foreach($api->items as $item){
+                        if(isset($item->id->videoId)){
+                            return sprintf("https://www.youtube.com/watch?v=%s",$item->id->videoId);
+                        }
+                    }
+
                 }else{
                     return $this->array_random($this->badAnswer);
                 }
