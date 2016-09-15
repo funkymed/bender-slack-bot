@@ -15,7 +15,6 @@ abstract class BaseService
     private $container;
 
 
-
     public function __construct(FactoryService $factory, Session $session){
         $this->factory = $factory;
         $this->container = $this->factory->getContainer();

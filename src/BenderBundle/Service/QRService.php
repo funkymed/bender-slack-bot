@@ -116,7 +116,7 @@ class QRService extends BaseService
      */
     private function loadSession()
     {
-        return $this->session->get('qr',[]);
+        return $this->session->get($this->getKeyUser(),[]);
     }
 
     /**
@@ -132,8 +132,8 @@ class QRService extends BaseService
               'qr_user'=>$user_name
             );
 
-            $qr = $this->session->get('qr');
-            $this->session->set('qr',$data);
+            $qr = $this->session->get($this->getKeyUser());
+            $this->session->set($this->getKeyUser(),$data);
         }
     }
 
@@ -142,10 +142,14 @@ class QRService extends BaseService
      */
     private function clearSession()
     {
-        $qr = $this->session->get('qr');
+        $qr = $this->session->get($this->getKeyUser());
         if($qr){
-            $this->session->remove('qr');
+            $this->session->remove($this->getKeyUser());
         }
+    }
+
+    private function getKeyUser(){
+        return 'qr_'.$this->getFactory()->getUserId();
     }
 
     /**
