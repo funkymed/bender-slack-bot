@@ -51,11 +51,11 @@ class MeteoService extends BaseService
 
         $country = UCFirst(strtolower($commands[0]));
         $city    = UCFirst(strtolower($commands[1]));
-        $url = sprintf("http://api.openweathermap.org/data/2.5/weather?q=%s,%s&appid=%s",$country,$city,$this->getContainer()->getParameter('api_weather_key'));
+        $url = sprintf("http://api.openweathermap.org/data/2.5/weather?q=%s,%s&appid=%s&units=metric&lang=fr",$country,$city,$this->getContainer()->getParameter('api_weather_key'));
 
         $res = $this->get_data($url);
         $weather = json_decode($res);
-        if($weather->cod!="404"){
+        if($weather->cod=="200"){
             $temp = round($weather->main->temp);
 
             return "à $city, $country il fait ".$temp."C° ".$weather->weather[0]->description;
