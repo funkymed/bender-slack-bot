@@ -19,3 +19,4 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     locale: fr
+    api_weather_key: f5cbdce7c5d7d99c26caf8b72cb00605
