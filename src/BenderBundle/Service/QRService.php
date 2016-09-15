@@ -2,6 +2,7 @@
 
 namespace BenderBundle\Service;
 
+use Doctrine\Common\Cache\ArrayCache;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -13,12 +14,12 @@ class QRService extends BaseService
     protected $hook = '!qr';
     private $qr = array();
 
-    public function __construct(FactoryService $factory, Session $session)
+    public function __construct(FactoryService $factory)
     {
-        parent::__construct($factory,$session);
+        parent::__construct($factory);
         $this->qr = $this->getContainer()->getParameter("bender.qr");
 
-//        VarDumper::dump($this->qr);exit;
+//        VarDumper::dump($this->cache);
 
     }
 
@@ -116,24 +117,25 @@ class QRService extends BaseService
      */
     private function loadSession()
     {
-        return $this->session->get($this->getKeyUser(),[]);
+        if($this->cache->contains($this->getKeyUser())){
+            return $this->cache->fetch($this->getKeyUser());
+        }
     }
 
     /**
      * @param $response
      */
-    private function saveSession($response)
+    private function saveSession($response=false)
     {
-        $user_name = $this->getUserName();
         if($response)
         {
             $data = array(
               'qr_response'=>$response,
-              'qr_user'=>$user_name
+              'qr_user'=>$this->getUserName()
             );
-
-            $qr = $this->session->get($this->getKeyUser());
-            $this->session->set($this->getKeyUser(),$data);
+            $this->cache->save($this->getKeyUser(),$data,500);
+//            VarDumper::dump($this->cache);
+//            exit;
         }
     }
 
@@ -142,9 +144,8 @@ class QRService extends BaseService
      */
     private function clearSession()
     {
-        $qr = $this->session->get($this->getKeyUser());
-        if($qr){
-            $this->session->remove($this->getKeyUser());
+        if($this->cache->contains($this->getKeyUser())){
+            $this->cache->delete($this->getKeyUser());
         }
     }
 

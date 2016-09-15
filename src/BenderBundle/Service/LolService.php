@@ -2,6 +2,7 @@
 
 namespace BenderBundle\Service;
 
+use Doctrine\Common\Cache\ArrayCache;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class LolService extends BaseService
@@ -22,9 +23,9 @@ class LolService extends BaseService
     private $adj;
     private $phrase;
 
-    public function __construct(FactoryService $factory, Session $session)
+    public function __construct(FactoryService $factory)
     {
-        parent::__construct($factory,$session);
+        parent::__construct($factory);
 
         $this->list1    = $this->getContainer()->getParameter("bender.01");
         $this->list2    = $this->getContainer()->getParameter("bender.02");
