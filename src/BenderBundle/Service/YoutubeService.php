@@ -88,13 +88,11 @@ class YoutubeService extends BaseService
                 unset($search[0]);
                 $search = implode(' ',$search);
 
-//                $api = $this->get_page_content("https://gdata.youtube.com/feeds/api/videos?q=".urlencode($search)."&orderby=relevance&max-results=1&strict=true&v=2&alt=json&hl=fr");
                 $url = sprintf("https://www.googleapis.com/youtube/v3/search?part=snippet&q=%s&key=%s&orderby=relevance&max-results=1&strict=true",urlencode($search),$this->getContainer()->getParameter('api_youtube_key'));
                 $api = $this->get_page_content($url);
                 $api = json_decode($api);
-                if(!isset($api->error))
-                {
-//                    return $this->feedVideo($api->items[0]);
+
+                if(!isset($api->error)){
                     return sprintf("https://www.youtube.com/watch?v=%s",$api->items[0]->id->videoId);
                 }else{
                     return $this->array_random($this->badAnswer);
