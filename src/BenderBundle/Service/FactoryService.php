@@ -32,11 +32,13 @@ class FactoryService
     /**
      * @return Container
      */
-    public function getContainer(){
+    public function getContainer()
+    {
         return $this->container;
     }
 
-    public function getUserName(){
+    public function getUserName()
+    {
         return $this->getData('user_name');
     }
 

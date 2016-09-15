@@ -17,6 +17,9 @@ class QRService extends BaseService
     {
         parent::__construct($factory,$session);
         $this->qr = $this->getContainer()->getParameter("bender.qr");
+
+//        VarDumper::dump($this->qr);exit;
+
     }
 
     /**
@@ -34,7 +37,6 @@ class QRService extends BaseService
         {
             if(is_array($v) && isset($v['--response--']))
             {
-
                 $response = $v['--response--'];
                 unset($v['--response--']);
             }else{
@@ -84,6 +86,7 @@ class QRService extends BaseService
         $user_name = $this->getUserName();
         $session = $this->loadSession();
 
+        // IF user is not the same in conversation
         if(isset($session['qr_user']) && $session['qr_user']!=$user_name)
             $this->clearSession();
 
@@ -113,14 +116,7 @@ class QRService extends BaseService
      */
     private function loadSession()
     {
-        $qr = $this->session->get('qr');
-        $user_id = $this->getFactory()->getUserId();
-
-        if(isset($qr[$user_id])){
-            return $qr[$user_id];
-        }else{
-            return false;
-        }
+        return $this->session->get('qr',[]);
     }
 
     /**
@@ -129,7 +125,6 @@ class QRService extends BaseService
     private function saveSession($response)
     {
         $user_name = $this->getUserName();
-        $user_id = $this->getFactory()->getUserId();
         if($response)
         {
             $data = array(
@@ -137,9 +132,8 @@ class QRService extends BaseService
               'qr_user'=>$user_name
             );
 
-            $qr = $qr = $this->session->get('qr');
-            $qr[$user_id] = $data;
-            $this->session->set('qr',$qr);
+            $qr = $this->session->get('qr');
+            $this->session->set('qr',$data);
         }
     }
 
@@ -148,11 +142,9 @@ class QRService extends BaseService
      */
     private function clearSession()
     {
-        $user_id = $this->getFactory()->getUserId();
-        if(isset($qr[$user_id])){
-            $qr = $qr = $this->session->get('qr');
-            unset($qr[$user_id]);
-            $this->session->set('qr',$qr);
+        $qr = $this->session->get('qr');
+        if($qr){
+            $this->session->remove('qr');
         }
     }
 
