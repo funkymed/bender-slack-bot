@@ -74,7 +74,7 @@ class RecetteService extends BaseService
             "attachments"=>[
                 [
                     "title"=>"marmiton.org",
-                    "color"=> $this->color,
+                    "color"=> "#F47422",
                     "footer"=> "marmiton.org",
                     "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/marmiton.png",
                     "title_link"=> "http://www.marmiton.org",

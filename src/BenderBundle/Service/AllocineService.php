@@ -90,7 +90,7 @@ class AllocineService extends BaseService
             "attachments"=>[
                 [
                     "title"=>"Allociné - Les films de la semaine",
-                    "color"=> "#FFBB00",
+                    "color"=> "#FEC80F",
                     "footer"=> "Allociné",
                     "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/allocine.png",
                     "title_link"=> "http://ww.allocine.com",

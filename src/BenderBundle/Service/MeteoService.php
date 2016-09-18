@@ -80,7 +80,7 @@ class MeteoService extends BaseService
             "attachments"=>[
                 [
                     "title"=>"Météo",
-                    "color"=> $this->color,
+                    "color"=> "#FF7A09",
                     "footer"=> "Open weather map",
                     "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/images/icons/openweather.png",
                     "title_link"=> "http://ww.openweathermap.org",

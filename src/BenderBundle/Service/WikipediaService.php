@@ -90,7 +90,7 @@ class WikipediaService extends BaseService
             "attachments"=>[
                 [
                     "title"=>"Wikipedia",
-                    "color"=> $this->color,
+                    "color"=> '#B8B8B8',
                     "footer"=> "Sncf",
                     "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/wikipedia.png",
                     "title_link"=> "http://fr.wikipedia.com",
