@@ -1,6 +1,7 @@
 <?php
 
 namespace BenderBundle\Service;
+use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Class RecetteService
@@ -58,19 +59,24 @@ class RecetteService extends BaseService
         $recette="";
         foreach ($links as $link) {
            $recette = $link->nodeValue;
+
         }
-        
+
+        $img_recipe = "";
+        $images = $doc->getElementsByTagName('img');
+        foreach ($images as $img) {
+            if($img->getAttribute('class')=="photo m_pinitimage"){
+                $img_recipe = $img->getAttribute('src');
+            }
+        }
         $recette = trim(preg_replace('/\s\s+/', ' ', $recette));
 
-        return $recette.":".$link_recipe;
+        return ["text"=>$recette." : ".$link_recipe,"image"=>$img_recipe];
     }
 
     protected function getAnswer($message){
-        if(is_array($message))
-            $message=implode("\n",$message);
-
         $date = new \DateTime();
-        return [
+        $data= [
             "attachments"=>[
                 [
                     "title"=>"marmiton.org",
@@ -78,11 +84,16 @@ class RecetteService extends BaseService
                     "footer"=> "marmiton.org",
                     "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/marmiton.png",
                     "title_link"=> "http://www.marmiton.org",
-                    "text"=>$message,
+                    "text"=>$message['text'],
                     "ts"=> $date->format('U')
                 ]
             ]
         ];
+        if(!empty($message['image'])){
+            $data['attachments'][0]['image_url']=$message['image'];
+        }
+
+        return $data;
     }
 
 }
