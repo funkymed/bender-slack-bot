@@ -68,22 +68,24 @@ class AllocineService extends BaseService
     public function checkAnswer($text)
     {
         $movies = $this->getDatas();
-        $message = array('Les films de la semaine :');
+        $message = [];
+        $message[]= ['title'=>'Les films de la semaine :'];
+
         for($r=0;$r<count($movies);$r++)
         {
             if($r<10)
             {
-                $message[]=$movies[$r]->name.' '.$movies[$r]->url;
+                $message[]= [
+                    'title'=>$movies[$r]->name,
+                    'value'=>$movies[$r]->url
+                ];
             }
         }
-        return implode("\n",$message);
+        return $message;
 
     }
 
     protected function getAnswer($message){
-        if(is_array($message))
-            $message=implode("\n",$message);
-
         $date = new \DateTime();
         return [
             "attachments"=>[
@@ -93,7 +95,7 @@ class AllocineService extends BaseService
                     "footer"=> "Allociné",
                     "footer_icon"=>"http://67.media.tumblr.com/avatar_ae8be48020c6_128.png",
                     "title_link"=> "http://ww.allocine.com",
-                    "text"=>$message,
+                    "fields"=>$message,
                     "ts"=> $date->format('U')
                 ]
             ]
