@@ -123,11 +123,18 @@ class SncfService extends BaseService
     protected function getAnswer($message){
         if(is_array($message))
             $message=implode("\n",$message);
+
+        $date = new \DateTime();
         return [
             "attachments"=>[
                 [
                     "title"=>"SNCF",
-                    "text"=>$message
+                    "color"=> "#FFBB00",
+                    "footer"=> "Sncf",
+                    "footer_icon"=>"http://www.icone-png.com/png/53/53243.png",
+                    "title_link"=> "http://www.sncf.com",
+                    "image_url"=>$message,
+                    "ts"=> $date->format('U')
                 ]
             ]
         ];
