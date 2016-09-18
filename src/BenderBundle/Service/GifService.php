@@ -56,7 +56,7 @@ class GifService extends BaseService
             "attachments"=>[
                 [
                     "title"=>$this->query,
-                    "color"=> "#FFBB00",
+                    "color"=> $this->color,
                     "footer"=> "Giphy",
                     "footer_icon"=>"https://addons.opera.com/media/extensions/45/215945/0.1.4-rev1/icons/icon_64x64.png",
                     "te"=> "http://www.giphy.com",

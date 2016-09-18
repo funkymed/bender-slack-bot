@@ -54,7 +54,7 @@ class DefaultController extends Controller
         //Display HELP from plugin
         if(strstr(strtolower($text), "!help"))
         {
-            $message = implode("\n",$help);
+            $message = ["text"=>implode("\n",$help)];
             //Execute plugin if triggered
         }else{
             //Process Plugin

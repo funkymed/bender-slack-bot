@@ -129,7 +129,7 @@ class SncfService extends BaseService
             "attachments"=>[
                 [
                     "title"=>"SNCF",
-                    "color"=> "#FFBB00",
+                    "color"=> $this->color,
                     "footer"=> "Sncf",
                     "footer_icon"=>"http://www.icone-png.com/png/53/53243.png",
                     "title_link"=> "http://www.sncf.com",

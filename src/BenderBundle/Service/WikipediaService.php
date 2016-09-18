@@ -84,11 +84,18 @@ class WikipediaService extends BaseService
     protected function getAnswer($message){
         if(is_array($message))
             $message=implode("\n",$message);
+
+        $date = new \DateTime();
         return [
             "attachments"=>[
                 [
                     "title"=>"Wikipedia",
-                    "text"=>$message
+                    "color"=> $this->color,
+                    "footer"=> "Sncf",
+                    "footer_icon"=>"http://findicons.com/files/icons/111/popular_sites/128/wikipedia_globe_icon.png",
+                    "title_link"=> "http://fr.wikipedia.com",
+                    "text"=>$message,
+                    "ts"=> $date->format('U')
                 ]
             ]
         ];

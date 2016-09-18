@@ -13,6 +13,7 @@ abstract class BaseService
     public $cache;
     private $container;
     public $badAnswer;
+    public $color = "#FFBB00";
 
     public function __construct(FactoryService $factory){
         $this->factory = $factory;
