@@ -77,9 +77,20 @@ class QRService extends BaseService
 
     /**
      * @param $text
-     * @return bool|mixed
+     * @return array|string
      */
-    public function getMessage($text) {
+    public function getMessage($text)
+    {
+        $answer = $this->checkAnswer($text);
+        return $answer ? $this->getAnswer($answer) : "";
+    }
+
+    /**
+     * @param $text
+     * @return array|string
+     */
+    public function checkAnswer($text)
+    {
 
         $user_name = $this->getUserName();
         $session = $this->loadSession();

@@ -15,7 +15,21 @@ class DebugService extends BaseService
         return '!debug';
     }
 
+    /**
+     * @param $text
+     * @return array|string
+     */
     public function getMessage($text)
+    {
+        $answer = $this->checkAnswer($text);
+        return $answer ? $this->getAnswer($answer) : "";
+    }
+
+    /**
+     * @param $text
+     * @return array|string
+     */
+    public function checkAnswer($text)
     {
         $message=array();
         $message[]='===========';

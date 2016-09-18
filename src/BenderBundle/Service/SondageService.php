@@ -102,6 +102,16 @@ class SondageService extends BaseService
      */
     public function getMessage($text)
     {
+        $answer = $this->checkAnswer($text);
+        return $answer ? $this->getAnswer($answer) : "";
+    }
+
+    /**
+     * @param $text
+     * @return array|string
+     */
+    public function checkAnswer($text)
+    {
         $user_name = $this->getUserName();
 
         $current_sondage = $this->getSondage();

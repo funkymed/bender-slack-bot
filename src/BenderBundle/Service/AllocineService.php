@@ -46,29 +46,52 @@ class AllocineService extends BaseService
             $movies[] = new AllocineMovie($title, $poster, $url, $popularity);
         }
 
-        usort($movies, array('AllocineMovie', 'sortByPopularity'));
+        usort($movies, array('\BenderBundle\Service\AllocineMovie', 'sortByPopularity'));
 
         return $movies;
     }
 
     /**
-     * @inheritdoc
+     * @param $text
+     * @return array|string
      */
     public function getMessage($text)
     {
+        $answer = $this->checkAnswer($text);
+        return $answer ? $this->getAnswer($answer) : "";
+    }
+
+    /**
+     * @param $text
+     * @return array|string
+     */
+    public function checkAnswer($text)
+    {
         $movies = $this->getDatas();
         $message = array('Les films de la semaine :');
-        $tmpl = '<a href="#url#"><img src="#img#" /></a>';
-        $replacer = array('#url#','#img#');
         for($r=0;$r<count($movies);$r++)
         {
             if($r<10)
             {
-                //$message[]=(str_replace($replacer,array($movies[$r]->url,$movies[$r]->poster),$tmpl));
                 $message[]=$movies[$r]->name.' '.$movies[$r]->url;
             }
         }
         return implode("\n",$message);
 
+    }
+
+    protected function getAnswer($message){
+
+        if(is_array($message))
+            $message=implode("\n",$message);
+
+        return [
+            "attachments"=>[
+                "title"=>"Allociné",
+                "pretext"=>$this->getHelp(),
+                "text"=>$message,
+                "mrkdwn_in"=>["text","pretext"]
+            ]
+        ];
     }
 }

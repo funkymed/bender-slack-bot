@@ -43,12 +43,12 @@ class SncfService extends BaseService
                 $action = explode(",",implode(" ",$commands));
 
                 if(empty($action[0])){
-                    $message = $this->array_random($this->badAnswer)." Il faut me donner une gare de départ";
+                    $message = $this->getAnswer($this->array_random($this->badAnswer)." Il faut me donner une gare de départ");
                     break;
                 }
 
                 if(empty($action[1])){
-                    return $this->array_random($this->badAnswer)." Il faut me donner une gare de d'arrivé";
+                    return $this->getAnswer($this->array_random($this->badAnswer)." Il faut me donner une gare de d'arrivé");
                     break;
                 }
 
@@ -59,11 +59,11 @@ class SncfService extends BaseService
                 if(isset($result->journeys)) {
                     $departure = new \DateTime($result->journeys[0]->departure_date_time);
                     $arrival = new \DateTime($result->journeys[0]->arrival_date_time);
-                    $message = sprintf("Au départ de %s à %s pour arriver à %s le %s", $action[0], $departure->format('d/m/Y à H\hi'), $action[1], $arrival->format('d/m/Y à H\hi'));
+                    $message = $this->getAnswer(sprintf("Au départ de %s à %s pour arriver à %s le %s", $action[0], $departure->format('d/m/Y à H\hi'), $action[1], $arrival->format('d/m/Y à H\hi')));
                 }
                 break;
             default:
-                $message = "Je conseil de taper `!sncf help`, je pense que tu en as bien besoin.";
+                $message = $this->getAnswer("Je conseil de taper `!sncf help`, je pense que tu en as bien besoin.");
         }
 
 
@@ -111,5 +111,17 @@ class SncfService extends BaseService
         }
     }
 
-
+    protected function getAnswer($message){
+        if(is_array($message))
+            $message=implode("\n",$message);
+        return [
+            "attachments"=>[
+                "title"=>"SNCF",
+                "pretext"=>$this->getHelp(),
+                "text"=>$message,
+                "mrkdwn_in"=>["text","pretext"]
+            ]
+        ];
+    }
 }
+

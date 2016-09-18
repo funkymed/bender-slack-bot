@@ -15,7 +15,21 @@ class GifService extends BaseService
         return '!gif';
     }
 
+    /**
+     * @param $text
+     * @return array|string
+     */
     public function getMessage($text)
+    {
+        $answer = $this->checkAnswer($text);
+        return $answer ? $this->getAnswer($answer) : "";
+    }
+
+    /**
+     * @param $text
+     * @return array|string
+     */
+    public function checkAnswer($text)
     {
         $commands   = $this->getCommands($text);
         $query      = urlencode(implode(' ',$commands));

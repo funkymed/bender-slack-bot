@@ -69,6 +69,16 @@ class LolService extends BaseService
      */
     public function getMessage($text)
     {
+        $answer = $this->checkAnswer($text);
+        return $answer ? $this->getAnswer($answer) : "";
+    }
+
+    /**
+     * @param $text
+     * @return array|string
+     */
+    public function checkAnswer($text)
+    {
         $commands = $this->getCommands($text);
         $command = isset($commands[0]) ? $commands[0] : false;
         switch($command)

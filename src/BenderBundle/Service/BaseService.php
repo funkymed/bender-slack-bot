@@ -128,24 +128,14 @@ abstract class BaseService
         return $content;
     }
 
-//    public function getMessage(){
-//
-//    }
-
-//    public function getMessagePretexed(){
-//        {
-//            "attachments": [
-//        {
-//            "title": "Title",
-//            "pretext": "Pretext _supports_ mrkdwn",
-//            "text": "Testing *right now!*",
-//            "mrkdwn_in": [
-//            "text",
-//            "pretext"
-//        ]
-//        }
-//    ]
-//}
-//    }
+    /**
+     * @param $message
+     * @return array
+     */
+    protected function getAnswer($message){
+        if(is_array($message))
+            $message=implode("\n",$message);
+        return ["text"=>$message];
+    }
 
 }

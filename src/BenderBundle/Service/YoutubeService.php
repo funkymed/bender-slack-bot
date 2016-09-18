@@ -27,6 +27,15 @@ class YoutubeService extends BaseService
      * @return array|string
      */
     public function getMessage($text) {
+        $answer = $this->checkAnswer($text);
+        return $answer ? $this->getAnswer($answer) : "";
+    }
+
+    /**
+     * @param $text
+     * @return array|string
+     */
+    public function checkAnswer($text) {
 
         $commands = $this->getCommands($text);
         if(!isset($commands[0]))
@@ -66,6 +75,21 @@ class YoutubeService extends BaseService
                 break;
         }
 
+    }
+
+    protected function getAnswer($message){
+
+        if(is_array($message))
+            $message=implode("\n",$message);
+
+        return [
+            "attachments"=>[
+                "title"=>"Youtube",
+                "pretext"=>$this->getHelp(),
+                "text"=>$message,
+                "mrkdwn_in"=>["text","pretext"]
+            ]
+        ];
     }
 }
 

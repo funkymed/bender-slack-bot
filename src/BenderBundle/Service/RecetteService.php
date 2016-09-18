@@ -15,7 +15,21 @@ class RecetteService extends BaseService
         return '!recette';
     }
 
+    /**
+     * @param $text
+     * @return array|string
+     */
     public function getMessage($text)
+    {
+        $answer = $this->checkAnswer($text);
+        return $answer ? $this->getAnswer($answer) : "";
+    }
+
+    /**
+     * @param $text
+     * @return array|string
+     */
+    public function checkAnswer($text)
     {
         $content_page_redirect = explode('</html>',$this->get_page_content("http://www.marmiton.org/recettes/recette-hasard.aspx"));
 
