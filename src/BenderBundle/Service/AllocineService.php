@@ -83,11 +83,18 @@ class AllocineService extends BaseService
     protected function getAnswer($message){
         if(is_array($message))
             $message=implode("\n",$message);
+
+        $date = new \DateTime();
         return [
             "attachments"=>[
                 [
-                    "title"=>"Allociné",
-                    "text"=>$message
+                    "title"=>"Allocié",
+                    "color"=> $this->color,
+                    "footer"=> "Allociné",
+                    "footer_icon"=>"http://67.media.tumblr.com/avatar_ae8be48020c6_128.png",
+                    "title_link"=> "http://ww.allocine.com",
+                    "text"=>$message,
+                    "ts"=> $date->format('U')
                 ]
             ]
         ];

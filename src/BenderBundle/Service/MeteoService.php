@@ -74,11 +74,18 @@ class MeteoService extends BaseService
     protected function getAnswer($message){
         if(is_array($message))
             $message=implode("\n",$message);
+
+        $date = new \DateTime();
         return [
             "attachments"=>[
                 [
-                    "title"=>"Openweathermap",
-                    "text"=>$message
+                    "title"=>"Météo",
+                    "color"=> $this->color,
+                    "footer"=> "Open weather map",
+                    "footer_icon"=>"http://kodi.dvwd.net/sites/default/files/styles/medium_crop/public/addon/field_image/icon_88.png",
+                    "title_link"=> "http://ww.openweathermap.org",
+                    "text"=>$message,
+                    "ts"=> $date->format('U')
                 ]
             ]
         ];

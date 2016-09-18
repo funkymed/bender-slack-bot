@@ -68,11 +68,18 @@ class RecetteService extends BaseService
     protected function getAnswer($message){
         if(is_array($message))
             $message=implode("\n",$message);
+
+        $date = new \DateTime();
         return [
             "attachments"=>[
                 [
-                    "title"=>"Marmiton",
-                    "text"=>$message
+                    "title"=>"marmiton.org",
+                    "color"=> $this->color,
+                    "footer"=> "marmiton.org",
+                    "footer_icon"=>"https://store-images.s-microsoft.com/image/apps.51069.9007199266246479.34d91e46-6c6a-4e22-9f85-2c94d3178ec7.d62fac89-081b-4a94-92cb-4bb03dc90b74",
+                    "title_link"=> "http://www.marmiton.org",
+                    "text"=>$message,
+                    "ts"=> $date->format('U')
                 ]
             ]
         ];

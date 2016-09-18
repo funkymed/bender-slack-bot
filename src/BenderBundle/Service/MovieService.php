@@ -87,11 +87,18 @@ class MovieService extends BaseService
     protected function getAnswer($message){
         if(is_array($message))
             $message=implode("\n",$message);
+
+        $date = new \DateTime();
         return [
             "attachments"=>[
                 [
-                    "title"=>"OMDBAPI",
-                    "text"=>$message
+                    "title"=>"Imdb",
+                    "color"=> $this->color,
+                    "footer"=> "Imdb",
+                    "footer_icon"=>"http://cdn-img.easyicon.net/png/11275/1127510.gif",
+                    "title_link"=> "http://www.omdbapi.com",
+                    "text"=>$message,
+                    "ts"=> $date->format('U')
                 ]
             ]
         ];
