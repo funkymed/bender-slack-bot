@@ -58,7 +58,7 @@ class GifService extends BaseService
                     "title"=>$this->query,
                     "color"=> $this->color,
                     "footer"=> "Giphy",
-                    "footer_icon"=>"https://addons.opera.com/media/extensions/45/215945/0.1.4-rev1/icons/icon_64x64.png",
+                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/images/icons/gify.png",
                     "te"=> "http://www.giphy.com",
                     "image_url"=>$message,
                     "ts"=> $date->format('U')

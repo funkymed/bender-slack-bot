@@ -89,10 +89,10 @@ class AllocineService extends BaseService
         return [
             "attachments"=>[
                 [
-                    "title"=>"Allocié - Les films de la semaine",
+                    "title"=>"Allociné - Les films de la semaine",
                     "color"=> "#FFBB00",
                     "footer"=> "Allociné",
-                    "footer_icon"=>"http://67.media.tumblr.com/avatar_ae8be48020c6_128.png",
+                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/images/icons/allocine.png",
                     "title_link"=> "http://ww.allocine.com",
                     "fields"=>$message,
                     "ts"=> $date->format('U')

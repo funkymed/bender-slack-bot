@@ -92,7 +92,7 @@ class WikipediaService extends BaseService
                     "title"=>"Wikipedia",
                     "color"=> $this->color,
                     "footer"=> "Sncf",
-                    "footer_icon"=>"http://findicons.com/files/icons/111/popular_sites/128/wikipedia_globe_icon.png",
+                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/images/icons/wikipedia.png",
                     "title_link"=> "http://fr.wikipedia.com",
                     "text"=>$message,
                     "ts"=> $date->format('U')

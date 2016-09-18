@@ -82,7 +82,7 @@ class MeteoService extends BaseService
                     "title"=>"Météo",
                     "color"=> $this->color,
                     "footer"=> "Open weather map",
-                    "footer_icon"=>"http://kodi.dvwd.net/sites/default/files/styles/medium_crop/public/addon/field_image/icon_88.png",
+                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/images/icons/openweather.png",
                     "title_link"=> "http://ww.openweathermap.org",
                     "text"=>$message,
                     "ts"=> $date->format('U')
