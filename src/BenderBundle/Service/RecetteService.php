@@ -76,7 +76,7 @@ class RecetteService extends BaseService
                     "title"=>"marmiton.org",
                     "color"=> $this->color,
                     "footer"=> "marmiton.org",
-                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/images/icons/marmiton.png",
+                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/marmiton.png",
                     "title_link"=> "http://www.marmiton.org",
                     "text"=>$message,
                     "ts"=> $date->format('U')

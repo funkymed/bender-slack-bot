@@ -95,7 +95,7 @@ class MovieService extends BaseService
                     "title"=>"Imdb",
                     "color"=> $this->color,
                     "footer"=> "Imdb",
-                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/images/icons/imdb.gif",
+                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/imdb.gif",
                     "title_link"=> "http://www.omdbapi.com",
                     "text"=>$message,
                     "ts"=> $date->format('U')

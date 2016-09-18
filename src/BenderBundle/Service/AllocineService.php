@@ -92,7 +92,7 @@ class AllocineService extends BaseService
                     "title"=>"Allociné - Les films de la semaine",
                     "color"=> "#FFBB00",
                     "footer"=> "Allociné",
-                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/images/icons/allocine.png",
+                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/allocine.png",
                     "title_link"=> "http://ww.allocine.com",
                     "fields"=>$message,
                     "ts"=> $date->format('U')
