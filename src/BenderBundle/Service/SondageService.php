@@ -63,7 +63,7 @@ class SondageService extends BaseService
                     $count++;
             }
 
-            return $count/$total*100;
+            return floor($count/$total*100);
         }else{
             return 0;
         }

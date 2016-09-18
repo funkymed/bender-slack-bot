@@ -15,17 +15,6 @@ class YoutubeService extends BaseService
     protected $hook = '!youtube';
 
     /**
-     * @var array
-     */
-    private $badAnswer = array(
-        'Tu recherche quoi ?',
-        "T'es relou là !",
-        "Il manque un truc...",
-        "Tu sais pas taper ?",
-        "Patate !",
-    );
-
-    /**
      * @return string
      */
     public function getHelp()
