@@ -16,6 +16,7 @@ class DefaultController extends Controller
         'bender.lol','bender.meteo','bender.movie',
         'bender.qr','bender.quote','bender.recette',
         'bender.sondage','bender.wikipedia','bender.youtube',
+        'bender.sncf'
     ];
 
     /**

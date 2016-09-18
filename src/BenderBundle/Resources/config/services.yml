@@ -38,3 +38,6 @@ services:
     bender.youtube:
         class: BenderBundle\Service\YoutubeService
         arguments: ["@bender.factory"]
+    bender.sncf:
+        class: BenderBundle\Service\SncfService
+        arguments: ["@bender.factory"]

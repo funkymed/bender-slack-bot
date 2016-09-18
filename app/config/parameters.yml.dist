@@ -21,3 +21,4 @@ parameters:
     locale: fr
     api_weather_key: f5cbdce7c5d7d99c26caf8b72cb00605
     api_youtube_key: AIzaSyBmyNqx04RTdA3bYEy8dq9KqZFmcfIfujo
+    api_sncf_key: a9ae982d-6fcc-420b-af7f-225932ec360e
