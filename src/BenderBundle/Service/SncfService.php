@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
  */
 class SncfService extends BaseService
 {
+    private $message = "";
     private $api_url = "https://api.sncf.com/v1/coverage/sncf";
     /**
      * @var string
@@ -109,4 +110,6 @@ class SncfService extends BaseService
             return $this->array_random($this->badAnswer);
         }
     }
+
+
 }

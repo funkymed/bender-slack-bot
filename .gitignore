@@ -8,6 +8,9 @@
 !/var/logs
 /var/logs/*
 !var/logs/.gitkeep
+!/var/bender
+/var/bender/*
+!var/bender/.gitkeep
 !/var/sessions
 /var/sessions/*
 !var/sessions/.gitkeep

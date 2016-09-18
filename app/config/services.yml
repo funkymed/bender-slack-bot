@@ -1,4 +1,4 @@
 services:
     cache:
         class: Doctrine\Common\Cache\PhpFileCache
-        arguments: ["%kernel.cache_dir%"]
+        arguments: ["%kernel.root_dir%/../var/bender"]
