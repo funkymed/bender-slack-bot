@@ -18,9 +18,6 @@ class QRService extends BaseService
     {
         parent::__construct($factory);
         $this->qr = $this->getContainer()->getParameter("bender.qr");
-
-//        VarDumper::dump($this->cache);
-
     }
 
     /**

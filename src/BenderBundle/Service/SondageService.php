@@ -22,14 +22,10 @@ class SondageService extends BaseService
         'open'=>false
     );
 
-    /**
-     * @var array
-     */
-    private $badAnswer = array(
-        'Pas sûr que se soit ça.',
-        "T'es sûr de ça ?",
-        "Patate !",
-    );
+    public function getKeyCache(){
+        $team_domain = $this->getTeamDomain();
+        return 'sondage_'.$team_domain;
+    }
 
     public function getHelp()
     {
@@ -41,18 +37,8 @@ class SondageService extends BaseService
      */
     public function getSondage()
     {
-        $team_domain = $this->getTeamDomain();
-        $path = dirname(__FILE__);
-        $filename = $path.'/data/'.$team_domain.'_sondage.txt';
-
-        if (file_exists($filename)) {
-
-            $sondage = @file_get_contents($filename);
-            return $sondage && $sondage!='' ? unserialize($sondage) : array();
-        }else{
-            @file_put_contents($filename, serialize(array()));
-            return array();
-        }
+        $data = $this->cache->fetch($this->getKeyCache());
+        return $data ? $data : [];
     }
 
     /**
@@ -61,11 +47,7 @@ class SondageService extends BaseService
      */
     public function save($sondage)
     {
-        $team_domain = $this->getTeamDomain();
-
-        $path = dirname(__FILE__);
-        $res  = @file_put_contents($path.'/data/'.$team_domain.'_sondage.txt', serialize($sondage));
-
+        $res = $this->cache->save($this->getKeyCache(),$sondage);
         return $res ? true : false;
     }
 

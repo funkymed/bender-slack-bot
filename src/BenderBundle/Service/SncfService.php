@@ -18,16 +18,6 @@ class SncfService extends BaseService
     protected $hook = '!sncf';
 
     /**
-     * @var array
-     */
-    private $badAnswer = array(
-      "Tu sais pas ou t'habite ?",
-      "T'es sérieux ?",
-      "Patate !",
-      "Ok, je vois le genre...",
-    );
-
-    /**
      * @return string
      */
     public function getHelp()

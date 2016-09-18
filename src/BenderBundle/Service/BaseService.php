@@ -12,13 +12,14 @@ abstract class BaseService
     protected $factory;
     public $cache;
     private $container;
-
+    public $badAnswer;
 
     public function __construct(FactoryService $factory){
         $this->factory = $factory;
         $this->container = $this->factory->getContainer();
         $this->cache = $this->container->get('cache');
         $this->cache->setNamespace($this->getFactory()->getTeamDomain());
+        $this->badAnswer = $this->container->getParameter("bender.badanswer");
     }
 
     /**

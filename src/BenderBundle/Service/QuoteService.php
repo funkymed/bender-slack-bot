@@ -9,39 +9,23 @@ class QuoteService extends BaseService
      */
     protected $hook = '!quote';
 
-    /**
-     * @var array
-     */
-    private $badAnswer = array(
-      'Tu recherche quoi ?',
-      "T'es relou là !",
-      "Il manque un truc...",
-      "Tu sais pas taper ?",
-      "Patate !",
-    );
-
     public function getHelp()
     {
         return '!quote (last|all|help|add username text)';
     }
 
+    public function getKeyCache(){
+        $team_domain = $this->getTeamDomain();
+        return 'quote_'.$team_domain;
+    }
+
     /**
-     * @return mixed
+     * @return false|mixed
      */
     public function getQuotes()
     {
-        $team_domain = $this->getTeamDomain();
-        $path = dirname(__FILE__);
-        $filename = $path.'/data/'.$team_domain.'_quotes.txt';
-
-        if (file_exists($filename)) {
-
-            $quotes = @file_get_contents($filename);
-            return $quotes && $quotes!='' ? unserialize($quotes) : array();
-        }else{
-            @file_put_contents($filename, serialize(array()));
-            return array();
-        }
+        $quotes = $this->cache->fetch($this->getKeyCache());
+        return $quotes ? $quotes : [];
     }
 
     /**
@@ -60,8 +44,7 @@ class QuoteService extends BaseService
         $quotes  = $this->getQuotes();
         $quotes[]=$message;
 
-        $path = dirname(__FILE__);
-        $res  = @file_put_contents($path.'/data/'.$team_domain.'_quotes.txt', serialize($quotes));
+        $res = $this->cache->save("quote_".$team_domain,$quotes);
 
         return $res ? true : false;
     }
