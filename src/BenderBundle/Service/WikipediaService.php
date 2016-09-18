@@ -86,10 +86,10 @@ class WikipediaService extends BaseService
             $message=implode("\n",$message);
         return [
             "attachments"=>[
-                "title"=>"Wikipedia",
-                "pretext"=>$this->getHelp(),
-                "text"=>$message,
-                "mrkdwn_in"=>["text","pretext"]
+                [
+                    "title"=>"Wikipedia",
+                    "text"=>$message
+                ]
             ]
         ];
     }

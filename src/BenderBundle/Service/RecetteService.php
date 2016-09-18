@@ -65,4 +65,17 @@ class RecetteService extends BaseService
         return $recette.":".$link_recipe;
     }
 
+    protected function getAnswer($message){
+        if(is_array($message))
+            $message=implode("\n",$message);
+        return [
+            "attachments"=>[
+                [
+                    "title"=>"Marmiton",
+                    "text"=>$message
+                ]
+            ]
+        ];
+    }
+
 }

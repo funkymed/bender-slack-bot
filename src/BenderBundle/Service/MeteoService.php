@@ -70,4 +70,17 @@ class MeteoService extends BaseService
             return "Oups j'arrive pas à savoir la méteo, je dois être bourré";
         }
     }
+
+    protected function getAnswer($message){
+        if(is_array($message))
+            $message=implode("\n",$message);
+        return [
+            "attachments"=>[
+                [
+                    "title"=>"Openweathermap",
+                    "text"=>$message
+                ]
+            ]
+        ];
+    }
 }

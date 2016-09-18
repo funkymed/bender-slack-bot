@@ -84,10 +84,10 @@ class YoutubeService extends BaseService
 
         return [
             "attachments"=>[
-                "title"=>"Youtube",
-                "pretext"=>$this->getHelp(),
-                "text"=>$message,
-                "mrkdwn_in"=>["text","pretext"]
+                [
+                    "title"=>"Youtube",
+                    "text"=>$message
+                ]
             ]
         ];
     }

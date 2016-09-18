@@ -81,16 +81,14 @@ class AllocineService extends BaseService
     }
 
     protected function getAnswer($message){
-
         if(is_array($message))
             $message=implode("\n",$message);
-
         return [
             "attachments"=>[
-                "title"=>"Allociné",
-                "pretext"=>$this->getHelp(),
-                "text"=>$message,
-                "mrkdwn_in"=>["text","pretext"]
+                [
+                    "title"=>"Allociné",
+                    "text"=>$message
+                ]
             ]
         ];
     }

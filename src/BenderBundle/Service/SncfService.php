@@ -125,10 +125,10 @@ class SncfService extends BaseService
             $message=implode("\n",$message);
         return [
             "attachments"=>[
-                "title"=>"SNCF",
-                "pretext"=>$this->getHelp(),
-                "text"=>$message,
-                "mrkdwn_in"=>["text","pretext"]
+                [
+                    "title"=>"SNCF",
+                    "text"=>$message
+                ]
             ]
         ];
     }
