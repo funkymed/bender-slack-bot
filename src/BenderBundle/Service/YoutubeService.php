@@ -77,20 +77,6 @@ class YoutubeService extends BaseService
 
     }
 
-    protected function getAnswer($message){
-
-        if(is_array($message))
-            $message=implode("\n",$message);
-
-        return [
-            "attachments"=>[
-                [
-                    "title"=>"Youtube",
-                    "text"=>$message
-                ]
-            ]
-        ];
-    }
 }
 
 

@@ -52,7 +52,7 @@ class GifService extends BaseService
             "attachments"=>[
                 [
                     "title"=>"Giphy",
-                    "text"=>$message
+                    "image_url"=>$message
                 ]
             ]
         ];
