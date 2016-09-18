@@ -32,7 +32,7 @@ class SncfService extends BaseService
      */
     public function getHelp()
     {
-        return "!sncf gare de départ,gare d'arrivé";
+        return "!sncf (next|help) gare de départ,gare d'arrivé";
     }
 
     /**
@@ -43,26 +43,40 @@ class SncfService extends BaseService
 
         $commands = $this->getCommands($text);
 
-        if($commands[0]=='help')
-            return $this->getHelp();
+        switch($commands[0]){
+            case "help":
+                return $this->getHelp();
+                break;
+            case "next":
+                unset($commands[0]);
+                $action = explode(",",implode(" ",$commands));
 
-        $action = explode(",",implode(" ",$commands));
-        if(!isset($action[0]))
-            return $this->array_random($this->badAnswer)." Il faut me donner une gare de départ";
+                if(empty($action[0])){
+                    $message = $this->array_random($this->badAnswer)." Il faut me donner une gare de départ";
+                    break;
+                }
 
-        if(!isset($action[1]))
-            return $this->array_random($this->badAnswer)." Il faut me donner une gare de d'arrivé";
+                if(empty($action[1])){
+                    return $this->array_random($this->badAnswer)." Il faut me donner une gare de d'arrivé";
+                    break;
+                }
 
-        $fromID = $this->getStationID($action[0]);
-        $toID = $this->getStationID($action[1]);
-        $url = sprintf("/journeys?from=%s&to=%s",$fromID,$toID);
-        $result = $this->send($url);
-        if(isset($result->journeys)){
-            $departure = new \DateTime($result->journeys[0]->departure_date_time);
-            $arrival = new \DateTime($result->journeys[0]->arrival_date_time);
+                $fromID = $this->getStationID($action[0]);
+                $toID = $this->getStationID($action[1]);
+                $url = sprintf("/journeys?from=%s&to=%s",$fromID,$toID);
+                $result = $this->send($url);
+                if(isset($result->journeys)) {
+                    $departure = new \DateTime($result->journeys[0]->departure_date_time);
+                    $arrival = new \DateTime($result->journeys[0]->arrival_date_time);
+                    $message = sprintf("Au départ de %s à %s pour arriver à %s le %s", $action[0], $departure->format('d/m/Y à H\hi'), $action[1], $arrival->format('d/m/Y à H\hi'));
+                }
+                break;
+            default:
+                $message = "Je conseil de taper `!sncf help`, je pense que tu en as bien besoin.";
+        }
 
-            $message = sprintf("Au départ de %s à %s pour arriver à %s à %s",$action[0],$departure->format('d/m/Y à H:i'),$action[1],$arrival->format('d/m/Y à H:i'));
 
+        if(!empty($message)){
             return $message;
         }else{
             return $this->array_random($this->badAnswer)." Trajet impossible";
@@ -102,7 +116,7 @@ class SncfService extends BaseService
             $json = \GuzzleHttp\json_decode($json);
             return $json;
         } catch (ClientException $e) {
-            return $this->array_random();
+            return $this->array_random($this->badAnswer);
         }
     }
 }
