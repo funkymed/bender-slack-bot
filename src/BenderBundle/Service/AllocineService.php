@@ -69,7 +69,6 @@ class AllocineService extends BaseService
     {
         $movies = $this->getDatas();
         $message = [];
-        $message[]= ['title'=>'Les films de la semaine :'];
 
         for($r=0;$r<count($movies);$r++)
         {
@@ -90,8 +89,8 @@ class AllocineService extends BaseService
         return [
             "attachments"=>[
                 [
-                    "title"=>"Allocié",
-                    "color"=> $this->color,
+                    "title"=>"Allocié - Les films de la semaine",
+                    "color"=> "#FFBB00",
                     "footer"=> "Allociné",
                     "footer_icon"=>"http://67.media.tumblr.com/avatar_ae8be48020c6_128.png",
                     "title_link"=> "http://ww.allocine.com",
