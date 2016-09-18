@@ -28,9 +28,18 @@ class SncfService extends BaseService
 
     /**
      * @param $text
-     * @return string
+     * @return array|string
      */
     public function getMessage($text) {
+        $answer = $this->checkAnswer($text);
+        return $answer ? $this->getAnswer($answer) : "";
+    }
+
+    /**
+     * @param $text
+     * @return array|string
+     */
+    public function checkAnswer($text) {
 
         $commands = $this->getCommands($text);
 
@@ -43,12 +52,12 @@ class SncfService extends BaseService
                 $action = explode(",",implode(" ",$commands));
 
                 if(empty($action[0])){
-                    $message = $this->getAnswer($this->array_random($this->badAnswer)." Il faut me donner une gare de départ");
+                    $message = $this->array_random($this->badAnswer)." Il faut me donner une gare de départ";
                     break;
                 }
 
                 if(empty($action[1])){
-                    return $this->getAnswer($this->array_random($this->badAnswer)." Il faut me donner une gare de d'arrivé");
+                    return $this->array_random($this->badAnswer)." Il faut me donner une gare de d'arrivé";
                     break;
                 }
 
@@ -59,11 +68,11 @@ class SncfService extends BaseService
                 if(isset($result->journeys)) {
                     $departure = new \DateTime($result->journeys[0]->departure_date_time);
                     $arrival = new \DateTime($result->journeys[0]->arrival_date_time);
-                    $message = $this->getAnswer(sprintf("Au départ de %s à %s pour arriver à %s le %s", $action[0], $departure->format('d/m/Y à H\hi'), $action[1], $arrival->format('d/m/Y à H\hi')));
+                    $message = sprintf("Au départ de %s à %s pour arriver à %s le %s", $action[0], $departure->format('d/m/Y à H\hi'), $action[1], $arrival->format('d/m/Y à H\hi'));
                 }
                 break;
             default:
-                $message = $this->getAnswer("Je conseil de taper `!sncf help`, je pense que tu en as bien besoin.");
+                $message = "Je conseil de taper `!sncf help`, je pense que tu en as bien besoin.";
         }
 
 
