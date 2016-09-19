@@ -1,6 +1,6 @@
 parameters:
     bender.qr:
-        "merci qui":
+        "merci qui,merci qui ?,merci qui?,merci qui bender ?,merci qui bender?":
             - "Merci Jacquie et Michel"
         "test,123,allo":
             - "test, un deux"
