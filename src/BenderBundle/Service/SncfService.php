@@ -11,7 +11,7 @@ use GuzzleHttp\Client;
  */
 class SncfService extends BaseService
 {
-    private $message = "";
+    public $titleMessage = "";
     private $api_url = "https://api.sncf.com/v1/coverage/sncf";
     /**
      * @var string
@@ -63,12 +63,30 @@ class SncfService extends BaseService
 
                 $fromID = $this->getStationID($action[0]);
                 $toID = $this->getStationID($action[1]);
-                $url = sprintf("/journeys?from=%s&to=%s",$fromID,$toID);
-                $result = $this->send($url);
-                if(isset($result->journeys)) {
-                    $departure = new \DateTime($result->journeys[0]->departure_date_time);
-                    $arrival = new \DateTime($result->journeys[0]->arrival_date_time);
-                    $message = sprintf("Au départ de %s à %s pour arriver à %s le %s", $action[0], $departure->format('d/m/Y à H\hi'), $action[1], $arrival->format('d/m/Y à H\hi'));
+
+
+
+                $message=[];
+                $now = new \DateTime();
+                $this->titleMessage = sprintf("Au départ de %s à destination de %s le %s",strtoupper($action[0]),strtoupper($action[1]), $now->format('d/m/Y'));
+                $journey =$this->getJourney($fromID,$toID,$now);
+                if($journey){
+                    $message[]= [
+                        'title'=>sprintf("départ à %s arrivé à %s",$journey['departure']->format('H\hi'),$journey['arrival']->format('H\hi'))
+                    ];
+                    $journeys=[];
+                    for($r=1;$r<=2;$r++){
+                        $now = $journey['departure'];
+                        $interval = new \DateInterval('PT1M');
+                        $now->add($interval);
+                        $journey =$this->getJourney($fromID,$toID,$now);
+                        if($journey) {
+                            $journeys[] = $journey;
+                            $message[]= [
+                                'title'=>sprintf("départ à %s arrivé à %s",$journey['departure']->format('H\hi'),$journey['arrival']->format('H\hi'))
+                            ];
+                        }
+                    }
                 }
                 break;
             default:
@@ -120,20 +138,32 @@ class SncfService extends BaseService
         }
     }
 
+    private function getJourney($fromID,$toID,$now){
+        $url = sprintf("/journeys?from=%s&to=%s&datetime=%sT%s",$fromID,$toID,$now->format('Ymd'),$now->format('His'));
+        $result = $this->send($url);
+        if(isset($result->journeys)) {
+            return [
+                "departure"=>new \DateTime($result->journeys[0]->departure_date_time),
+                "arrival"=>new \DateTime($result->journeys[0]->arrival_date_time),
+
+            ];
+        }else{
+            return false;
+        }
+    }
+
     protected function getAnswer($message){
-        if(is_array($message))
-            $message=implode("\n",$message);
 
         $date = new \DateTime();
         return [
             "attachments"=>[
                 [
-                    "title"=>"SNCF",
+                    "title"=>"SNCF : ".$this->titleMessage,
                     "color"=> "#E41F26",
                     "footer"=> "Sncf",
                     "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/sncf.png",
                     "title_link"=> "http://www.sncf.com",
-                    "text"=>$message,
+                    "fields"=>$message,
                     "ts"=> $date->format('U')
                 ]
             ]
