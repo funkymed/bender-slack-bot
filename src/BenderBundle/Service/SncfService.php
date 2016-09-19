@@ -64,8 +64,6 @@ class SncfService extends BaseService
                 $fromID = $this->getStationID($action[0]);
                 $toID = $this->getStationID($action[1]);
 
-
-
                 $message=[];
                 $now = new \DateTime();
                 $this->titleMessage = sprintf("Au départ de %s à destination de %s le %s",strtoupper($action[0]),strtoupper($action[1]), $now->format('d/m/Y'));
