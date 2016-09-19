@@ -210,38 +210,35 @@ class SondageService extends BaseService
         }
     }
 
-    protected function getAnswer($message){
-        $sondage = $this->sondage;
-        if(!$this->isSondageStarted()){
-            return parent::getAnswer($message);
-        }
-
-        $choices=[];
-        foreach($sondage['choices'] as $choice){
-            $choices[]=[
-                "name" => $choice,
-                "text" => $choice,
-                "value" => $choice,
-                "type" => "button",
-            ];
-        }
-
-        $date = new \DateTime();
-        return [
-            "attachments"=>[
-                [
-                    "title"=>"Sondage",
-                    "color"=> "#FF5555",
-                    "footer"=> "Bender",
-                    "callback_id"=> "!sondage",
-                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/sncf.png",
-                    "title_link"=> "http://www.sncf.com",
-                    "text"=>$sondage['question'],
-                    "actions"=>$choices,
-                    "attachment_type"=>"default",
-                    "ts"=> $date->format('U')
-                ]
-            ]
-        ];
-    }
+//    protected function getAnswer($message){
+//        $sondage = $this->sondage;
+//        if(!$this->isSondageStarted()){
+//            return parent::getAnswer($message);
+//        }
+//
+//        $choices=[];
+//        foreach($sondage['choices'] as $choice){
+//            $choices[]=[
+//                "name" => $choice,
+//                "text" => $choice,
+//                "value" => $choice,
+//                "type" => "button",
+//            ];
+//        }
+//
+//        $date = new \DateTime();
+//        return [
+//            "attachments"=>[
+//                [
+//                    "title"=>"Sondage",
+//                    "color"=> "#DEDEDE",
+//                    "callback_id"=> "!sondage",
+//                    "text"=>$sondage['question'],
+//                    "actions"=>$choices,
+//                    "attachment_type"=>"default",
+//                    "ts"=> $date->format('U')
+//                ]
+//            ]
+//        ];
+//    }
 }
