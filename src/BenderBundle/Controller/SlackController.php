@@ -9,14 +9,24 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\VarDumper\VarDumper;
 
-class InterractiveController extends Controller
+class SlackController extends Controller
 {
+
+    /**
+     * @Route("/oauth/authorize")
+     */
+    public function authAction(Request $request)
+    {
+//        $callback_id = $request->get('clie',false);
+        return new Response("ok");
+    }
 
     /**
      * @Route("/message_action")
      */
-    public function indexAction(Request $request)
+    public function messageAction(Request $request)
     {
         $callback_id = $request->get('callback_id',false);
+        return new Response("ok");
     }
 }
