@@ -2,3 +2,9 @@ services:
     cache:
         class: Doctrine\Common\Cache\PhpFileCache
         arguments: ["%kernel.root_dir%/../var/bender"]
+
+    bender.entity_listener:
+        class: BenderBundle\EventListener\KernelEventListener
+        arguments: ["@service_container"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

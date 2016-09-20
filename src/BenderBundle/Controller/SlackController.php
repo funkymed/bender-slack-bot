@@ -17,8 +17,39 @@ class SlackController extends Controller
      */
     public function authAction(Request $request)
     {
-//        $callback_id = $request->get('clie',false);
+        $code = $request->get('code');
+        $this->get('session')->set('code', $code);
         return new Response("ok");
+    }
+
+    /**
+     * @Route("/install")
+     */
+    public function installAction(Request $request)
+    {
+        $code = $request->get('code');
+        $this->get('session')->set('code', $code);
+        return new Response("install");
+    }
+
+    /**
+     * @Route("/privacy")
+     */
+    public function privacyAction(Request $request)
+    {
+        $code = $request->get('code');
+        $this->get('session')->set('code', $code);
+        return new Response("privacy");
+    }
+
+    /**
+     * @Route("/support")
+     */
+    public function supportAction(Request $request)
+    {
+        $code = $request->get('code');
+        $this->get('session')->set('code', $code);
+        return new Response("support");
     }
 
     /**

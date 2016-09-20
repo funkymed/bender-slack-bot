@@ -25,3 +25,4 @@ parameters:
     url_bender: http://bender.wynd.eu
     slack_id: 21000909651.81082015155
     slack_secret: 95b5a5d6ace6967a1ecc8f35895be2be
+    slack_token: OKKMT7LNULrm0iIXjCLQ6afz
