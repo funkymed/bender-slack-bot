@@ -11,32 +11,15 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class DefaultController extends Controller
 {
-    private $services = [
-        'bender.debug','bender.allocine','bender.gif',
-        'bender.lol','bender.meteo','bender.movie',
-        'bender.qr','bender.quote','bender.recette',
-        'bender.sondage','bender.wikipedia','bender.youtube',
-        'bender.sncf'
-    ];
-
     /**
      * @Route("/")
      */
     public function indexAction(Request $request)
     {
         $factory = $this->get('bender.factory');
-        $help    = ["HELP :", "======"];
-        $classes = [];
-        foreach ($this->services as $services)
-        {
-            $class = $this->get($services);
-            if($class){
-                $h = $class->getHelp();
-                if($h)
-                    $help[]=$h;
-                $classes[$class->getHook()] = $class;
-            }
-        }
+
+        $classes = $this->get('bender.services_chain')->getServices();
+        $help    = $this->get('bender.services_chain')->getHelps();
 
         $factory->setClasses($classes);
         $message    = false;

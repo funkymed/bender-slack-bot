@@ -48,7 +48,7 @@ class KernelEventListener
             return $this->array_random($this->badAnswer);
         }
 
-        https://slack.com/api/oauth.access
+//        https://slack.com/api/oauth.access
         return true;
 
     }
