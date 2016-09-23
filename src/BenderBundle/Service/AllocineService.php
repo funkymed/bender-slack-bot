@@ -74,7 +74,8 @@ class AllocineService extends BaseService
         {
             if($r<10)
             {
-                $message[]= $movies[$r]->name." : ".$movies[$r]->url;
+                $message[]= $movies[$r]->name;
+                $message[]= $movies[$r]->url;
             }
         }
         return $message;
