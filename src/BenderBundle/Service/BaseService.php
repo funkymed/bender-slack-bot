@@ -1,6 +1,7 @@
 <?php
 
 namespace BenderBundle\Service;
+use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Class Plugin
@@ -137,6 +138,12 @@ abstract class BaseService
         if(is_array($message))
             $message=implode("\n",$message);
         return ["text"=>$message];
+    }
+
+    public function getMediaUrl($media)
+    {
+        $host = $this->getContainer()->get('request_stack')->getCurrentRequest()->getSchemeAndHttpHost();
+        return $host.$media;
     }
 
 }

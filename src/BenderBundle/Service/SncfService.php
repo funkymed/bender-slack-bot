@@ -159,7 +159,7 @@ class SncfService extends BaseService
                     "title"=>"SNCF : ".$this->titleMessage,
                     "color"=> "#E41F26",
                     "footer"=> "Sncf",
-                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/sncf.png",
+                    "footer_icon"=>$this->getMediaUrl("/bundles/bender/icons/sncf.png"),
                     "title_link"=> "http://www.sncf.com",
                     "fields"=>$message,
                     "ts"=> $date->format('U')

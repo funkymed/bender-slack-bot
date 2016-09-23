@@ -58,7 +58,7 @@ class GifService extends BaseService
                     "title"=>$this->query,
                     "color"=> $this->color,
                     "footer"=> "Giphy",
-                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/gify.png",
+                    "footer_icon"=>$this->getMediaUrl("/bundles/bender/icons/gify.png"),
                     "te"=> "http://www.giphy.com",
                     "image_url"=>$message,
                     "ts"=> $date->format('U')

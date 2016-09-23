@@ -85,6 +85,7 @@ class WikipediaService extends BaseService
         if(is_array($message))
             $message=implode("\n",$message);
 
+
         $date = new \DateTime();
         return [
             "attachments"=>[
@@ -92,7 +93,7 @@ class WikipediaService extends BaseService
                     "title"=>"Wikipedia",
                     "color"=> '#B8B8B8',
                     "footer"=> "Sncf",
-                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/wikipedia.png",
+                    "footer_icon"=>$this->getMediaUrl("/bundles/bender/icons/wikipedia.png"),
                     "title_link"=> "http://fr.wikipedia.com",
                     "text"=>$message,
                     "ts"=> $date->format('U')

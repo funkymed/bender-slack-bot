@@ -74,10 +74,7 @@ class AllocineService extends BaseService
         {
             if($r<10)
             {
-                $message[]= [
-                    'title'=>$movies[$r]->name,
-                    'value'=>$movies[$r]->url
-                ];
+                $message[]= $movies[$r]->name." : ".$movies[$r]->url;
             }
         }
         return $message;
@@ -85,6 +82,9 @@ class AllocineService extends BaseService
     }
 
     protected function getAnswer($message){
+        if(is_array($message))
+            $message=implode("\n",$message);
+
         $date = new \DateTime();
         return [
             "attachments"=>[
@@ -92,9 +92,9 @@ class AllocineService extends BaseService
                     "title"=>"Allociné - Les films de la semaine",
                     "color"=> "#FEC80F",
                     "footer"=> "Allociné",
-                    "footer_icon"=>$this->getContainer()->getParameter('url_bender')."/bundles/bender/icons/allocine.png",
+                    "footer_icon"=>$this->getMediaUrl("/bundles/bender/icons/allocine.png"),
                     "title_link"=> "http://ww.allocine.com",
-                    "fields"=>$message,
+                    "text"=>$message,
                     "ts"=> $date->format('U')
                 ]
             ]
