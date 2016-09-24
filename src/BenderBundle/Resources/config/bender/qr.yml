@@ -1,21 +1,21 @@
 parameters:
     bender.qr:
         "merci qui,merci qui ?,merci qui?,merci qui bender ?,merci qui bender?":
-            - "Merci Jacquie et Michel"
+            - "Merci *Jacquie et Michel*"
         "test,123,allo":
             - "test, un deux"
             - "oui allo ?"
         "charrette,charete,charrete,charette":
             - "moi je charrette vers 15h"
             - "en pleine journée c'est mieu"
-            - "jamais le soir c'est trop fatiguant"
+            - "jamais le soir c'est *trop fatiguant*"
         "incroyable,mais vrai":
             - "incroyable mais vrai LE MAG"
         "énorme":
             - "et sec"
-            - "c'est clairement énorme et sec"
+            - "c'est clairement *énorme et sec*"
         "normal":
-            - "c'est normal en RUSSIE"
+            - "c'est normal en *RUSSIE*"
         "hier":
             0: "tu commences à raconter ta vie là"
             1: "blah blah blah"
