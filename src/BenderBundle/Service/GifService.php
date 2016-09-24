@@ -13,7 +13,7 @@ class GifService extends BaseService
 
     public function getHelp()
     {
-        return '!gif';
+        return '!gif query';
     }
 
     /**
