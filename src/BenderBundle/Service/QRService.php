@@ -14,12 +14,6 @@ class QRService extends BaseService
     protected $hook = '!qr';
     private $qr = array();
 
-    public function __construct(FactoryService $factory)
-    {
-        parent::__construct($factory);
-        $this->qr = $this->getContainer()->getParameter("bender.qr");
-    }
-
     /**
      * @param       $text
      * @param array $array
@@ -81,6 +75,7 @@ class QRService extends BaseService
      */
     public function getMessage($text)
     {
+        $this->qr = $this->getContainer()->getParameter("bender.qr");
         $answer = $this->checkAnswer($text);
         return $answer ? $this->getAnswer($answer) : "";
     }

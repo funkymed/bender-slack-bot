@@ -14,7 +14,8 @@ class QuoteService extends BaseService
         return '!quote (last|all|help|add username text)';
     }
 
-    public function getKeyCache(){
+    public function getKeyCache()
+    {
         $team_domain = $this->getTeamDomain();
         return 'quote_'.$team_domain;
     }

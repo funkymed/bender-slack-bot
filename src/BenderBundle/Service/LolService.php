@@ -23,22 +23,6 @@ class LolService extends BaseService
     private $adj;
     private $phrase;
 
-    public function __construct(FactoryService $factory)
-    {
-        parent::__construct($factory);
-
-        $this->list1    = $this->getContainer()->getParameter("bender.01");
-        $this->list2    = $this->getContainer()->getParameter("bender.02");
-        $this->list3    = $this->getContainer()->getParameter("bender.03");
-        $this->list4    = $this->getContainer()->getParameter("bender.04");
-        $this->list5    = $this->getContainer()->getParameter("bender.05");
-        $this->star     = $this->getContainer()->getParameter("bender.star");
-        $this->lieu     = $this->getContainer()->getParameter("bender.lieu");
-        $this->tv       = $this->getContainer()->getParameter("bender.tv");
-        $this->adj      = $this->getContainer()->getParameter("bender.adj");
-        $this->phrase   = $this->getContainer()->getParameter("bender.phrase");
-    }
-
     /**
      * @return string
      */
@@ -119,6 +103,11 @@ class LolService extends BaseService
      */
     private function makeRandom()
     {
+        $this->list1    = $this->getContainer()->getParameter("bender.01");
+        $this->list2    = $this->getContainer()->getParameter("bender.02");
+        $this->list3    = $this->getContainer()->getParameter("bender.03");
+        $this->list4    = $this->getContainer()->getParameter("bender.04");
+        $this->list5    = $this->getContainer()->getParameter("bender.05");
         $phrase = array(
           UCFirst($this->array_random($this->list1)).",",
           $this->array_random($this->list2),
@@ -133,7 +122,13 @@ class LolService extends BaseService
     /**
      * @return array|string
      */
-    public function makeLol() {
+    public function makeLol()
+    {
+        $this->star     = $this->getContainer()->getParameter("bender.star");
+        $this->lieu     = $this->getContainer()->getParameter("bender.lieu");
+        $this->tv       = $this->getContainer()->getParameter("bender.tv");
+        $this->adj      = $this->getContainer()->getParameter("bender.adj");
+        $this->phrase   = $this->getContainer()->getParameter("bender.phrase");
 
         $rand   = rand(1,10);
         $numtxt = rand(1,4);

@@ -4,9 +4,9 @@ namespace BenderBundle\Service;
 use Symfony\Component\VarDumper\VarDumper;
 
 /**
- * Class Plugin
+ * Class BaseService
+ * @package BenderBundle\Service
  */
-
 abstract class BaseService
 {
     protected $hook = "";
@@ -16,7 +16,12 @@ abstract class BaseService
     public $badAnswer;
     public $color = "#00BBFF";
 
-    public function __construct(FactoryService $factory){
+    /**
+     * BaseService constructor.
+     * @param FactoryService $factory
+     */
+    public function __construct(FactoryService $factory)
+    {
         $this->factory = $factory;
         $this->container = $this->factory->getContainer();
         $this->cache = $this->container->get('cache');
@@ -27,34 +32,56 @@ abstract class BaseService
     /**
      * @return \Symfony\Component\DependencyInjection\Container
      */
-    public function getContainer(){
+    public function getContainer()
+    {
         return $this->container;
     }
 
     /**
      * @return FactoryService
      */
-    public function getFactory(){
+    public function getFactory()
+    {
         return $this->factory;
     }
 
-    public function getUserName(){
+    /**
+     * @return array|bool
+     */
+    public function getUserName()
+    {
         return $this->getFactory()->getUserName();
     }
 
-    public function getChannelName(){
+    /**
+     * @return array|bool
+     */
+    public function getChannelName()
+    {
         return $this->getFactory()->getChannelName();
     }
 
-    public function getText(){
+    /**
+     * @return array|bool
+     */
+    public function getText()
+    {
         return $this->getFactory()->getText();
     }
 
-    public function getToken(){
+    /**
+     * @return array|bool
+     */
+    public function getToken()
+    {
         return $this->getFactory()->getToken();
     }
 
-    public function getTeamDomain(){
+    /**
+     * @return array|bool
+     */
+    public function getTeamDomain()
+    {
         return $this->getFactory()->getTeamDomain();
     }
 
@@ -79,7 +106,8 @@ abstract class BaseService
      * @param int $num
      * @return array
      */
-    public function array_random($arr, $num = 1) {
+    public function array_random($arr, $num = 1)
+    {
         shuffle($arr);
 
         $r = array();
@@ -121,7 +149,8 @@ abstract class BaseService
      * @param $url
      * @return mixed
      */
-    public function get_page_content($url) {
+    public function get_page_content($url)
+    {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -134,7 +163,8 @@ abstract class BaseService
      * @param $message
      * @return array
      */
-    protected function getAnswer($message){
+    protected function getAnswer($message)
+    {
         if(is_array($message))
             $message=implode("\n",$message);
         return ["text"=>$message];
