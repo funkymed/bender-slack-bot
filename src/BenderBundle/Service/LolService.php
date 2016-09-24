@@ -144,7 +144,7 @@ class LolService extends BaseService
                 $message="ça branche quelqu'un ".$numtxt." places pour ".$star." ".$lieu." ?";
                 break;
             case 2:
-                $message="je suis hyper fan de ".$star;
+                $message="je suis abonné à la chaine de ".$star;
                 break;
             case 3:
                 $message="hier je suis allé ".$lieu." et j'ai pas mal marché";
@@ -171,6 +171,7 @@ class LolService extends BaseService
             case 10:
                 $message="j'habite juste a côté, ".$lieu." je croise parfois ".$star;
                 break;
+
         }
 
 

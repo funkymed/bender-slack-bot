@@ -1,5 +1,7 @@
 parameters:
     bender.phrase:
+      - check
+      - des cacahuetes en forme de menhir
       - allez demain je me rase
       - dans 2 heures j'suis en week end :sunglasses:
       - darla dirla dada
