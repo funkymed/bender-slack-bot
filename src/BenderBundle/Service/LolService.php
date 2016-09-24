@@ -44,7 +44,7 @@ class LolService extends BaseService
      */
     public function makeJcvd() {
         $jcvd = $this->getContainer()->getParameter("bender.jcvd");
-        return ">".$this->array_random($jcvd);
+        return "> *Jean-Claude Van Damme* : ".$this->array_random($jcvd);
     }
 
     /**
