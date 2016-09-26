@@ -35,12 +35,13 @@ class GifService extends BaseService
         $commands   = $this->getCommands($text);
         $query      = urlencode(implode(' ',$commands));
         $this->query = $query;
-        $res        = $this->get_page_content('http://api.giphy.com/v1/gifs/search?q='.$query.'&api_key=dc6zaTOxFJmzC');
+        $apikey = $this->getContainer()->getParameter('giphy_key');
+        $res        = $this->get_page_content('http://api.giphy.com/v1/gifs/search?q='.$query.'&api_key='.$apikey);
         if($res)
         {
             $json = json_decode($res);
             shuffle($json->data);
-            return $json->data[0]->images->fixed_height_downsampled->url;
+            return $json->data[0]->images->fixed_height->url;
         }else{
             return null;
         }
