@@ -26,4 +26,6 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        slack_client: "%slack_id%"
 

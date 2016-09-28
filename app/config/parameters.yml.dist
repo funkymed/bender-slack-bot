@@ -21,11 +21,11 @@ parameters:
     locale: fr
 
     #Api Key
-    api_weather_key: f5cbdce7c5d7d99c26caf8b72cb00605
-    api_youtube_key: AIzaSyBmyNqx04RTdA3bYEy8dq9KqZFmcfIfujo
-    api_sncf_key: a9ae982d-6fcc-420b-af7f-225932ec360e
-    url_bender: http://bender.wynd.eu
-    slack_id: 21000909651.81082015155
-    slack_secret: 95b5a5d6ace6967a1ecc8f35895be2be
-    slack_token: OKKMT7LNULrm0iIXjCLQ6afz
-    giphy_key: dc6zaTOxFJmzC
+    api_weather_key: "f5cbdce7c5d7d99c26caf8b72cb00605"
+    api_youtube_key: "AIzaSyBmyNqx04RTdA3bYEy8dq9KqZFmcfIfujo"
+    api_sncf_key: "a9ae982d-6fcc-420b-af7f-225932ec360e"
+    url_bender: "http://bender.wynd.eu"
+    slack_id: "21000909651.81082015155"
+    slack_secret: "95b5a5d6ace6967a1ecc8f35895be2be"
+    slack_token: "OKKMT7LNULrm0iIXjCLQ6afz"
+    giphy_key: "dc6zaTOxFJmzC"
