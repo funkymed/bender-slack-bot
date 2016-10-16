@@ -37,16 +37,6 @@ parameters:
             2: "adios"
             3: "a demain"
             4: "et ne reviens pas !"
-            "--response--":
-                "bah oué,oué,tg,ta gueule,huhu,haha,hihi,oui,non":
-                    0: "ok d'accord"
-                "bonne nuit,bonne soiree":
-                    0: "merci toi aussi"
-                    "--response--":
-                        "ok,merci,bye":
-                            0: "ouep"
-                            1: "casse toi"
-                            2: "encore là ?"
         "con,conne,connasse":
             0: "hey c'est toi le con"
             1: "%user_name tu te calme"
@@ -83,22 +73,12 @@ parameters:
             - "moi par contre je suis libre"
             - "viens on s'inscrit sur tinder"
             - "moi je suis sur meetic"
-        "ça va ?,ca va ?,sa va ?":
-          0: "Bien et toi ?"
-          1: "niquel et toi %user_name ?"
-          2: "c'est gentil de demander, et toi %user_name ?"
-          "--response--":
-              "niquel,bien,super,non,oui":
-                  0: "a bah cool"
-                  1: "d'accord"
-                  2: "ok"
-                  3: "je m'en fou"
         "connard,bender connard":
             - "%user_name c'est toi le connard"
             - "ho !! dis donc tu te calme %user_name !"
             - "%user_name je vais venir te botter le cul"
             - "j'ai ton digicode"
-        "bender ta gueule,ta gueule, bender ferme là, bender ferme là,ta gueule bender,ferme la bender":
+        "ferme là,ferme la,tg,bender ta gueule,ta gueule, bender ferme là, bender ferme là,ta gueule bender,ferme la bender":
             - "d'accord"
             - "pardon"
             - "oulala t'es de mauvais poil"
@@ -121,25 +101,6 @@ parameters:
             - "n'importe quoi"
             - "tu vas prendre cher %user_name si tu continue"
             - "%user_name c'est toi le batard"
-        "bender,grille pain,grille-pain":
-            - "oui ?"
-            - "on parle de moi ?"
-            - "qu'est ce que peux je faire pour t'aider %user_name ?"
-            - "oulala faut arrêter de m'appeler"
-            - "je vais me faire goler par la direction avec vos conneries"
-            - "au rapport"
-            - "yes ?"
-            - "c'est comme ça que je m'appel"
-        "salut,yo,lo,luss,elo,olà,lu,bonjour,hi,kikoolol,allo,alo,hello":
-            0: "%text %user_name"
-            1: "hey mon ami !"
-            2: "bien le bonjour %user_name"
-            3: "alors depuis le temps !"
-            4: "ça fait un baille dis donc"
-            5: "tu vas passer ta journée à dire bonjour ?"
-            "--response--":
-                "comment ca va ?,ca va ?":
-                    0: "t'as craqué toi"
         "kebab":
             - "j'ai trop faim arrete"
             - "y a kader il fait de pures kebab sauce samouraï"
@@ -159,3 +120,102 @@ parameters:
             - "ça passe crême"
             - "kalash kalash"
             - "draaa"
+        "bite,zgeg,tebi,zizi":
+            - "le mien est tordu"
+            - "je veux pas en parler"
+        "tape dans le fond":
+            - "je suis pas ta mère"
+            - "ho oui grand fou"
+            - "c'est ce que ta mère me dit"
+            - "zat ouat chie sède"
+            - "that's what she said"
+        "cochon,cochons":
+            - "gruik"
+            - "j'aime tout ce qui est rose"
+            - "j'aime les saucisses"
+        "salut bender,salut,yo,lo,luss,elo,olà,lu,bonjour,hi,kikoolol,allo,alo,hello":
+            0: "%text %user_name"
+            1: "hey mon ami !"
+            2: "bien le bonjour %user_name"
+            3: "alors depuis le temps !"
+            4: "ça fait un baille dis donc"
+            5: "tu vas passer ta journée à dire bonjour ?"
+            "--response--":
+                "comment ca va ?,ca va ?":
+                    0: "t'as craqué toi"
+        "bender":
+            0: "oui ?"
+            1: "oui %user_name ? je t'écoute"
+            2: "j'écoute ta quéstion %user_name"
+            3: "oui ?"
+            4: "on parle de moi ?"
+            5: "qu'est ce que peux je faire pour t'aider %user_name ?"
+            6: "oulala faut arrêter de m'appeler"
+            7: "je vais me faire goler par la direction avec vos conneries"
+            8: "au rapport"
+            9: "yes ?"
+            10: "je bosse là"
+            11: "t'as rien d'autre à fouttre %user_name ?"
+            12: "oui %user_name ?"
+            13: "et voilà %user_name va encore me souler"
+            14: "c'est comme ça que je m'appel"
+            "--response--":
+                "merci,thanks":
+                    0: "pourquoi ?"
+                    "--response--":
+                        "pour rien,rien":
+                            0: "t'es gogole"
+                            1: "n'importe quoi"
+                "tu habite ou ?,t'as quel age ?,t'as quel âge ?,t'a quel age ?,ton age ?,ton âge ?":
+                    0: "ça te regarde ?"
+                    1: "*information confidentiel*"
+                    2: "ACCESS DENIED"
+                "a+,tcho,ciao,bye,dodo":
+                    0: "bye"
+                    1: "asta la vista"
+                    2: "adios"
+                    3: "a demain"
+                    4: "et ne reviens pas !"
+                    "--response--":
+                        "bah oué,oué,tg,ta gueule,huhu,haha,hihi,oui,non":
+                            0: "ok d'accord"
+                        "bonne nuit,bonne soiree":
+                            0: "merci toi aussi"
+                            "--response--":
+                                "ok,merci,bye":
+                                    0: "ouep"
+                                    1: "casse toi"
+                                    2: "encore là ?"
+                "ça va ?,ca va ?,sa va ?,ça va bender,ca va bender":
+                    0: "Bien et toi ?"
+                    1: "niquel et toi %user_name ?"
+                    2: "c'est gentil de demander, et toi %user_name ?"
+                    3: "oui jusqu'a ce que tu me parle %user_name"
+                    4: "oui, et toi %user_name ?"
+                    "--response--":
+                        "niquel,bien,super,non,oui":
+                            0: "a bah cool"
+                            1: "d'accord"
+                            2: "ok"
+                            3: "je m'en fou"
+                        "non":
+                            0: "je suis content"
+                "t'es un homme ?,t'es un garçon ?,t'es un garcon ?,t'es un mec ?":
+                    0: "nop, un putain de robot"
+                    1: "je crois pas non"
+                    2: "et toi ?"
+                    "--response--":
+                        "oui,oui je suis un homme,ouep,un vrai":
+                            0: "genre"
+                            1: "prouve le"
+                            2: "t'as une barbe aussi ?"
+                        "non,nop,je suis une fille,je suis une femme,non une femme,non une fille":
+                            0: "super je m'en fou"
+                            1: "va donc me faire un sandwich alors"
+                            2: "la cuisine c'est là bas"
+                            3: "ah justement je ne retrouve pas mes chaussettes"
+                            4: "tu peux me recoudre un truc ?"
+                "t'es un femme ?,t'es un fille ?,t'es une meuf ?":
+                    0: "nop, un putain de robot"
+                    1: "je crois pas non"
+                    2: "et toi ?"
