@@ -55,7 +55,7 @@ parameters:
             - "j'ai faim d'un coup je sais pas pourquoi"
             - "faut prévoir la bonne dose de créme"
         "salope,suce,chatte,pute":
-            - "ok j'appelle ta mére"
+            - "ok j'appel ta mére"
             - "aucune éducation"
             - "t'es sérieux là ?"
             - "vite j'appel les anges de la tv réalité"
@@ -150,7 +150,7 @@ parameters:
             3: "oui ?"
             4: "on parle de moi ?"
             5: "qu'est ce que peux je faire pour t'aider %user_name ?"
-            6: "oulala faut arrêter de m'appeler"
+            6: "oulala faut arrêter de m'appeller"
             7: "je vais me faire goler par la direction avec vos conneries"
             8: "au rapport"
             9: "yes ?"
@@ -158,7 +158,7 @@ parameters:
             11: "t'as rien d'autre à fouttre %user_name ?"
             12: "oui %user_name ?"
             13: "et voilà %user_name va encore me souler"
-            14: "c'est comme ça que je m'appel"
+            14: "c'est comme ça que je m'appelle"
             "--response--":
                 "mauviette":
                     0: "Personne... ne me traite de mauviette !"
