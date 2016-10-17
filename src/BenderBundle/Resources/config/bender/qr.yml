@@ -160,6 +160,10 @@ parameters:
             13: "et voilà %user_name va encore me souler"
             14: "c'est comme ça que je m'appel"
             "--response--":
+                "mauviette":
+                    0: "Personne... ne me traite de mauviette !"
+                    1: "Personne... ne me TRAITE DE MAUVIETTE !!!!"
+                    2: "PERSONNE... *NE ME TRAITE DE MAUVIETTE !!!!*"
                 "merci,thanks":
                     0: "pourquoi ?"
                     "--response--":
@@ -219,3 +223,11 @@ parameters:
                     0: "nop, un putain de robot"
                     1: "je crois pas non"
                     2: "et toi ?"
+                    "--response--":
+                        "oui,oui je suis un femme,ouep":
+                            0: "genre"
+                            1: "prouve le"
+                        "non,nop,je suis un homme,je suis un mec,non un homme,non un mec":
+                            0: "super je m'en fou"
+                            1: "j'ai besoin de réparer un truc, t'as 5 minutes ?"
+                            2: "mon ordi est en panne, tu peux m'aider ?"
