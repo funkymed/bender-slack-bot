@@ -54,7 +54,9 @@ class VelibService extends BaseService
                 $data = $this->get();
                 foreach($data->network->stations as $station){
                     if(stristr($station->name,$commands[0])){
-                        $message[]=sprintf("à la station %s : %s vélo%s",$station->name,$station->free_bikes,($station->free_bikes>1 ?"s":""));
+                        $message[]=[
+                            'title'=>sprintf("à la station %s : %s vélo%s",$station->name,$station->free_bikes,($station->free_bikes>1 ?"s":""))
+                        ];
                     }
                 }
         }
