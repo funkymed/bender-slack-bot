@@ -79,7 +79,7 @@ class RecetteService extends BaseService
         $data= [
             "attachments"=>[
                 [
-                    "title"=>"marmiton.org",
+                    "title"=>"Recette Marmiton",
                     "color"=> "#F47422",
                     "footer"=> "marmiton.org",
                     "footer_icon"=>$this->getMediaUrl("/bundles/bender/icons/marmiton.png"),

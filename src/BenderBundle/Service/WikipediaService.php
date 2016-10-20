@@ -12,6 +12,7 @@ class WikipediaService extends BaseService
      * @var string
      */
     protected $hook = '!wikipedia';
+    public $titleMessage = "";
 
     /**
      * @return string
@@ -49,6 +50,8 @@ class WikipediaService extends BaseService
                 $search = $commands;
                 unset($search[0]);
                 $search = implode(' ',$search);
+
+                $this->titleMessage = $search;
 
                 $api = @file_get_contents("http://fr.wikipedia.org/w/api.php?action=query&list=search&format=json&&rawcontinue&srsearch=".urlencode($search));
 
@@ -90,9 +93,9 @@ class WikipediaService extends BaseService
         return [
             "attachments"=>[
                 [
-                    "title"=>"Wikipedia",
+                    "title"=>"Wikipedia : ".$this->titleMessage,
                     "color"=> '#B8B8B8',
-                    "footer"=> "Sncf",
+                    "footer"=> "Wikipedia",
                     "footer_icon"=>$this->getMediaUrl("/bundles/bender/icons/wikipedia.png"),
                     "title_link"=> "http://fr.wikipedia.com",
                     "text"=>$message,

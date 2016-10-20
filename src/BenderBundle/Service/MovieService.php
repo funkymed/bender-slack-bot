@@ -8,6 +8,7 @@ class MovieService extends BaseService
      * @var string
      */
     protected $hook = '!movie';
+    public $titleMessage = "";
 
     /**
      * @return string
@@ -48,6 +49,7 @@ class MovieService extends BaseService
                 unset($search[0]);
                 $search = implode(' ',$search);
 
+                $this->titleMessage = $search;
                 $omdbapi = @file_get_contents('http://www.omdbapi.com/?r=json&s='.urlencode($search));
                 if($omdbapi)
                 {
@@ -92,7 +94,7 @@ class MovieService extends BaseService
         return [
             "attachments"=>[
                 [
-                    "title"=>"Imdb",
+                    "title"=>"Imdb : ".$this->titleMessage,
                     "color"=> "#E1CA3A",
                     "footer"=> "Imdb",
                     "footer_icon"=>$this->getMediaUrl("/bundles/bender/icons/imdb.gif"),

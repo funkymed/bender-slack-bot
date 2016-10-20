@@ -13,7 +13,7 @@ class VelibService extends BaseService
 {
     public $titleMessage = "";
     private $api_url = "https://api.citybik.es/v2/networks/velib?fields=id,name,href,stations";
-    private $station_url = "http://www.velib.paris.fr/service/stationdetails/paris/";
+
     /**
      * @var string
      */
