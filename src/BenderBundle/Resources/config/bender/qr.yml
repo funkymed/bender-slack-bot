@@ -170,9 +170,9 @@ parameters:
                 "comment ca va ?,ca va ?":
                     0: "t'as craqué toi"
         "coller":
-            0: "La petite"
-            1: "Coller coller !"
-            2: "Coller coller coller COLLER coller coller coller COLLER coller COLLER COLLER LA PETITE !"
+            - "La petite"
+            - "Coller coller !"
+            - "Coller coller coller COLLER coller coller coller COLLER coller COLLER COLLER LA PETITE !"
         "bender":
             0: "oui ?"
             1: "oui %user_name ? je t'écoute"
