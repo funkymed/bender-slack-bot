@@ -143,6 +143,8 @@ parameters:
             "--response--":
                 "comment ca va ?,ca va ?":
                     0: "t'as craqué toi"
+        "coller":
+            0: "La petite"
         "bender":
             0: "oui ?"
             1: "oui %user_name ? je t'écoute"
