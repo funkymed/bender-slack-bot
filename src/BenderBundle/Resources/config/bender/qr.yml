@@ -189,7 +189,7 @@ parameters:
             12: "oui %user_name ?"
             13: "et voilà %user_name va encore me souler"
             14: "c'est comme ça que je m'appelle"
-            15: "T'as fait composer update ?
+            15: "T'as fait composer update ?"
             "--response--":
                 "mauviette":
                     0: "Personne... ne me traite de mauviette !"
