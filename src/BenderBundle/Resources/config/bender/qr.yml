@@ -6,7 +6,7 @@ parameters:
             - "test, un deux"
             - "oui allo ?"
             - "qui me parle ?"
-        "cp, congés, malade":
+        "cp,congés,malade":
             - "Tu parles encore vacance bosse un peu là"
         "retard":
             - "toujours le même !"
