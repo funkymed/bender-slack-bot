@@ -5,6 +5,14 @@ parameters:
         "test,123,allo":
             - "test, un deux"
             - "oui allo ?"
+            - "qui me parle ?"
+        "cp,congés,malade":
+            - "Tu parles encore vacance bosse un peu là"
+        "retard":
+            - "toujours le même !"
+            - "T'as encore raté ton train ?"
+            - "tu fais concurrence à l'autre glandu ?"
+            - "dépèche toi alors !"
         "charrette,charete,charrete,charette":
             - "moi je charrette vers 15h"
             - "en pleine journée c'est mieu"
@@ -14,8 +22,18 @@ parameters:
         "énorme":
             - "et sec"
             - "c'est clairement *énorme et sec*"
+            - "comme ma $&#@"
+            - "comme ta mère"
         "normal":
             - "c'est normal en *RUSSIE*"
+        "commit":
+            - "vide"
+            - "t'as testé avant ?"
+        "push":
+            - "t'as pas oublié de rebase avant ?"
+        "mr,merge request":
+            - "tu veux une médaille ?"
+            - "%user_name bravo je suis fier de toi !"
         "hier":
             0: "tu commences à raconter ta vie là"
             1: "blah blah blah"
@@ -49,11 +67,13 @@ parameters:
             - "une bonne binch"
             - "allé hop dans le cahier du bar"
             - "tu me remet la même stp"
+            - "va bosser c'est pas l'heure %user_name"
         "sodomie,sodo,anal,anus,cul,l'anal,atp,atm":
             - "merci %user_name je ne cicatrise toujours pas :("
             - "ça me rappel des soirées au fucking blue boy avec %user_name"
             - "j'ai faim d'un coup je sais pas pourquoi"
             - "faut prévoir la bonne dose de créme"
+            - "tu ne sais pas de quoi tu parles gamin"
         "salope,suce,chatte,pute":
             - "ok j'appel ta mére"
             - "aucune éducation"
@@ -108,6 +128,12 @@ parameters:
             - "moi j'aime bien le burger chez azziz"
             - "la viande de kebab je suis pas sur, c'est pas du chat ?"
             - "salade tomate ognion pour moi"
+        "burger king,bk,macdo":
+            - "Quoi ? Oh nan pas encore"
+        "j'ai faim,manger,midi":
+            - "%user_name tu penses qu'à bouffer toi"
+            - "Bah va manger au lieu de te plaindre"
+            - "ramène moi un truc stp j'ai trop de boulot"
         "pascal,frere":
             - "il va te casser la gueule"
             - "il va te dresser direct"
@@ -143,6 +169,10 @@ parameters:
             "--response--":
                 "comment ca va ?,ca va ?":
                     0: "t'as craqué toi"
+        "coller":
+            - "La petite"
+            - "Coller coller !"
+            - "Coller coller coller COLLER coller coller coller COLLER coller COLLER COLLER LA PETITE !"
         "bender":
             0: "oui ?"
             1: "oui %user_name ? je t'écoute"
@@ -155,10 +185,11 @@ parameters:
             8: "au rapport"
             9: "yes ?"
             10: "je bosse là"
-            11: "t'as rien d'autre à fouttre %user_name ?"
+            11: "t'as rien d'autre à foutre %user_name ?"
             12: "oui %user_name ?"
             13: "et voilà %user_name va encore me souler"
             14: "c'est comme ça que je m'appelle"
+            15: "T'as fait composer update ?
             "--response--":
                 "mauviette":
                     0: "Personne... ne me traite de mauviette !"
@@ -166,6 +197,9 @@ parameters:
                     2: "PERSONNE... *NE ME TRAITE DE MAUVIETTE !!!!*"
                 "merci,thanks":
                     0: "pourquoi ?"
+                    1: "de rien"
+                    2: "denada"
+                    3: "chut"
                     "--response--":
                         "pour rien,rien":
                             0: "t'es gogole"
@@ -204,6 +238,7 @@ parameters:
                             3: "je m'en fou"
                         "non":
                             0: "je suis content"
+                            1: "Cool"
                 "t'es un homme ?,t'es un garçon ?,t'es un garcon ?,t'es un mec ?":
                     0: "nop, un putain de robot"
                     1: "je crois pas non"
