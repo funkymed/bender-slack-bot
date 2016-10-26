@@ -132,7 +132,7 @@ parameters:
             - "Quoi ? Oh nan pas encore"
         "j'ai faim,manger,midi":
             - "%user_name tu penses qu'à bouffer toi"
-            - "Bas va manger au lieu de te plaindre"
+            - "Bah va manger au lieu de te plaindre"
             - "ramène moi un truc stp j'ai trop de boulot"
         "pascal,frere":
             - "il va te casser la gueule"
