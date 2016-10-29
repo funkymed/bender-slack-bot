@@ -3,10 +3,7 @@
 namespace BenderBundle\Service;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use Imagine\Imagick\Imagine;
-use Intervention\Image\Image;
 use Intervention\Image\ImageManagerStatic;
-use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Class YoutubeService
