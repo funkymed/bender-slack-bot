@@ -71,9 +71,13 @@ services:
         arguments: ["@bender.factory"]
         tags:
             -  { name: bender.services }
-
     bender.velib:
         class: BenderBundle\Service\VelibService
+        arguments: ["@bender.factory"]
+        tags:
+            -  { name: bender.services }
+    bender.meme:
+        class: BenderBundle\Service\MemeService
         arguments: ["@bender.factory"]
         tags:
             -  { name: bender.services }
