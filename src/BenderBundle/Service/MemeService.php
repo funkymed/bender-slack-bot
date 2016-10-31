@@ -4,6 +4,7 @@ namespace BenderBundle\Service;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Intervention\Image\ImageManagerStatic;
+use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Class YoutubeService
@@ -56,7 +57,8 @@ class MemeService extends BaseService
                 unset($search[0]);
                 $search = implode(' ',$search);
                 $query = explode(';',$search);
-                if(count($query)!=3){
+
+                if(count($query)<2){
                     return $this->array_random($this->badAnswer);
                 }
 
@@ -77,23 +79,30 @@ class MemeService extends BaseService
                     $path = realpath($this->getContainer()->get('kernel')->getRootDir()."/../web/meme/");
                     $filename = $this->getRandomFilename().".png";
                     $img = ImageManagerStatic::make($image_source);
-                    $img->text($query[1], $img->width()/2, 10, function($font) {
-                        $fontPath = $this->getContainer()->get('kernel')->locateResource('@BenderBundle/Resources/assets/font/impact.ttf');
-                        $font->file($fontPath);
-                        $font->size(32);
-                        $font->color('#ffffff');
-                        $font->align('center');
-                        $font->valign('top');
-                    })
-                    ->text($query[2], $img->width()/2, $img->height()-30, function($font) {
-                        $fontPath = $this->getContainer()->get('kernel')->locateResource('@BenderBundle/Resources/assets/font/impact.ttf');
-                        $font->file($fontPath);
-                        $font->size(32);
-                        $font->color('#ffffff');
-                        $font->align('center');
-                        $font->valign('bottom');
-                    })
-                    ->save($path."/".$filename);
+
+                    if(isset($query[1])) {
+                        $img->text($query[1], $img->width()/2, 10, function($font) {
+                            $fontPath = $this->getContainer()->get('kernel')->locateResource('@BenderBundle/Resources/assets/font/impact.ttf');
+                            $font->file($fontPath);
+                            $font->size(32);
+                            $font->color('#ffffff');
+                            $font->align('center');
+                            $font->valign('top');
+                        });
+                    }
+                    if(isset($query[2])) {
+                        $img->text($query[2], $img->width() / 2, $img->height() - 30, function ($font) {
+                            $fontPath = $this->getContainer()->get('kernel')->locateResource('@BenderBundle/Resources/assets/font/impact.ttf');
+                            $font->file($fontPath);
+                            $font->size(32);
+                            $font->color('#ffffff');
+                            $font->align('center');
+                            $font->valign('bottom');
+                        });
+                    }
+
+                    $img->save($path."/".$filename);
+
                     $request = $this->getContainer()->get('request_stack')->getCurrentRequest();
                     $host = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
                     $message = $host."/meme/".$filename;
@@ -143,17 +152,26 @@ class MemeService extends BaseService
             $message=implode("\n",$message);
 
         $date = new \DateTime();
-        return [
-            "attachments"=>[
-                [
-                    "title"=>"Meme generator",
-                    "color"=> "#ff5555",
-                    "footer"=> "Meme",
-                    "image_url"=>$message,
-                    "ts"=> $date->format('U')
+
+        if(strstr($message,'://'))
+        {
+
+            return [
+                "attachments"=>[
+                    [
+                        "title"=>"Meme generator",
+                        "color"=> "#ff5555",
+                        "footer"=> "Meme",
+                        "image_url"=>$message,
+                        "ts"=> $date->format('U')
+                    ]
                 ]
-            ]
-        ];
+            ];
+        }else{
+            return ['text'=>$message];
+
+        }
+
     }
 
 }
