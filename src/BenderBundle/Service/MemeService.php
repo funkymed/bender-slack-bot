@@ -3,7 +3,8 @@
 namespace BenderBundle\Service;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use Intervention\Image\ImageManagerStatic;
+use \GDText\Box;
+use \GDText\Color;
 use Symfony\Component\VarDumper\VarDumper;
 
 /**
@@ -62,7 +63,6 @@ class MemeService extends BaseService
                     return $this->array_random($this->badAnswer);
                 }
 
-
                 $image_source = false;
                 if(strstr($query[0],'://'))
                 {
@@ -70,38 +70,47 @@ class MemeService extends BaseService
                 }else{
                     $imageRes = $this->getMemeImage($query[0]);
 
-                    if($imageRes->success) {
+                    if($imageRes->success && is_array($imageRes->result) && count($imageRes->result)>0) {
                         $image_source = $this->array_random($imageRes->result)->imageUrl;
+                    }else{
+                        return "nope, j'ai pas ça en stock";
                     }
                 }
 
                 if($image_source) {
                     $path = realpath($this->getContainer()->get('kernel')->getRootDir()."/../web/meme/");
                     $filename = $this->getRandomFilename().".png";
-                    $img = ImageManagerStatic::make($image_source);
+
+                    $image = new ImageProcess($image_source);
+                    $fontPath = $this->getContainer()->get('kernel')->locateResource('@BenderBundle/Resources/assets/font/impact.ttf');
 
                     if(isset($query[1])) {
-                        $img->text($query[1], $img->width()/2, 10, function($font) {
-                            $fontPath = $this->getContainer()->get('kernel')->locateResource('@BenderBundle/Resources/assets/font/impact.ttf');
-                            $font->file($fontPath);
-                            $font->size(32);
-                            $font->color('#ffffff');
-                            $font->align('center');
-                            $font->valign('top');
-                        });
-                    }
-                    if(isset($query[2])) {
-                        $img->text($query[2], $img->width() / 2, $img->height() - 30, function ($font) {
-                            $fontPath = $this->getContainer()->get('kernel')->locateResource('@BenderBundle/Resources/assets/font/impact.ttf');
-                            $font->file($fontPath);
-                            $font->size(32);
-                            $font->color('#ffffff');
-                            $font->align('center');
-                            $font->valign('bottom');
-                        });
+                        $image->drawTextBox(
+                            $query[1],
+                            $fontPath,
+                            32,
+                            10,
+                            10,
+                            $image->getWidth()-20,
+                            $image->getHeight()-20,
+                            'top'
+                        );
                     }
 
-                    $img->save($path."/".$filename);
+                    if(isset($query[2])) {
+                        $image->drawTextBox(
+                            $query[2],
+                            $fontPath,
+                            32,
+                            10,
+                            10,
+                            $image->getWidth()-20,
+                            $image->getHeight()-20,
+                            'bottom'
+                        );
+                    }
+
+                    $image->save($path."/".$filename);
 
                     $request = $this->getContainer()->get('request_stack')->getCurrentRequest();
                     $host = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
@@ -160,7 +169,7 @@ class MemeService extends BaseService
                 "attachments"=>[
                     [
                         "title"=>"Meme generator",
-                        "color"=> "#ff5555",
+                        "color"=> "#888888",
                         "footer"=> "Meme",
                         "image_url"=>$message,
                         "ts"=> $date->format('U')
@@ -176,4 +185,77 @@ class MemeService extends BaseService
 
 }
 
+
+class ImageProcess {
+
+    private $type;
+    private $source;
+
+    public function __construct($filepath){
+        $this->source = $this->imageCreateFromAny($filepath);
+    }
+
+    public function getWidth()
+    {
+        return imagesx($this->source);
+    }
+
+    public function getHeight()
+    {
+        return imagesy($this->source);
+    }
+
+    function imageCreateFromAny($filepath) {
+        $this->type = exif_imagetype($filepath);
+        $allowedTypes = array(
+            1,  // [] gif
+            2,  // [] jpg
+            3  // [] png
+        );
+        if (!in_array($this->type, $allowedTypes)) {
+            return false;
+        }
+        switch ($this->type) {
+            case 1 :
+                $im = imageCreateFromGif($filepath);
+                break;
+            case 2 :
+                $im = imageCreateFromJpeg($filepath);
+                break;
+            case 3 :
+                $im = imageCreateFromPng($filepath);
+                break;
+        }
+        return isset($im) ? $im : false;
+    }
+
+    /**
+     * @param $text
+     * @param $fontPath
+     * @param $size
+     * @param $x
+     * @param $y
+     * @param $width
+     * @param $height
+     */
+    public function drawTextBox($text,$fontPath,$size,$x,$y,$width,$height,$direction="top"){
+        $box = new Box($this->source);
+        $box->setFontFace($fontPath);
+        $box->setFontSize($size);
+        $box->setFontColor(new Color(255, 255, 255));
+        $box->setBox($x,$y,$width,$height);
+        $box->setTextAlign('center', $direction);
+        $box->setStrokeColor(new Color(0, 0, 0));
+        $box->setStrokeSize(4);
+        $box->draw($text);
+    }
+
+    /**
+     * @param $output
+     */
+    public function save($output){
+        imagejpeg($this->source, $output);
+        imagedestroy($this->source);
+    }
+}
 
