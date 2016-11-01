@@ -178,7 +178,6 @@ class MemeService extends BaseService
                 "attachments"=>[
                     [
                         "title"=>"Meme generator",
-                        "color"=> "#888888",
                         "footer"=> "Meme",
                         "image_url"=>$message,
                         "ts"=> $date->format('U')
