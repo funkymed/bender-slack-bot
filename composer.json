@@ -11,6 +11,12 @@
             "app/AppCache.php"
         ]
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://satis.wynd.eu"
+        }
+    ],
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
@@ -25,7 +31,7 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "guzzlehttp/guzzle": "^6.2",
-        "stil/gd-text": "^1.1"
+        "funkymed/gd-text": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
