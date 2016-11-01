@@ -15,7 +15,7 @@ class MemeService extends BaseService
 {
 
     //Doc : http://version1.api.memegenerator.net/#Generators_Search
-    private $url_search = "http://version1.api.memegenerator.net/Generators_Search?q=%s&pageIndex=0&pageSize=5";
+    private $url_search = "http://version1.api.memegenerator.net/Generators_Search?q=%s&pageIndex=0&pageSize=20";
     /**
      * @var string
      */
@@ -59,6 +59,16 @@ class MemeService extends BaseService
                 $search = implode(' ',$search);
                 $query = explode(';',$search);
 
+                $path = realpath($this->getContainer()->get('kernel')->getRootDir()."/../web/meme/");
+//                $filename = $this->getRandomFilename().".png";
+                $filename = md5($search).".png";
+                $request = $this->getContainer()->get('request_stack')->getCurrentRequest();
+                $host = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
+
+                if(file_exists($path."/".$filename)) {
+                    return $host."/meme/".$filename;
+                }
+
                 if(count($query)<2){
                     return $this->array_random($this->badAnswer);
                 }
@@ -78,8 +88,7 @@ class MemeService extends BaseService
                 }
 
                 if($image_source) {
-                    $path = realpath($this->getContainer()->get('kernel')->getRootDir()."/../web/meme/");
-                    $filename = $this->getRandomFilename().".png";
+
 
                     $image = new ImageProcess($image_source);
                     $fontPath = $this->getContainer()->get('kernel')->locateResource('@BenderBundle/Resources/assets/font/impact.ttf');
@@ -112,8 +121,6 @@ class MemeService extends BaseService
 
                     $image->save($path."/".$filename);
 
-                    $request = $this->getContainer()->get('request_stack')->getCurrentRequest();
-                    $host = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
                     $message = $host."/meme/".$filename;
                     return $message;
                 }
@@ -128,6 +135,8 @@ class MemeService extends BaseService
                 break;
         }
     }
+
+
 
     private function getRandomFilename($length = 12)
     {
