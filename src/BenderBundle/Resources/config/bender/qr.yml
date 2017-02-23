@@ -1,0 +1,268 @@
+parameters:
+    bender.qr:
+        "merci qui,merci qui ?,merci qui?,merci qui bender ?,merci qui bender?":
+            - "Merci *Jacquie et Michel*"
+        "test,123,allo":
+            - "test, un deux"
+            - "oui allo ?"
+            - "qui me parle ?"
+        "cp,congés,malade":
+            - "Tu parles encore vacance bosse un peu là"
+        "retard":
+            - "toujours le même !"
+            - "T'as encore raté ton train ?"
+            - "tu fais concurrence à l'autre glandu ?"
+            - "dépèche toi alors !"
+        "charrette,charete,charrete,charette":
+            - "moi je charrette vers 15h"
+            - "en pleine journée c'est mieu"
+            - "jamais le soir c'est *trop fatiguant*"
+        "incroyable,mais vrai":
+            - "incroyable mais vrai LE MAG"
+        "énorme":
+            - "et sec"
+            - "c'est clairement *énorme et sec*"
+            - "comme ma $&#@"
+            - "comme ta mère"
+        "normal":
+            - "c'est normal en *RUSSIE*"
+        "commit":
+            - "vide"
+            - "t'as testé avant ?"
+        "push":
+            - "t'as pas oublié de rebase avant ?"
+        "mr,merge request":
+            - "tu veux une médaille ?"
+            - "%user_name bravo je suis fier de toi !"
+        "hier":
+            0: "tu commences à raconter ta vie là"
+            1: "blah blah blah"
+            2: "moi aussi hier j'ai pris du pain"
+            3: "moi aussi hier j'ai fais des trucs"
+            "--response--":
+                "bah oué,oué,tg,ta gueule,huhu,haha,hihi,oui,non":
+                    0: "t'es gogole ou quoi ?"
+                    1: "huhu"
+                    2: "ho ça va %user_name"
+                    3: "oué c'est ça"
+                    4: "on s'en fout de ta vie"
+                "hier":
+                    0: 'on a compris'
+                    1: "tu racontes vraiment ta vie %user_name ..."
+        "a+,tcho,ciao,bye,dodo":
+            0: "bye"
+            1: "asta la vista"
+            2: "adios"
+            3: "a demain"
+            4: "et ne reviens pas !"
+        "con,conne,connasse":
+            0: "hey c'est toi le con"
+            1: "%user_name tu te calme"
+            2: "le con ici c'est %user_name"
+            "--response--":
+                "c'est toi le con,non toi,toi":
+                    0: "non c'est toi"
+        "biere,biere,beer,binouze":
+            - "moi j'aime bien la biere !!!!!!!"
+            - "une bonne binch"
+            - "allé hop dans le cahier du bar"
+            - "tu me remet la même stp"
+            - "va bosser c'est pas l'heure %user_name"
+        "sodomie,sodo,anal,anus,cul,l'anal,atp,atm":
+            - "merci %user_name je ne cicatrise toujours pas :("
+            - "ça me rappel des soirées au fucking blue boy avec %user_name"
+            - "j'ai faim d'un coup je sais pas pourquoi"
+            - "faut prévoir la bonne dose de créme"
+            - "tu ne sais pas de quoi tu parles gamin"
+        "salope,suce,chatte,pute":
+            - "ok j'appel ta mére"
+            - "aucune éducation"
+            - "t'es sérieux là ?"
+            - "vite j'appel les anges de la tv réalité"
+            - "SOS pascal le grand frére tu vas voir !"
+            - "#SOSpascal direct"
+        "mere,tante,soeur,cousine":
+            0: "ah ouais j'la connais c'est une pute :)"
+            1: "elle traine pas du côté de boulogne ?"
+            2: "faut lui dire de me rendre mon slip"
+            3: "je lui ferais bien le petit"
+            "--response--":
+                "tg,ta gueule":
+                    0: "t'as craqué toi"
+        "tinder,meetic,adopteunmec,okcupid,celibataire,maqué,maque,dispo,celib,disponible":
+            - "moi par contre je suis libre"
+            - "viens on s'inscrit sur tinder"
+            - "moi je suis sur meetic"
+        "connard,bender connard":
+            - "%user_name c'est toi le connard"
+            - "ho !! dis donc tu te calme %user_name !"
+            - "%user_name je vais venir te botter le cul"
+            - "j'ai ton digicode"
+        "ferme là,ferme la,tg,bender ta gueule,ta gueule, bender ferme là, bender ferme là,ta gueule bender,ferme la bender":
+            - "d'accord"
+            - "pardon"
+            - "oulala t'es de mauvais poil"
+            - "on a affaire au président de slack les amis"
+            - "attention le boss est dans la place"
+            - "hoho, alerte aux gogoles"
+        "encule,bender encule,enculer":
+            - "%user_name c'est toi l'enculé"
+            - "attends ... ok :("
+            - "mince, je suis démasqué :/"
+            - "hoho, alerte aux gogoles"
+        "grosse pute,bender grosse pute":
+            - "%user_name c'est ta mére la pute"
+            - "ho !! dis donc tu te calme %user_name !"
+            - "%user_name je vais venir te botter le cul"
+        "grosse merde,bender grosse merde":
+            - "%user_name c'est toi la grosse merde"
+        "bender batard":
+            - "je connais albator moi"
+            - "n'importe quoi"
+            - "tu vas prendre cher %user_name si tu continue"
+            - "%user_name c'est toi le batard"
+        "kebab":
+            - "j'ai trop faim arrete"
+            - "y a kader il fait de pures kebab sauce samouraï"
+            - "y a rachid en bas il fait de pures kebab sauce mayo"
+            - "moi j'aime bien le burger chez azziz"
+            - "la viande de kebab je suis pas sur, c'est pas du chat ?"
+            - "salade tomate ognion pour moi"
+        "burger king,bk,macdo":
+            - "Quoi ? Oh nan pas encore"
+        "j'ai faim,manger,midi":
+            - "%user_name tu penses qu'à bouffer toi"
+            - "Bah va manger au lieu de te plaindre"
+            - "ramène moi un truc stp j'ai trop de boulot"
+        "pascal,frere":
+            - "il va te casser la gueule"
+            - "il va te dresser direct"
+            - "pascal c'est mon grand frére"
+        "wesh,creme,kalash,zyva,wess":
+            - "tu t'es cru dans ta cité ?"
+            - "zyva wesh cousin sur ma vie tac tac"
+            - "t'as pas une garo ?"
+            - "wesh cousin"
+            - "ça passe crême"
+            - "kalash kalash"
+            - "draaa"
+        "bite,zgeg,tebi,zizi":
+            - "le mien est tordu"
+            - "je veux pas en parler"
+        "tape dans le fond":
+            - "je suis pas ta mère"
+            - "ho oui grand fou"
+            - "c'est ce que ta mère me dit"
+            - "zat ouat chie sède"
+            - "that's what she said"
+        "cochon,cochons":
+            - "gruik"
+            - "j'aime tout ce qui est rose"
+            - "j'aime les saucisses"
+        "salut bender,salut,yo,lo,luss,elo,olà,lu,bonjour,hi,kikoolol,allo,alo,hello":
+            0: "%text %user_name"
+            1: "hey mon ami !"
+            2: "bien le bonjour %user_name"
+            3: "alors depuis le temps !"
+            4: "ça fait un baille dis donc"
+            5: "tu vas passer ta journée à dire bonjour ?"
+            "--response--":
+                "comment ca va ?,ca va ?":
+                    0: "t'as craqué toi"
+        "coller":
+            - "La petite"
+            - "Coller coller !"
+            - "Coller coller coller COLLER coller coller coller COLLER coller COLLER COLLER LA PETITE !"
+        "bender":
+            0: "oui ?"
+            1: "oui %user_name ? je t'écoute"
+            2: "j'écoute ta quéstion %user_name"
+            3: "oui ?"
+            4: "on parle de moi ?"
+            5: "qu'est ce que peux je faire pour t'aider %user_name ?"
+            6: "oulala faut arrêter de m'appeller"
+            7: "je vais me faire goler par la direction avec vos conneries"
+            8: "au rapport"
+            9: "yes ?"
+            10: "je bosse là"
+            11: "t'as rien d'autre à foutre %user_name ?"
+            12: "oui %user_name ?"
+            13: "et voilà %user_name va encore me souler"
+            14: "c'est comme ça que je m'appelle"
+            15: "T'as fait composer update ?"
+            "--response--":
+                "mauviette":
+                    0: "Personne... ne me traite de mauviette !"
+                    1: "Personne... ne me TRAITE DE MAUVIETTE !!!!"
+                    2: "PERSONNE... *NE ME TRAITE DE MAUVIETTE !!!!*"
+                "merci,thanks":
+                    0: "pourquoi ?"
+                    1: "de rien"
+                    2: "denada"
+                    3: "chut"
+                    "--response--":
+                        "pour rien,rien":
+                            0: "t'es gogole"
+                            1: "n'importe quoi"
+                "tu habite ou ?,t'as quel age ?,t'as quel âge ?,t'a quel age ?,ton age ?,ton âge ?":
+                    0: "ça te regarde ?"
+                    1: "*information confidentiel*"
+                    2: "ACCESS DENIED"
+                "a+,tcho,ciao,bye,dodo":
+                    0: "bye"
+                    1: "asta la vista"
+                    2: "adios"
+                    3: "a demain"
+                    4: "et ne reviens pas !"
+                    "--response--":
+                        "bah oué,oué,tg,ta gueule,huhu,haha,hihi,oui,non":
+                            0: "ok d'accord"
+                        "bonne nuit,bonne soiree":
+                            0: "merci toi aussi"
+                            "--response--":
+                                "ok,merci,bye":
+                                    0: "ouep"
+                                    1: "casse toi"
+                                    2: "encore là ?"
+                "ça va ?,ca va ?,sa va ?,ça va bender,ca va bender":
+                    0: "Bien et toi ?"
+                    1: "niquel et toi %user_name ?"
+                    2: "c'est gentil de demander, et toi %user_name ?"
+                    3: "oui jusqu'a ce que tu me parle %user_name"
+                    4: "oui, et toi %user_name ?"
+                    "--response--":
+                        "niquel,bien,super,non,oui":
+                            0: "a bah cool"
+                            1: "d'accord"
+                            2: "ok"
+                            3: "je m'en fou"
+                        "non":
+                            0: "je suis content"
+                            1: "Cool"
+                "t'es un homme ?,t'es un garçon ?,t'es un garcon ?,t'es un mec ?":
+                    0: "nop, un putain de robot"
+                    1: "je crois pas non"
+                    2: "et toi ?"
+                    "--response--":
+                        "oui,oui je suis un homme,ouep,un vrai":
+                            0: "genre"
+                            1: "prouve le"
+                            2: "t'as une barbe aussi ?"
+                        "non,nop,je suis une fille,je suis une femme,non une femme,non une fille":
+                            0: "super je m'en fou"
+                            1: "va donc me faire un sandwich alors"
+                            2: "la cuisine c'est là bas"
+                            3: "ah justement je ne retrouve pas mes chaussettes"
+                            4: "tu peux me recoudre un truc ?"
+                "t'es un femme ?,t'es un fille ?,t'es une meuf ?":
+                    0: "nop, un putain de robot"
+                    1: "je crois pas non"
+                    2: "et toi ?"
+                    "--response--":
+                        "oui,oui je suis un femme,ouep":
+                            0: "genre"
+                            1: "prouve le"
+                        "non,nop,je suis un homme,je suis un mec,non un homme,non un mec":
+                            0: "super je m'en fou"
+                            1: "j'ai besoin de réparer un truc, t'as 5 minutes ?"
+                            2: "mon ordi est en panne, tu peux m'aider ?"

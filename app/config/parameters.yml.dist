@@ -1,0 +1,31 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    locale: fr
+
+    #Api Key
+    api_weather_key: "f5cbdce7c5d7d99c26caf8b72cb00605"
+    api_youtube_key: "AIzaSyBmyNqx04RTdA3bYEy8dq9KqZFmcfIfujo"
+    api_sncf_key: "a9ae982d-6fcc-420b-af7f-225932ec360e"
+    url_bender: "http://bender.wynd.eu"
+    slack_id: "21000909651.81082015155"
+    slack_secret: "95b5a5d6ace6967a1ecc8f35895be2be"
+    slack_token: "OKKMT7LNULrm0iIXjCLQ6afz"
+    giphy_key: "dc6zaTOxFJmzC"
