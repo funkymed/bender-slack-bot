@@ -22,9 +22,9 @@ class BenderController extends Controller
         $factory = $this->get('bender.factory');
         $message = $factory->getResponseMessage();
 
-        if(empty($message)) {
+        if (empty($message)) {
             return new Response("");
-        }else{
+        } else {
             return new JsonResponse($message);
         }
     }
@@ -34,7 +34,7 @@ class BenderController extends Controller
      */
     public function messageAction(Request $request)
     {
-        $callback_id = $request->get('callback_id',false);
+        $callback_id = $request->get('callback_id', false);
         return new Response("ok");
     }
 }

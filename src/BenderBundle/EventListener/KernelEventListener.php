@@ -15,7 +15,8 @@ class KernelEventListener
     private $session;
     private $router;
 
-    public function __construct(ContainerInterface $container) {
+    public function __construct(ContainerInterface $container)
+    {
         $this->container = $container;
         $this->session = $container->get('session');
         $this->router = $container->get('router');
@@ -25,7 +26,7 @@ class KernelEventListener
     public function onKernelRequest(Event $event)
     {
         $code = '21000909651.81942785152.418de98010';//$this->session->get('code',false);
-        if(!$code)
+        if (!$code)
             return true;
 
         //https://slack.com/oauth/pick_reflow?client_id=21000909651.81082015155&scope=chat:write:bot
@@ -35,10 +36,10 @@ class KernelEventListener
         $client = new Client();
 
         try {
-            $result = $client->request("POST", "https://slack.com/api/oauth.access",[
-                'client_id'=>$client_id,
-                'client_secret'=>$secret,
-                'code'=>$code,
+            $result = $client->request("POST", "https://slack.com/api/oauth.access", [
+                'client_id' => $client_id,
+                'client_secret' => $secret,
+                'code' => $code,
             ]);
 
             $json = $result->getBody()->getContents();
@@ -52,7 +53,6 @@ class KernelEventListener
         return true;
 
     }
-
 
 
 }
