@@ -3,18 +3,19 @@
 namespace BenderBundle\Service;
 
 use Symfony\Component\VarDumper\VarDumper;
+use sylouuu\MarmitonCrawler\Recipe\Recipe;
 
 /**
  * Class RecetteService
  * @package BenderBundle\Service
  */
-class RecetteService extends BaseService
+class MarmitonService extends BaseService
 {
-    protected $hook = '!recette';
+    protected $hook = '!marmiton';
 
     public function getHelp()
     {
-        return '!recette';
+        return '!marmiton';
     }
 
     /**
@@ -43,6 +44,22 @@ class RecetteService extends BaseService
         foreach ($links as $link) {
             $link_recipe = urldecode("http://www.marmiton.org" . $link->getAttribute('href'));
         }
+
+        // Fetch the recipe
+        $recipe = new Recipe($link_recipe);
+        $recipe = json_decode($recipe->getRecipe());
+        $message = sprintf("%s (pour %s))\n", $recipe->recipe_name, $recipe->guests_number);
+        $message .= sprintf("Préparation : %s\n", $recipe->preparation_time);
+        $message .= sprintf("Cuisson : %s\n", $recipe->cook_time);
+        $message .= ">instructions:\n";
+        $message .= sprintf("%s\n", $recipe->instructions);
+        $message .= ">ingredients:\n";
+        foreach ($recipe->ingredients as $ingredient) {
+            $message .= "\t- " . $ingredient . "\n";
+        }
+        return ["text" => $message, "url" => $link_recipe];
+        exit;
+
 
         $opts = array('http' => array('header' => "User-Agent:MyAgent/1.0\r\n"));
         $context = stream_context_create($opts);
@@ -85,7 +102,8 @@ class RecetteService extends BaseService
                     "color" => "#F47422",
                     "footer" => "marmiton.org",
                     "footer_icon" => $this->getMediaUrl("/bundles/bender/icons/marmiton.png"),
-                    "title_link" => "http://www.marmiton.org",
+                    "title_link" => $message['url'],
+//                    "image_url"=>$message['image'],
                     "text" => $message['text'],
                     "ts" => $date->format('U')
                 ]
