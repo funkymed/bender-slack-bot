@@ -161,7 +161,7 @@ class SncfService extends BaseService
                     "footer"=> "Sncf",
                     "footer_icon"=>$this->getMediaUrl("/bundles/bender/icons/sncf.png"),
                     "title_link"=> "http://www.sncf.com",
-                    "fields"=>$message,
+                    "fields"=>!is_array($message) ? [$message] : $message,
                     "ts"=> $date->format('U')
                 ]
             ]

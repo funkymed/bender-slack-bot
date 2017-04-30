@@ -1,6 +1,7 @@
 <?php
 
 namespace BenderBundle\Service;
+
 use Symfony\Component\VarDumper\VarDumper;
 
 /**
@@ -9,12 +10,12 @@ use Symfony\Component\VarDumper\VarDumper;
  */
 abstract class BaseService
 {
-    protected $hook = "";
-    protected $factory;
     public $cache;
-    private $container;
     public $badAnswer;
     public $color = "#00BBFF";
+    protected $hook = "";
+    protected $factory;
+    private $container;
 
     /**
      * BaseService constructor.
@@ -27,14 +28,6 @@ abstract class BaseService
         $this->cache = $this->container->get('cache');
         $this->cache->setNamespace($this->getFactory()->getTeamDomain());
         $this->badAnswer = $this->container->getParameter("bender.badanswer");
-    }
-
-    /**
-     * @return \Symfony\Component\DependencyInjection\Container
-     */
-    public function getContainer()
-    {
-        return $this->container;
     }
 
     /**
@@ -86,22 +79,6 @@ abstract class BaseService
     }
 
     /**
-     * Get Message
-     * @param $text
-     * @return mixed
-     */
-    abstract protected function getMessage($text);
-
-    /**
-     * Get Hook
-     * @return string
-     */
-    public function getHook()
-    {
-        return $this->hook;
-    }
-
-    /**
      * @param     $arr
      * @param int $num
      * @return array
@@ -124,13 +101,11 @@ abstract class BaseService
      */
     public function getCommands($text)
     {
-        $txt = explode(" ",$text);
+        $txt = explode(" ", $text);
         $commands = array();
-        foreach($txt as $t)
-        {
-            if($t!=$this->hook)
-            {
-                $commands[]=$t;
+        foreach ($txt as $t) {
+            if ($t != $this->hook) {
+                $commands[] = $t;
             }
         }
         return $commands;
@@ -143,6 +118,15 @@ abstract class BaseService
     public function getHelp()
     {
         return $this->getHook();
+    }
+
+    /**
+     * Get Hook
+     * @return string
+     */
+    public function getHook()
+    {
+        return $this->hook;
     }
 
     /**
@@ -159,21 +143,36 @@ abstract class BaseService
         return $content;
     }
 
+    public function getMediaUrl($media)
+    {
+        $host = $this->getContainer()->get('request_stack')->getCurrentRequest()->getSchemeAndHttpHost();
+        return $host . $media;
+    }
+
+    /**
+     * @return \Symfony\Component\DependencyInjection\Container
+     */
+    public function getContainer()
+    {
+        return $this->container;
+    }
+
+    /**
+     * Get Message
+     * @param $text
+     * @return mixed
+     */
+    abstract protected function getMessage($text);
+
     /**
      * @param $message
      * @return array
      */
     protected function getAnswer($message)
     {
-        if(is_array($message))
-            $message=implode("\n",$message);
-        return ["text"=>$message];
-    }
-
-    public function getMediaUrl($media)
-    {
-        $host = $this->getContainer()->get('request_stack')->getCurrentRequest()->getSchemeAndHttpHost();
-        return $host.$media;
+        if (is_array($message))
+            $message = implode("\n", $message);
+        return ["text" => $message];
     }
 
 }

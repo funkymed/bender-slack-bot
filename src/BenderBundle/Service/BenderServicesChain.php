@@ -23,18 +23,17 @@ class BenderServicesChain
 
     public function getHelps()
     {
-        $help=[];
-        $help[]='```';
-        $help[]='    __                   __                ';
-        $help[]='   / /_  ___  ____  ____/ /__  _____       ';
-        $help[]='  / __ \/ _ \/ __ \/ __  / _ \/ ___/       ';
-        $help[]=' / /_/ /  __/ / / / /_/ /  __/ /           ';
-        $help[]='/_.___/\___/_/ /_/\__,_/\___/_/ slack-bot  ';
-        $help[]='```';
+        $help = [];
+        $help[] = '```';
+        $help[] = '    __                   __                ';
+        $help[] = '   / /_  ___  ____  ____/ /__  _____       ';
+        $help[] = '  / __ \/ _ \/ __ \/ __  / _ \/ ___/       ';
+        $help[] = ' / /_/ /  __/ / / / /_/ /  __/ /           ';
+        $help[] = '/_.___/\___/_/ /_/\__,_/\___/_/ slack-bot  ';
+        $help[] = '```';
 
-        foreach ($this->services as $service)
-        {
-            $help[]=$service->getHelp();
+        foreach ($this->services as $service) {
+            $help[] = $service->getHelp();
         }
         return $help;
     }

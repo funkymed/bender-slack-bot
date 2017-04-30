@@ -31,25 +31,23 @@ class DebugService extends BaseService
      */
     public function checkAnswer($text)
     {
-        $message=array();
-        $message[]='===========';
-        $message[]='Variables :';
-        $message[]='===========';
+        $message = array();
+        $message[] = '===========';
+        $message[] = 'Variables :';
+        $message[] = '===========';
         $data = $this->getFactory()->getData();
-        foreach($data as $k=>$v)
-        {
-            $message[]=$k." : ".$v;
+        foreach ($data as $k => $v) {
+            $message[] = $k . " : " . $v;
         }
 
-        $message[]='================';
-        $message[]='Plugins loaded : '.count($this->getFactory()->getClasses());
-        $message[]='================';
+        $message[] = '================';
+        $message[] = 'Plugins loaded : ' . count($this->getFactory()->getClasses());
+        $message[] = '================';
         $classes = $this->getFactory()->getClasses();
-        foreach($classes as $k=>$c)
-        {
-            $message[]=$k;
+        foreach ($classes as $k => $c) {
+            $message[] = $k;
         }
-        $message[]='Done.';
+        $message[] = 'Done.';
 
         return $message;
     }
