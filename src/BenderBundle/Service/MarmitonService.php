@@ -51,9 +51,9 @@ class MarmitonService extends BaseService
         $message = sprintf("%s (pour %s))\n", $recipe->recipe_name, $recipe->guests_number);
         $message .= sprintf("Préparation : %s\n", $recipe->preparation_time);
         $message .= sprintf("Cuisson : %s\n", $recipe->cook_time);
-        $message .= ">instructions:\n";
+        $message .= "*instructions*:\n";
         $message .= sprintf("%s\n", $recipe->instructions);
-        $message .= ">ingredients:\n";
+        $message .= "*ingredients*:\n";
         foreach ($recipe->ingredients as $ingredient) {
             $message .= "\t- " . $ingredient . "\n";
         }
