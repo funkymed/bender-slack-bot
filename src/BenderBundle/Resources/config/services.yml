@@ -46,8 +46,8 @@ services:
         arguments: ["@bender.factory"]
         tags:
             -  { name: bender.services }
-    bender.recette:
-        class: BenderBundle\Service\RecetteService
+    bender.marmiton:
+        class: BenderBundle\Service\MarmitonService
         arguments: ["@bender.factory"]
         tags:
             -  { name: bender.services }
