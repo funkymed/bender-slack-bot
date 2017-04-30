@@ -48,16 +48,16 @@ class MarmitonService extends BaseService
         // Fetch the recipe
         $recipe = new Recipe($link_recipe);
         $recipe = json_decode($recipe->getRecipe());
-        $message = sprintf("%s (pour %s))\n", $recipe->recipe_name, $recipe->guests_number);
-        $message .= sprintf("Préparation : %s\n", $recipe->preparation_time);
-        $message .= sprintf("Cuisson : %s\n", $recipe->cook_time);
+        $message = sprintf("Pour %s personnes\n", $recipe->guests_number);
+        $message .= sprintf("Préparation : %s minutes\n", $recipe->preparation_time);
+        $message .= sprintf("Cuisson : %s minutes\n", $recipe->cook_time);
         $message .= "*instructions*:\n";
         $message .= sprintf("%s\n", $recipe->instructions);
         $message .= "*ingredients*:\n";
         foreach ($recipe->ingredients as $ingredient) {
             $message .= "\t- " . $ingredient . "\n";
         }
-        return ["text" => $message, "url" => $link_recipe];
+        return ["title" => $recipe->recipe_name, "text" => $message, "url" => $link_recipe];
         exit;
 
 
@@ -98,7 +98,7 @@ class MarmitonService extends BaseService
         $data = [
             "attachments" => [
                 [
-                    "title" => "Recette Marmiton",
+                    "title" => $message['title'],
                     "color" => "#F47422",
                     "footer" => "marmiton.org",
                     "footer_icon" => $this->getMediaUrl("/bundles/bender/icons/marmiton.png"),
