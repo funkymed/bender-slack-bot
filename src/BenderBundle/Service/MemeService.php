@@ -1,6 +1,7 @@
 <?php
 
 namespace BenderBundle\Service;
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use \GDText\Box;
@@ -15,25 +16,18 @@ class MemeService extends BaseService
 {
 
     //Doc : http://version1.api.memegenerator.net/#Generators_Search
-    private $url_search = "http://version1.api.memegenerator.net/Generators_Search?q=%s&pageIndex=0&pageSize=20";
     /**
      * @var string
      */
     protected $hook = '!meme';
-
-    /**
-     * @return string
-     */
-    public function getHelp()
-    {
-        return '!meme help|create mood|url;title;message';
-    }
+    private $url_search = "http://version1.api.memegenerator.net/Generators_Search?q=%s&pageIndex=0&pageSize=20";
 
     /**
      * @param $text
      * @return array|string
      */
-    public function getMessage($text) {
+    public function getMessage($text)
+    {
         $answer = $this->checkAnswer($text);
         return $answer ? $this->getAnswer($answer) : "";
     }
@@ -42,86 +36,85 @@ class MemeService extends BaseService
      * @param $text
      * @return array|string
      */
-    public function checkAnswer($text) {
+    public function checkAnswer($text)
+    {
 
         $commands = $this->getCommands($text);
-        if(!isset($commands[0]))
-            return $this->array_random($this->badAnswer)." Il manque une commande (search, help)";
+        if (!isset($commands[0]))
+            return $this->array_random($this->badAnswer) . " Il manque une commande (search, help)";
 
-        switch($commands[0])
-        {
+        switch ($commands[0]) {
             case "create":
-                if(!isset($commands[1]))
+                if (!isset($commands[1]))
                     return $this->array_random($this->badAnswer);
 
                 $search = $commands;
                 unset($search[0]);
-                $search = implode(' ',$search);
-                $query = explode(';',$search);
+                $search = implode(' ', $search);
+                $query = explode(';', $search);
 
-                $path = realpath($this->getContainer()->get('kernel')->getRootDir()."/../web/meme/");
+                $path = realpath($this->getContainer()->get('kernel')->getRootDir() . "/../web/meme/");
 //                $filename = $this->getRandomFilename().".png";
-                $filename = md5($search).".png";
+                $filename = md5($search) . ".png";
                 $request = $this->getContainer()->get('request_stack')->getCurrentRequest();
                 $host = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
 
-                if(file_exists($path."/".$filename)) {
-                    return $host."/meme/".$filename;
+                if (file_exists($path . "/" . $filename)) {
+                    return $host . "/meme/" . $filename;
                 }
 
-                if(count($query)<2){
+                if (count($query) < 2) {
                     return $this->array_random($this->badAnswer);
                 }
 
                 $image_source = false;
-                if(strstr($query[0],'://'))
-                {
+                if (strstr($query[0], '://')) {
                     $image_source = $query[0];
-                }else{
+                } else {
                     $imageRes = $this->getMemeImage($query[0]);
 
-                    if($imageRes->success && is_array($imageRes->result) && count($imageRes->result)>0) {
+                    if ($imageRes->success && is_array($imageRes->result) && count($imageRes->result) > 0) {
                         $image_source = $this->array_random($imageRes->result)->imageUrl;
-                    }else{
+                    } else {
                         return "nope, j'ai pas ça en stock";
                     }
                 }
 
-                if($image_source) {
+                if ($image_source) {
 
 
                     $image = new ImageProcess($image_source);
                     $fontPath = $this->getContainer()->get('kernel')->locateResource('@BenderBundle/Resources/assets/font/impact.ttf');
 
-                    if(isset($query[1])) {
+                    if (isset($query[1])) {
                         $image->drawTextBox(
                             $query[1],
                             $fontPath,
                             32,
                             10,
                             10,
-                            $image->getWidth()-20,
-                            $image->getHeight()-20,
+                            $image->getWidth() - 20,
+                            $image->getHeight() - 20,
                             'top'
                         );
                     }
 
-                    if(isset($query[2])) {
+                    if (isset($query[2])) {
                         $image->drawTextBox(
                             $query[2],
                             $fontPath,
                             32,
                             10,
                             10,
-                            $image->getWidth()-20,
-                            $image->getHeight()-20,
+                            $image->getWidth() - 20,
+                            $image->getHeight() - 20,
                             'bottom'
                         );
                     }
 
-                    $image->save($path."/".$filename);
+                    $image->save($path . "/" . $filename);
 
-                    $message = $host."/meme/".$filename;
+                    $message = $host . "/meme/" . $filename;
                     return $message;
                 }
 
@@ -136,7 +129,55 @@ class MemeService extends BaseService
         }
     }
 
+    /**
+     * @return mixed|\Psr\Http\Message\ResponseInterface|string
+     */
+    private function getMemeImage($query)
+    {
+        $client = new Client();
+        try {
+            $result = $client->request("GET", sprintf($this->url_search, $query));
+            $json = $result->getBody()->getContents();
+            $json = \GuzzleHttp\json_decode($json);
+            return $json;
+        } catch (ClientException $e) {
+            return $this->array_random($this->badAnswer);
+        }
+    }
 
+    /**
+     * @return string
+     */
+    public function getHelp()
+    {
+        return '!meme help|create mood|url;title;message';
+    }
+
+    protected function getAnswer($message)
+    {
+        if (is_array($message))
+            $message = implode("\n", $message);
+
+        $date = new \DateTime();
+
+        if (strstr($message, '://')) {
+
+            return [
+                "attachments" => [
+                    [
+                        "title" => "Meme generator",
+                        "footer" => "Meme",
+                        "image_url" => $message,
+                        "ts" => $date->format('U')
+                    ]
+                ]
+            ];
+        } else {
+            return ['text' => $message];
+
+        }
+
+    }
 
     private function getRandomFilename($length = 12)
     {
@@ -149,71 +190,22 @@ class MemeService extends BaseService
         return $randomString;
     }
 
-    /**
-     * @return mixed|\Psr\Http\Message\ResponseInterface|string
-     */
-    private function getMemeImage($query)
-    {
-        $client = new Client();
-        try {
-            $result = $client->request("GET", sprintf($this->url_search,$query));
-            $json = $result->getBody()->getContents();
-            $json = \GuzzleHttp\json_decode($json);
-            return $json;
-        } catch (ClientException $e) {
-            return $this->array_random($this->badAnswer);
-        }
-    }
-
-    protected function getAnswer($message){
-        if(is_array($message))
-            $message=implode("\n",$message);
-
-        $date = new \DateTime();
-
-        if(strstr($message,'://'))
-        {
-
-            return [
-                "attachments"=>[
-                    [
-                        "title"=>"Meme generator",
-                        "footer"=> "Meme",
-                        "image_url"=>$message,
-                        "ts"=> $date->format('U')
-                    ]
-                ]
-            ];
-        }else{
-            return ['text'=>$message];
-
-        }
-
-    }
-
 }
 
 
-class ImageProcess {
+class ImageProcess
+{
 
     private $type;
     private $source;
 
-    public function __construct($filepath){
+    public function __construct($filepath)
+    {
         $this->source = $this->imageCreateFromAny($filepath);
     }
 
-    public function getWidth()
+    function imageCreateFromAny($filepath)
     {
-        return imagesx($this->source);
-    }
-
-    public function getHeight()
-    {
-        return imagesy($this->source);
-    }
-
-    function imageCreateFromAny($filepath) {
         $this->type = exif_imagetype($filepath);
         $allowedTypes = array(
             1,  // [] gif
@@ -237,6 +229,16 @@ class ImageProcess {
         return isset($im) ? $im : false;
     }
 
+    public function getWidth()
+    {
+        return imagesx($this->source);
+    }
+
+    public function getHeight()
+    {
+        return imagesy($this->source);
+    }
+
     /**
      * @param $text
      * @param $fontPath
@@ -246,12 +248,13 @@ class ImageProcess {
      * @param $width
      * @param $height
      */
-    public function drawTextBox($text,$fontPath,$size,$x,$y,$width,$height,$direction="top"){
+    public function drawTextBox($text, $fontPath, $size, $x, $y, $width, $height, $direction = "top")
+    {
         $box = new Box($this->source);
         $box->setFontFace($fontPath);
         $box->setFontSize($size);
         $box->setFontColor(new Color(255, 255, 255));
-        $box->setBox($x,$y,$width,$height);
+        $box->setBox($x, $y, $width, $height);
         $box->setTextAlign('center', $direction);
         $box->setStrokeColor(new Color(0, 0, 0));
         $box->setStrokeSize(4);
@@ -261,7 +264,8 @@ class ImageProcess {
     /**
      * @param $output
      */
-    public function save($output){
+    public function save($output)
+    {
         imagejpeg($this->source, $output);
         imagedestroy($this->source);
     }

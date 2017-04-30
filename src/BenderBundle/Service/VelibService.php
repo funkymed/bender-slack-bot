@@ -1,6 +1,7 @@
 <?php
 
 namespace BenderBundle\Service;
+
 use Symfony\Component\VarDumper\VarDumper;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Client;
@@ -12,26 +13,18 @@ use GuzzleHttp\Client;
 class VelibService extends BaseService
 {
     public $titleMessage = "";
-    private $api_url = "https://api.citybik.es/v2/networks/velib?fields=id,name,href,stations";
-
     /**
      * @var string
      */
     protected $hook = '!velib';
-
-    /**
-     * @return string
-     */
-    public function getHelp()
-    {
-        return "!velib (help|zone de velib)";
-    }
+    private $api_url = "https://api.citybik.es/v2/networks/velib?fields=id,name,href,stations";
 
     /**
      * @param $text
      * @return array|string
      */
-    public function getMessage($text) {
+    public function getMessage($text)
+    {
         $answer = $this->checkAnswer($text);
         return $answer ? $this->getAnswer($answer) : "";
     }
@@ -40,11 +33,12 @@ class VelibService extends BaseService
      * @param $text
      * @return array|string
      */
-    public function checkAnswer($text) {
+    public function checkAnswer($text)
+    {
 
         $commands = $this->getCommands($text);
 
-        switch($commands[0]){
+        switch ($commands[0]) {
             case "help":
                 return $this->getHelp();
                 break;
@@ -52,21 +46,29 @@ class VelibService extends BaseService
                 $this->titleMessage = $commands[0];
                 $message = [];
                 $data = $this->get();
-                foreach($data->network->stations as $station){
-                    if(stristr($station->name,$commands[0])){
-                        $message[]=[
-                            'title'=>sprintf("à la station %s : %s vélo%s",$station->name,$station->free_bikes,($station->free_bikes>1 ?"s":""))
+                foreach ($data->network->stations as $station) {
+                    if (stristr($station->name, $commands[0])) {
+                        $message[] = [
+                            'title' => sprintf("à la station %s : %s vélo%s", $station->name, $station->free_bikes, ($station->free_bikes > 1 ? "s" : ""))
                         ];
                     }
                 }
         }
 
 
-        if(!empty($message)){
+        if (!empty($message)) {
             return $message;
-        }else{
-            return $this->array_random($this->badAnswer)." je ne trouve pas cette station velib";
+        } else {
+            return $this->array_random($this->badAnswer) . " je ne trouve pas cette station velib";
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getHelp()
+    {
+        return "!velib (help|zone de velib)";
     }
 
     /**
@@ -85,19 +87,20 @@ class VelibService extends BaseService
         }
     }
 
-    protected function getAnswer($message){
+    protected function getAnswer($message)
+    {
 
         $date = new \DateTime();
         return [
-            "attachments"=>[
+            "attachments" => [
                 [
-                    "title"=>"Velib : ".$this->titleMessage,
-                    "color"=> "#224488",
-                    "footer"=> "Velib",
-                    "footer_icon"=>$this->getMediaUrl("/bundles/bender/icons/velib.png"),
-                    "title_link"=> "http://www.velib.paris/",
-                    "fields"=>$message,
-                    "ts"=> $date->format('U')
+                    "title" => "Velib : " . $this->titleMessage,
+                    "color" => "#224488",
+                    "footer" => "Velib",
+                    "footer_icon" => $this->getMediaUrl("/bundles/bender/icons/velib.png"),
+                    "title_link" => "http://www.velib.paris/",
+                    "fields" => !is_array($message) ? [$message] : $message,
+                    "ts" => $date->format('U')
                 ]
             ]
         ];

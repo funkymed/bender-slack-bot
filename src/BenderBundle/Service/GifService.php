@@ -32,37 +32,37 @@ class GifService extends BaseService
      */
     public function checkAnswer($text)
     {
-        $commands   = $this->getCommands($text);
-        $query      = urlencode(implode(' ',$commands));
+        $commands = $this->getCommands($text);
+        $query = urlencode(implode(' ', $commands));
         $this->query = $query;
         $apikey = $this->getContainer()->getParameter('giphy_key');
-        $res        = $this->get_page_content('http://api.giphy.com/v1/gifs/search?q='.$query.'&api_key='.$apikey);
-        if($res)
-        {
+        $res = $this->get_page_content('http://api.giphy.com/v1/gifs/search?q=' . $query . '&api_key=' . $apikey);
+        if ($res) {
             $json = json_decode($res);
             shuffle($json->data);
             return $json->data[0]->images->fixed_height->url;
-        }else{
+        } else {
             return null;
         }
 
     }
 
-    protected function getAnswer($message){
-        if(is_array($message))
-            $message=implode("\n",$message);
+    protected function getAnswer($message)
+    {
+        if (is_array($message))
+            $message = implode("\n", $message);
 
         $date = new \DateTime();
         return [
-            "attachments"=>[
+            "attachments" => [
                 [
-                    "title"=>$this->query,
-                    "color"=> $this->color,
-                    "footer"=> "Giphy",
-                    "footer_icon"=>$this->getMediaUrl("/bundles/bender/icons/gify.png"),
-                    "te"=> "http://www.giphy.com",
-                    "image_url"=>$message,
-                    "ts"=> $date->format('U')
+                    "title" => $this->query,
+                    "color" => $this->color,
+                    "footer" => "Giphy",
+                    "footer_icon" => $this->getMediaUrl("/bundles/bender/icons/gify.png"),
+                    "te" => "http://www.giphy.com",
+                    "image_url" => $message,
+                    "ts" => $date->format('U')
                 ]
             ]
         ];
