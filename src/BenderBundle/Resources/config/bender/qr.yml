@@ -98,7 +98,7 @@ parameters:
             - "ho !! dis donc tu te calme %user_name !"
             - "%user_name je vais venir te botter le cul"
             - "j'ai ton digicode"
-        "ferme là,ferme la,tg,bender ta gueule,ta gueule, bender ferme là, bender ferme là,ta gueule bender,ferme la bender":
+        "ferme là,ferme la,tg,bender ta gueule,ta gueule,bender ferme là,bender ferme là,ta gueule bender,ferme la bender":
             - "d'accord"
             - "pardon"
             - "oulala t'es de mauvais poil"
@@ -239,7 +239,11 @@ parameters:
                         "non":
                             0: "je suis content"
                             1: "Cool"
-                "t'es un homme ?,t'es un garçon ?,t'es un garcon ?,t'es un mec ?":
+                "es tu un robot ?,robot ?":
+                    0: "bip bip bip"
+                    1: "non"
+                    2: ""
+                "es tu un homme ?,es tu un mec ?,t'es un homme ?,t'es un garçon ?,t'es un garcon ?,t'es un mec ?":
                     0: "nop, un putain de robot"
                     1: "je crois pas non"
                     2: "et toi ?"
@@ -254,7 +258,7 @@ parameters:
                             2: "la cuisine c'est là bas"
                             3: "ah justement je ne retrouve pas mes chaussettes"
                             4: "tu peux me recoudre un truc ?"
-                "t'es un femme ?,t'es un fille ?,t'es une meuf ?":
+                "es tu une femme ?,es tu une fille ?,es tu une meuf ?,t'es un femme ?,t'es un fille ?,t'es une meuf ?":
                     0: "nop, un putain de robot"
                     1: "je crois pas non"
                     2: "et toi ?"
