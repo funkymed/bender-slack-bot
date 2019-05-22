@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   php:
-    image: webdevops/php-apache:7.1
+    image: webdevops/php-apache-dev:7.1
     container_name: bender_php
     ports:
       - "8000:80"

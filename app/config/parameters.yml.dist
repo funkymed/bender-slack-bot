@@ -21,11 +21,12 @@ parameters:
     locale: fr
 
     #Api Key
-    api_weather_key: "your_api_weather_key"
-    api_youtube_key: "your_api_youtube_key"
-    api_sncf_key: "your_api_sncf_key"
-    url_bender: "your_url_bender"
-    slack_id: "your_slack_id"
-    slack_secret: "your_slack_secret"
-    slack_token: "your_slack_token"
-    giphy_key: "your_giphy_key"
+    api_weather_key: ~
+    api_youtube_key: ~
+    api_sncf_key: ~
+    url_bender: ~
+    slack_id: ~
+    slack_secret: ~
+    slack_token: ~
+    giphy_key: ~
+    movie_api: ~
