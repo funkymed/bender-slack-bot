@@ -11,20 +11,20 @@
             "app/AppCache.php"
         ]
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://satis.wynd.eu"
-        }
-    ],
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/funkymed/gd-text"
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
-        "symfony/symfony": "3.0.*",
+        "symfony/symfony": "3.3.*",
         "symfony/swiftmailer-bundle": "^2.3",
         "symfony/monolog-bundle": "^2.8",
         "sensio/distribution-bundle": "^5.0",

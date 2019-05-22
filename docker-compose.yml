@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  php:
+    image: webdevops/php-apache:7.1
+    container_name: bender_php
+    ports:
+      - "8000:80"
+    working_dir: /app
+    volumes:
+      - ${PWD}:/app
+      - ${PWD}/.docker/apache/vhost.conf:/opt/docker/etc/httpd/vhost.conf
+      - ${PWD}/.docker/entrypoint/98-permissions.sh:/opt/docker/provision/entrypoint.d/98-permissions.sh
+      - ${PWD}/.docker/entrypoint/99-composer.sh:/opt/docker/provision/entrypoint.d/99-composer.sh
+    environment:
+      php.error_reporting: E_ALL
+      WEB_DOCUMENT_ROOT: /app/web
+      WEB_DOCUMENT_INDEX: app.php
+      COMPOSER_MEMORY_LIMIT: -1
+      PHP_MEMORY_LIMIT: 521M
+      PHP_MAX_EXECUTION_TIME: 300
+      PHP_POST_MAX_SIZE: 500M
+      PHP_UPLOAD_MAX_FILESIZE: 500M
+      PHP_DATE_TIMEZONE: UTC
+      PHP_DISPLAY_ERRORS: 1

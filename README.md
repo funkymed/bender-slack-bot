@@ -7,7 +7,8 @@ Cyril Pereira <cyril.pereira@gmail.com>
 Configuration
 --
 ```bash
-$ composer install
+$ docker-compose up -d 
+$ docker exec -it bender_php composer install --no-interaction --optimize-autoloader --quiet
 ```
 
 Installation
