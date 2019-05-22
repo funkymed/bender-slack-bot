@@ -42,7 +42,7 @@ class QRService extends BaseService
                     $v = $this->array_random($v);
                 }
 
-                $msg = str_replace('%user_name', $user_name, $v);
+                $msg = str_replace('%user_name', "@".$user_name, $v);
                 $msg = str_replace('%text', $text, $msg);
 
                 $this->saveSession($response);
@@ -57,7 +57,7 @@ class QRService extends BaseService
                     if(is_array($v))
                         $v = $this->array_random($v);
 
-                    $msg = str_replace('%user_name', $user_name, $v);
+                    $msg = str_replace('%user_name', "@".$user_name, $v);
                     $msg = str_replace('%text', $text, $msg);
 
                     $this->saveSession($response);
