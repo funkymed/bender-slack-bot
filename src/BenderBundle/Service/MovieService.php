@@ -50,7 +50,6 @@ class MovieService extends BaseService
                 $search = implode(' ',$search);
 
                 $this->titleMessage = $search;
-
                 $url = sprintf("http://www.omdbapi.com/?s=%s&apikey=%s",urlencode($search),$this->getContainer()->getParameter('movie_api'));
 
                 $omdbapi = @file_get_contents($url);
