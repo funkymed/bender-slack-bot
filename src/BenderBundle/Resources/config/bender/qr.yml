@@ -6,8 +6,9 @@ parameters:
             - "test, un deux"
             - "oui allo ?"
             - "qui me parle ?"
+            - "one two, one two"
         "cp,congés,malade":
-            - "Tu parles encore vacance bosse un peu là"
+            - "Tu parles encore vacance, bosse un peu là"
         "retard":
             - "toujours le même !"
             - "T'as encore raté ton train ?"
@@ -17,6 +18,7 @@ parameters:
             - "moi je charrette vers 15h"
             - "en pleine journée c'est mieu"
             - "jamais le soir c'est *trop fatiguant*"
+            - "une charrette c'est pas partir a 18h"
         "incroyable,mais vrai":
             - "incroyable mais vrai LE MAG"
         "énorme":
@@ -26,6 +28,7 @@ parameters:
             - "comme ta mère"
         "normal":
             - "c'est normal en *RUSSIE*"
+            - "normal t'as vu"
         "commit":
             - "vide"
             - "t'as testé avant ?"
@@ -62,12 +65,11 @@ parameters:
             "--response--":
                 "c'est toi le con,non toi,toi":
                     0: "non c'est toi"
-        "biere,biere,beer,binouze":
-            - "moi j'aime bien la biere !!!!!!!"
-            - "une bonne binch"
-            - "allé hop dans le cahier du bar"
+        "biere,biere,beer,binouze,chouffe,:beer:":
+            - "moi j'aime bien la biere :beer: !!!!!!!"
             - "tu me remet la même stp"
             - "va bosser c'est pas l'heure %user_name"
+            - "une chouffe tavernier :beer:"
         "sodomie,sodo,anal,anus,cul,l'anal,atp,atm":
             - "merci %user_name je ne cicatrise toujours pas :("
             - "ça me rappel des soirées au fucking blue boy avec %user_name"
@@ -104,7 +106,7 @@ parameters:
             - "oulala t'es de mauvais poil"
             - "on a affaire au président de slack les amis"
             - "attention le boss est dans la place"
-            - "hoho, alerte aux gogoles"
+            - "hoho, alerte aux gogoles les enfants"
         "encule,bender encule,enculer":
             - "%user_name c'est toi l'enculé"
             - "attends ... ok :("
@@ -122,10 +124,9 @@ parameters:
             - "tu vas prendre cher %user_name si tu continue"
             - "%user_name c'est toi le batard"
         "kebab":
-            - "j'ai trop faim arrete"
-            - "y a kader il fait de pures kebab sauce samouraï"
-            - "y a rachid en bas il fait de pures kebab sauce mayo"
-            - "moi j'aime bien le burger chez azziz"
+            - "j'ai trop faim arrête"
+            - "sauce samouraï pour moi !"
+            - "moi j'aime bien les burgers"
             - "la viande de kebab je suis pas sur, c'est pas du chat ?"
             - "salade tomate ognion pour moi"
         "burger king,bk,macdo":
@@ -149,16 +150,6 @@ parameters:
         "bite,zgeg,tebi,zizi":
             - "le mien est tordu"
             - "je veux pas en parler"
-        "tape dans le fond":
-            - "je suis pas ta mère"
-            - "ho oui grand fou"
-            - "c'est ce que ta mère me dit"
-            - "zat ouat chie sède"
-            - "that's what she said"
-        "cochon,cochons":
-            - "gruik"
-            - "j'aime tout ce qui est rose"
-            - "j'aime les saucisses"
         "salut bender,salut,yo,lo,luss,elo,olà,lu,bonjour,hi,kikoolol,allo,alo,hello":
             0: "%text %user_name"
             1: "hey mon ami !"
@@ -167,12 +158,15 @@ parameters:
             4: "ça fait un baille dis donc"
             5: "tu vas passer ta journée à dire bonjour ?"
             "--response--":
-                "comment ca va ?,ca va ?":
+                "comment ca va ?,ca va ?,ça va ?":
                     0: "t'as craqué toi"
+                    1: "oui"
+                    2: "non"
+                    3: "vas bosser !"
         "coller":
-            - "La petite"
-            - "Coller coller !"
-            - "Coller coller coller COLLER coller coller coller COLLER coller COLLER COLLER LA PETITE !"
+            - "la petite"
+            - "coller coller !"
+            - "coller coller coller COLLER coller coller coller COLLER coller COLLER COLLER LA PETITE !"
         "bender":
             0: "oui ?"
             1: "oui %user_name ? je t'écoute"
@@ -189,8 +183,16 @@ parameters:
             12: "oui %user_name ?"
             13: "et voilà %user_name va encore me souler"
             14: "c'est comme ça que je m'appelle"
-            15: "T'as fait composer update ?"
             "--response--":
+                "saute":
+                    0: "non"
+                    1: "hop"
+                "roule":
+                    0: "non"
+                "fait moi rire":
+                    0: "non"
+                "es tu intelligent":
+                    0: "non"
                 "mauviette":
                     0: "Personne... ne me traite de mauviette !"
                     1: "Personne... ne me TRAITE DE MAUVIETTE !!!!"
